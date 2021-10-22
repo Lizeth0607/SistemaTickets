@@ -10,7 +10,15 @@ import AppSearch from './AppSearch';
 import AppRightMenu from './AppRightMenu';
 
 import PrimeReact from 'primereact/utils';
-import TblSentidosSentencias from './components/TblSentidosSentencias';
+import Indicadores from './components/Indicadores';
+import Usuarios from './components/Usuarios';
+import Equipos from './components/Equipos';
+import CategoriasEquipos from './components/CategoriasEquipos';
+import DiscosEquipos from './components/DiscosEquipos';
+import Marcas from './components/Marcas';
+import Ram from './components/Ram';
+import Pantallas from './components/Pantallas';
+import Servicios from './components/Servicios';
 
 
 
@@ -24,7 +32,7 @@ const App = () => {
 
     const [menuActive, setMenuActive] = useState(false);
     const [menuMode, setMenuMode] = useState('static');
-    const [colorScheme, setColorScheme] = useState('light');
+    const [colorScheme, setColorScheme] = useState('dim'); //COLOR
     const [menuTheme, setMenuTheme] = useState('layout-sidebar-darkgray');
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
     const [staticMenuDesktopInactive, setStaticMenuDesktopInactive] = useState(false);
@@ -48,32 +56,36 @@ const App = () => {
 
     const menu = [
         {
-            label: "Oficialias", icon: "pi pi-folderpi pi-fw pi-align-left",
+            label: "Usuarios", icon: "pi pi-folderpi pi-fw pi-align-left",
             items: [
 
-                {label: 'Oficialias', icon: 'pi pi-folderpi pi-fw pi-align-left', to: "/Oficialias",
+                {label: 'Usuarios', icon: 'pi pi-folderpi pi-fw pi-align-left', to: "/Usuarios",
                 items: [
-                    {label: 'Demanda inicial', icon: '', to: "/Demandas"},
-                    {label: 'Audiencia', icon: '', to: "/Audiencia"},
-                    {label: 'Edictos', icon: '', to: "/Edictos"},                   
-                    {label: 'Notificaciones', icon: '', to: "/Notificaciones"},
+                    {label: 'Usuarios', icon: '', to: "/Usuarios"},
+                    {label: 'Permisos', icon: '', to: "/Permisos"},                   
+                    /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
                     {label: 'Notificacion Electronica', icon:'', to:"/NotificacionElectronica" },
                     {label: 'Terminacion de Carpetas', icon:'', to:"TerminacionCarpetas"},
                     {label: 'Oficios Generales', icon:'', to:"/OficiosGenerales"},
-                    {label: 'Juzgados', icon:'', to:"/Juzgados"},     
+                    {label: 'Juzgados', icon:'', to:"/Juzgados"},  */   
             ]  
                 }
             ]
         },
         { separator: true },
-        {label: "Exhortos", icon: "pi pi-fw pi-id-card",
+        {label: "Equipos", icon: "pi pi-fw pi-id-card",
         items: [
             {
-            label: "Exhortos", icon: "pi pi-fw pi-align-left",
+            label: "Equipos", icon: "pi pi-fw pi-align-left",
             items: [
-               {label: 'Registro de Exhorto', icon: 'keyboard_tab', to: "/RegistroExhorto"},
-               {label: 'Exhortos Tocas', icon: 'keyboard_tab', to: "/ExhortosTocas"},
+                {label: 'Equipos', icon: 'keyboard_tab', to: "/Equipos"},
+               {label:'Discos', icon:'', to:'/DiscosEquipos'}, //3
+               {label:'Marcas', icon:'', to:'/Marcas'}, //3
+               {label:'Ram', icon:'', to:'/Ram'}, //3
+               {label:'Pantallas', icon:'', to:'/Pantallas'}, //3
+               {label: 'Servicios', icon: 'keyboard_tab', to: "/Servicios"},
+
                 ]     
             }
             ]
@@ -81,12 +93,28 @@ const App = () => {
 
 
         { separator: true },
-        {label: "Catalogos", icon: "pi pi-fw pi-id-card",
+        {label: "Reportes", icon: "pi pi-fw pi-id-card",
         items:[
             {
-                label: "Catalogos", icon: "pi pi-fw pi-align-left",
+                label: "Reportes", icon: "pi pi-fw pi-align-left",
                 items: [
-                    {label:'TblSentidoSentencias', icon:'', to:'/TblSentidosSentencias'},
+                    {label:'Generar reportes', icon:'', to:'/Reportes'}, //1
+                    {label:'Categorías', icon:'', to:'/Categorias'}, //2
+                    {label:'Indicadores', icon:'', to:'/Indicadores'}, //LISTO
+                    {label:'Unidades de Medida', icon:'', to:'/Indicadores'}, //5
+             ]
+            }
+        ]
+
+        },
+        { separator: true },
+        {label: "Otros", icon: "pi pi-fw pi-id-card",
+        items:[
+            {
+                label: "Otros", icon: "pi pi-fw pi-align-left",
+                items: [
+                    {label:'Cuenta', icon:'', to:'/Cuenta de usuario'}, //1
+                    {label:'Información', icon:'', to:'/Información del sistema'}, //2
              ]
             }
         ]
@@ -99,7 +127,16 @@ const App = () => {
     const routers = [
 
 
-        {path:'/TblSentidosSentencias', component: TblSentidosSentencias, meta: { breadcrumb: [{ parent: 'Operación', label: 'TblSentidosSentencias' }] }},
+        {path:'/Indicadores', component: Indicadores, meta: { breadcrumb: [{ parent: 'Operación', label: 'Indicadores' }] }},
+        {path:'/Usuarios', component: Usuarios, meta: { breadcrumb: [{ parent: 'Operación', label: 'Usuarios' }] }},
+        {path:'/Equipos', component: Equipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Equipos' }] }},
+        {path:'/CategoriasEquipos', component: CategoriasEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Categorias Equipos' }] }},
+        {path:'/DiscosEquipos', component: DiscosEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Discos Equipos' }] }},
+        {path:'/Marcas', component: Marcas, meta: { breadcrumb: [{ parent: 'Operación', label: 'Marcas Equipos' }] }},
+        {path:'/Ram', component: Ram, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ram Equipos' }] }},
+        {path:'/Pantallas', component: Pantallas, meta: { breadcrumb: [{ parent: 'Operación', label: 'Pantallas Equipos' }] }},
+        {path:'/Servicios', component: Servicios, meta: { breadcrumb: [{ parent: 'Operación', label: 'Servicios de Soporte' }] }},
+
     ];
 
     useEffect(() => {

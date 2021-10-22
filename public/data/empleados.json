@@ -1,0 +1,32 @@
+{
+    "data": [
+        {"name": "Empleado A", "code": "AF"},
+        {"name": "Empleado B", "code": "AX"},
+        {"name": "Empleado C", "code": "AL"},
+        {"name": "Empleado D", "code": "DZ"},
+        {"name": "Empleado Samoa", "code": "AS"},
+        {"name": "Empleado E", "code": "AD"},
+        {"name": "Empleado F", "code": "AO"},
+        {"name": "Empleado G", "code": "AI"},
+        {"name": "Empleado I", "code": "AQ"},
+        {"name": "Empleado J", "code": "AG"},
+        {"name": "Empleado K", "code": "AR"},
+        {"name": "Empleado L", "code": "AM"},
+        {"name": "Empleado M", "code": "AW"},
+        {"name": "Empleado N", "code": "AU"},
+        {"name": "Empleado O", "code": "AT"},
+        {"name": "Empleado P", "code": "AZ"},
+        {"name": "Empleado Q", "code": "BS"},
+        {"name": "Empleado R", "code": "BH"},
+        {"name": "Empleado S", "code": "BD"},
+        {"name": "Empleado T", "code": "BB"},
+        {"name": "Empleado U", "code": "BY"},
+        {"name": "Empleado V", "code": "BE"},
+        {"name": "Empleado W", "code": "BZ"},
+        {"name": "Empleado X", "code": "BJ"},
+        {"name": "Empleado Y", "code": "BM"},
+        {"name": "Empleado Z", "code": "BT"},
+        {"name": "Empleado 234", "code": "BO"}
+       
+    ]
+}

@@ -1,0 +1,82 @@
+
+{
+    "entidad": "Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Equipo",
+    "agregar":"Nuevo Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Equipo",    
+    "actualizar":"Actualizar Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idEquipo":"ID Equipo",
+        "nombreEquipo":"Nombre del Equipo",
+        "serialEquipo":"Número de Serie",
+        "ipEquipo":"Dirección IP",
+        "licenciaEquipo":"Licencia" ,
+        "fechaCompra":"Fecha de Compra",
+        "marcaEquipo":"Marca",
+        "categEquipo":"Categoría" ,
+        "ramEquipo":"RAM" ,
+        "discoEquipo":"Disco" ,
+        "pantallaEquipo":"Pantalla" ,
+        "empleadoEquipo":"Empleado"   
+      },
+
+"required":{
+        "idEquipo":"El ID Equipo es requerido",
+        "nombreEquipo":"El Nombre del Equipo es requerido",
+        "serialEquipo":"El Número de Serie es requerido",
+        "ipEquipo":"La dirección IP es requerida",
+        "licenciaEquipo":"La Licencia es requerida" ,
+        "fechaCompra":"la Fecha de Compra es requerida",
+        "marcaEquipo":"La Marca es requerida",
+        "categEquipo":"La Categoría es requerida" ,
+        "ramEquipo":"La RAM es requerida" ,
+        "discoEquipo":"El Disco es requerido" ,
+        "pantallaEquipo":"La Pantalla es requerida" ,
+        "empleadoEquipo":"El Empleado es requerido" },
+
+"placeholder":{
+        "idEquipo":"Escribe el ID Equipo",
+        "nombreEquipo":"Escribe el Nombre del Equipo",
+        "serialEquipo":"Escribe el Número de Serie",
+        "ipEquipo":"Escribe la dirección IP",
+        "licenciaEquipo":"Escribe la Licencia" ,
+        "fechaCompra":"Escribe la Fecha de Compra",
+        "marcaEquipo":"Selecciona la Marca",
+        "categEquipo":"Selecciona la Categoría" ,
+        "ramEquipo":"Selecciona la RAM" ,
+        "discoEquipo":"Selecciona el Disco" ,
+        "pantallaEquipo":"Selecciona la Pantalla" ,
+        "empleadoEquipo":"Buscar el Empleado" }
+    
+ }   
+

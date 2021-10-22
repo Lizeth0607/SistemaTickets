@@ -1,0 +1,33 @@
+{
+    "data": [
+        {"name": "Equipo A", "code": "AF"},
+        {"name": "Equipo B", "code": "AX"},
+        {"name": "Equipo C", "code": "AL"},
+        {"name": "Equipo D", "code": "DZ"},
+        {"name": "Equipo Samoa", "code": "AS"},
+        {"name": "Equipo E", "code": "AD"},
+        {"name": "Equipo F", "code": "AO"},
+        {"name": "Equipo G", "code": "AI"},
+        {"name": "Equipo I", "code": "AQ"},
+        {"name": "Equipo J", "code": "AG"},
+        {"name": "Equipo K", "code": "AR"},
+        {"name": "Equipo L", "code": "AM"},
+        {"name": "Equipo M", "code": "AW"},
+        {"name": "Equipo N", "code": "AU"},
+        {"name": "Equipo O", "code": "AT"},
+        {"name": "Equipo P", "code": "AZ"},
+        {"name": "Equipo Q", "code": "BS"},
+        {"name": "Equipo R", "code": "BH"},
+        {"name": "Equipo S", "code": "BD"},
+        {"name": "Equipo T", "code": "BB"},
+        {"name": "Equipo U", "code": "BY"},
+        {"name": "Equipo V", "code": "BE"},
+        {"name": "Equipo W", "code": "BZ"},
+        {"name": "Equipo X", "code": "BJ"},
+        {"name": "Equipo Y", "code": "BM"},
+        {"name": "Equipo Z", "code": "BT"},
+        {"name": "Equipo 234", "code": "BO"}
+       
+    ]
+}
+

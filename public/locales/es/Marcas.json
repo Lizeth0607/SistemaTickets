@@ -1,0 +1,54 @@
+
+{
+    "entidad": "Marcas de Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Marca de Equipo",
+    "agregar":"Nuevo Marca de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Marca de Equipo",    
+    "actualizar":"Actualizar Marca de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Marcas de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Marcas de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idMarca":"ID Marca",
+        "nombreMarca":"Nombre de Marca"
+       },
+
+"required":{
+        "idMarca":"El ID Marca es requerido",
+        "nombreMarca":"El Nombre de la Marca es requerido"
+        },
+
+"placeholder":{
+        "idMarca":"Escribe el ID Marca",
+        "nombreMarca":"Escribe el Nombre de la Marca"
+        }
+    
+ }   
+
