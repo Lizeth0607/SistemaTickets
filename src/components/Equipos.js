@@ -118,32 +118,32 @@ const onRamChange = (e) => {
 //Autocomplete
 
 
-const [countries, setCountries] = useState([]);
+const [empleados, setempleados] = useState([]);
 const [selectedCountry2, setSelectedCountry2] = useState(null);
 const [selectedItem, setSelectedItem] = useState(null);
-const [filteredCountries, setFilteredCountries] = useState(null);
-const empleadoServide = new EmpleadosDatosService();
+const [filteredempleados, setFilteredempleados] = useState(null);
+const empleadosServide = new EmpleadosDatosService();
 
 
 const items = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
 
 useEffect(() => {
-    empleadoServide.getCountries().then(data => setCountries(data));
+    empleadosServide.getEmpleados().then(data => setempleados(data));
 }, []); 
 
 const searchCountry = (event) => {
     setTimeout(() => {
-        let _filteredCountries;
+        let _filteredempleados;
         if (!event.query.trim().length) {
-            _filteredCountries = [...countries];
+            _filteredempleados = [...empleados];
         }
         else {
-            _filteredCountries = countries.filter((country) => {
+            _filteredempleados = empleados.filter((country) => {
                 return country.name.toLowerCase().startsWith(event.query.toLowerCase());
             });
         }
 
-        setFilteredCountries(_filteredCountries);
+        setFilteredempleados(_filteredempleados);
     }, 250);
 }
 
@@ -430,7 +430,7 @@ return (
                   {t('Equipos:label.empleadoEquipo')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedCountry2} suggestions={filteredCountries} completeMethod={searchCountry} placeholder={t('Equipos:placeholder.empleadoEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplate} onChange={(e) => setSelectedCountry2(e.value)}  />
+            <AutoComplete value={selectedCountry2} suggestions={filteredempleados} completeMethod={searchCountry} placeholder={t('Equipos:placeholder.empleadoEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplate} onChange={(e) => setSelectedCountry2(e.value)}  />
             ):(     <label id="txtEmplEquipo">equipos.empleadoEquipo</label>)}
                
             </div>      
