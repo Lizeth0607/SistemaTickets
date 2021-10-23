@@ -127,7 +127,7 @@ const App = () => {
     const routers = [
 
 
-        {path:'/Indicadores', component: Indicadores, meta: { breadcrumb: [{ parent: 'Operación', label: 'Indicadores (KPI)' }] }},
+        {path:'/Indicadores', component: Indicadores, meta: { breadcrumb: [{ parent: 'Operación', label: 'Indicadores' }] }},
         {path:'/Usuarios', component: Usuarios, meta: { breadcrumb: [{ parent: 'Operación', label: 'Usuarios' }] }},
         {path:'/Equipos', component: Equipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Equipos' }] }},
         {path:'/CategoriasEquipos', component: CategoriasEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Categorias Equipos' }] }},
