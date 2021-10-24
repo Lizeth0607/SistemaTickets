@@ -5,12 +5,12 @@ import axios from 'axios';
 
 export default class  CategoriasService {
 
-obtenerCategoria (pCriterio){
+/*obtenerCategoria (pCriterio){
 let buscaUrl = '/expediente/tblSentidosSentencias/buscaTblSentidosSentencias/';//Modificar
 let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
 return axios.get(buscaUrl + oValor).then(response  =>  response.data);
 }
-
+*/
 
 seleccionaCategoria(pCategorias) {
 let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
@@ -37,6 +37,13 @@ return axios.put(actualizaUrl + '/' + pCategorias.idCategiria,  pCategorias)
 .then(response  =>  response.data);
 }
 
+obtenerCategoria (){
+    /*
+    let buscaUrl = '/expediente/tblSentidosSentencias/buscaTblSentidosSentencias/';//Modificar
+    let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
+    return axios.get(buscaUrl + oValor).then(response  =>  response.data);*/
+    return axios.get("https://backliz1.herokuapp.com/category/1").then(res => res.data);
+}
 
 
 

@@ -1,4 +1,3 @@
-
 import React, {  useEffect, useState, useRef } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
@@ -70,7 +69,7 @@ const [value1, setValue1] = useState('');
 
 
 const obtenerCategoria = ()   =>   { //MODIFICAR EN SERVICE
-categoriasService.obtenerCategoria (txtCriterio).then(data => setLstCategorias(data));
+   categoriasService.obtenerCategoria ().then(data => setLstCategorias(data));
 };
 
 const seleccionaCategoria = (pCategoria)   =>   {
@@ -203,9 +202,9 @@ return (
       </div>
    </div>
    <DataTable value={lstCategorias} paginator={true} rows={10} responsive={true}>
-      <Column field="idCategoria" header={t('CategoriasEquipos:label.idCategoria')} sortable={true}></Column>
-      <Column field="nombreCateg" header={t('CategoriasEquipos:label.nombreCateg')} sortable={true}></Column>
-      <Column field="descCateg" header={t('CategoriasEquipos:label.descCateg')} sortable={true}></Column>
+      <Column field="categoria_id" header={t('CategoriasEquipos:label.idCategoria')} sortable={true}></Column>
+      <Column field="nombre" header={t('CategoriasEquipos:label.nombreCateg')} sortable={true}></Column>
+      <Column field="descripcion" header={t('CategoriasEquipos:label.descCateg')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('CategoriasEquipos:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('CategoriasEquipos:rotulo.agregar')} footer={dlgFooter} visible={dlgCategorias} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgCategorias(false)} blockScroll={false}>
@@ -245,6 +244,4 @@ return (
 
 
 }                
-export default Categorias;                                        	
-
-
+export default Categorias;
