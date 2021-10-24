@@ -79,6 +79,7 @@ const App = () => {
             {
             label: "Equipos", icon: "pi pi-fw pi-align-left",
             items: [
+                {label: 'Categorías Equipos', icon: 'keyboard_tab', to: "/CategoriasEquipos"},
                 {label: 'Equipos', icon: 'keyboard_tab', to: "/Equipos"},
                {label:'Discos', icon:'', to:'/DiscosEquipos'}, //3
                {label:'Marcas', icon:'', to:'/Marcas'}, //3
