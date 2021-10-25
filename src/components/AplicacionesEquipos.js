@@ -82,7 +82,7 @@ const searchEquipo = (event) => {
 }
 const itemTemplateEquipos = (item) => {
    return (
-       <div className="ubicacion-item">
+       <div className="equipo-item">
            <div>{item.name}</div>
        </div>
    );
@@ -107,7 +107,7 @@ const searchAplicacion = (event) => {
             _filteredAplicaciones = [...aplicaciones];
         }
         else {
-            _filteredAplicaciones = aplicaciones.filter((country) => {
+            _filteredAplicaciones = aplicaciones.filter((aplicaciones) => {
                 return aplicaciones.name.toLowerCase().startsWith(event.query.toLowerCase());
             });
         }
@@ -318,7 +318,7 @@ const itemTemplateAplicaciones = (item) => {
                   {t('AplicacionesEquipos:label.idAplicacion')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedAplicaciones} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idAplicacion')} field="aplicacion_id" dropdown forceSelection itemTemplate={itemTemplateAplicaciones} onChange={(e) => setSelectedEquipos(e.value)} />
+            <AutoComplete value={selectedAplicaciones} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idAplicacion')} field="name" dropdown forceSelection itemTemplate={itemTemplateAplicaciones} onChange={(e) => setSelectedAplicaciones(e.value)} />
             ):(     <label id="txtIdAplicaciones">aplicacionesEqs.idAplicacion</label>)}
                
             </div> 
