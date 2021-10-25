@@ -347,7 +347,7 @@ return (
                   </small>}                 
                
             </div>
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtActivo">
+            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtNombreEquipo">
                   {t('Equipos:label.nombreEquipo')}
                   </label>
                {{captura} ? ( 

@@ -183,7 +183,7 @@ const Servicios = ()   =>   {
  
     
     const obtenerServicio = ()   =>   { //MODIFICAR EN SERVICE
-    serviciosService.obtenerServicio (txtCriterio).then(data => setLstServicios(data));
+        serviciosService.obtenerServicio ().then(data => setLstServicios(data));
     };
     
     const seleccionaServicio = (pServicios)   =>   {
@@ -322,14 +322,14 @@ const Servicios = ()   =>   {
        </div>
       
        <DataTable value={lstServicios} paginator={true} rows={10} responsive={true}>
-          <Column field="idServicio" header={t('Servicios:label.idServicio')} sortable={true}></Column>
-          <Column field="nombreServicio" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
-          <Column field="descServicio" header={t('Servicios:label.descServicio')} sortable={true}></Column>
-          <Column field="fechaSolicitud" header={t('Servicios:label.fechaSolicitud')} sortable={true}></Column>
-          <Column field="fechaTermino" header={t('Servicios:label.fechaTermino')} sortable={true}></Column>
-          <Column field="idEquipo" header={t('Servicios:label.idEquipo')} sortable={true}></Column>
-          <Column field="idEmpleado" header={t('Servicios:label.idEmpleado')} sortable={true}></Column>
-          <Column field="idUsuario" header={t('Servicios:label.idUsuario')} sortable={true}></Column>
+          <Column field="servicio_id" header={t('Servicios:label.idServicio')} sortable={true}></Column>
+          <Column field="servicio" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
+          <Column field="descripcion" header={t('Servicios:label.descServicio')} sortable={true}></Column>
+          <Column field="fecha_solicitud" header={t('Servicios:label.fechaSolicitud')} sortable={true}></Column>
+          <Column field="fecha_termino" header={t('Servicios:label.fechaTermino')} sortable={true}></Column>
+          <Column field="equipo_id" header={t('Servicios:label.idEquipo')} sortable={true}></Column>
+          <Column field="empleado_id" header={t('Servicios:label.idEmpleado')} sortable={true}></Column>
+          <Column field="usuario_id" header={t('Servicios:label.idUsuario')} sortable={true}></Column>
           
           <Column body={actionTemplate} header={t('Servicios:rotulo.editar')}></Column>
        </DataTable>

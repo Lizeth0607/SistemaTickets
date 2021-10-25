@@ -66,7 +66,7 @@ const Pantallas = ()   =>   {
  
     
     const obtenerPantalla = ()   =>   { //MODIFICAR EN SERVICE
-    pantallasService.obtenerPantalla (txtCriterio).then(data => setLstPantallas(data));
+    pantallasService.obtenerPantalla ().then(data => setLstPantallas(data));
     };
     
     const seleccionaPantalla = (pPantallas)   =>   {
@@ -199,9 +199,9 @@ const Pantallas = ()   =>   {
           </div>
        </div>
        <DataTable value={lstPantallas} paginator={true} rows={10} responsive={true}>
-          <Column field="idPantalla" header={t('Pantallas:label.idPantalla')} sortable={true}></Column>
-          <Column field="tipoPantalla" header={t('Pantallas:label.tipoPantalla')} sortable={true}></Column>
-          <Column field="tamPantalla" header={t('Pantallas:label.tamPantalla')} sortable={true}></Column>
+          <Column field="pantalla_id" header={t('Pantallas:label.idPantalla')} sortable={true}></Column>
+          <Column field="tipo" header={t('Pantallas:label.tipoPantalla')} sortable={true}></Column>
+          <Column field="tamano" header={t('Pantallas:label.tamPantalla')} sortable={true}></Column>
           <Column body={actionTemplate} header={t('Pantallas:rotulo.editar')}></Column>
        </DataTable>
        <Dialog header={t('Pantallas:rotulo.agregar')} footer={dlgFooter} visible={dlgPantallas} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgPantallas(false)} blockScroll={false}>

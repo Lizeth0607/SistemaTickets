@@ -5,10 +5,8 @@ import axios from 'axios';
 
 export default class  MarcasService {
 
-obtenerMarca (pCriterio){
-let buscaUrl = '/expediente/tblSentidosSentencias/buscaTblSentidosSentencias/';//Modificar
-let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
-return axios.get(buscaUrl + oValor).then(response  =>  response.data);
+obtenerMarca (){
+    return axios.get("https://backliz1.herokuapp.com/mark").then(res => res.data);
 }
 
 

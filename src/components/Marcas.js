@@ -69,7 +69,8 @@ const [value1, setValue1] = useState('');
 
 
 const obtenerMarca = ()   =>   { //MODIFICAR EN SERVICE
-marcasService.obtenerMarca (txtCriterio).then(data => setLstMarcas(data));
+marcasService.obtenerMarca ().then(data => setLstMarcas(data));
+
 };
 
 const seleccionaMarca = (pCategoria)   =>   {
@@ -201,8 +202,8 @@ return (
       </div>
    </div>
    <DataTable value={lstMarcas} paginator={true} rows={10} responsive={true}>
-      <Column field="idMarca" header={t('Marcas:label.idMarca')} sortable={true}></Column>
-      <Column field="nombreMarca" header={t('Marcas:label.nombreMarca')} sortable={true}></Column>
+      <Column field="marca_id" header={t('Marcas:label.idMarca')} sortable={true}></Column>
+      <Column field="nombre" header={t('Marcas:label.nombreMarca')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Marcas:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('Marcas:rotulo.agregar')} footer={dlgFooter} visible={dlgMarcas} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgMarcas(false)} blockScroll={false}>

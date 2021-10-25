@@ -6,9 +6,7 @@ import axios from 'axios';
 export default class  RamService {
 
 obtenerRam (pCriterio){
-let buscaUrl = '/expediente/tblSentidosSentencias/buscaTblSentidosSentencias/';//Modificar
-let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
-return axios.get(buscaUrl + oValor).then(response  =>  response.data);
+    return axios.get("https://backliz1.herokuapp.com/ram").then(res => res.data);
 }
 
 

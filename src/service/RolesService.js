@@ -3,36 +3,35 @@ import axios from 'axios';
 
 
 
-export default class  DiscosService {
+export default class  RolesService {
 
-obtenerDisco (){
-    return axios.get("https://backliz1.herokuapp.com/disk").then(res => res.data);
-
+obtenerRol (){
+    return axios.get("https://backliz1.herokuapp.com/role").then(res => res.data);
 }
 
 
-seleccionaDisco(pDiscos) {
+seleccionaRol(pRoles) {
 let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
-return axios.get(seleccionaUrl  + '/' + pDiscos.idDisco).then(response  =>  response.data);
+return axios.get(seleccionaUrl  + '/' + pRoles.idRol).then(response  =>  response.data);
 }
 
-agregaDisco (pDiscos) {
+agregaRol (pRoles) {
 let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pDiscos).then(response  =>  response.data);
+return axios.post(agregaUrl, pRoles).then(response  =>  response.data);
 }
 
-eliminaDisco (pDiscos) {
+eliminaRol (pRoles) {
 let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pDiscos.idDisco, {
+axios.delete(eliminaUrl  + '/' + pRoles.idRol, {
 headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pDiscos
+data: pRoles
 });
 
 }
 
-actualizaDisco (pDiscos) {
+actualizaRol (pRoles) {
 let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
-return axios.put(actualizaUrl + '/' + pDiscos.idDisco,  pDiscos)
+return axios.put(actualizaUrl + '/' + pRoles.idRol,  pRoles)
 .then(response  =>  response.data);
 }
 

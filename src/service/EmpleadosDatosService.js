@@ -1,4 +1,4 @@
-export default class EmpleadosService {
+export default class EmpleadosDatosService {
 
     getEmpleados() {
         return fetch('data/empleados.json').then(res => res.json())

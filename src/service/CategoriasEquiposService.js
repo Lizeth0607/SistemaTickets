@@ -42,7 +42,7 @@ obtenerCategoria (){
     let buscaUrl = '/expediente/tblSentidosSentencias/buscaTblSentidosSentencias/';//Modificar
     let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
     return axios.get(buscaUrl + oValor).then(response  =>  response.data);*/
-    return axios.get("https://backliz1.herokuapp.com/category/1").then(res => res.data);
+    return axios.get("https://backliz1.herokuapp.com/category").then(res => res.data);
 }
 
 

@@ -66,7 +66,7 @@ const Ram = ()   =>   {
  
     
     const obtenerRam = ()   =>   { //MODIFICAR EN SERVICE
-    ramService.obtenerRam (txtCriterio).then(data => setLstRam(data));
+      ramService.obtenerRam ().then(data => setLstRam(data));
     };
     
     const seleccionaRam = (pRam)   =>   {
@@ -199,9 +199,9 @@ const Ram = ()   =>   {
           </div>
        </div>
        <DataTable value={lstRam} paginator={true} rows={10} responsive={true}>
-          <Column field="idRam" header={t('Ram:label.idRam')} sortable={true}></Column>
-          <Column field="tipoRam" header={t('Ram:label.tipoRam')} sortable={true}></Column>
-          <Column field="capacidadRam" header={t('Ram:label.capacidadRam')} sortable={true}></Column>
+          <Column field="ram_id" header={t('Ram:label.idRam')} sortable={true}></Column>
+          <Column field="tipo" header={t('Ram:label.tipoRam')} sortable={true}></Column>
+          <Column field="capacidad" header={t('Ram:label.capacidadRam')} sortable={true}></Column>
           <Column body={actionTemplate} header={t('Ram:rotulo.editar')}></Column>
        </DataTable>
        <Dialog header={t('Ram:rotulo.agregar')} footer={dlgFooter} visible={dlgRam} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgRam(false)} blockScroll={false}>

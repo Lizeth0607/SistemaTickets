@@ -1,0 +1,33 @@
+{
+    "data": [
+        {"name": "Ubicacion A", "code": "AF"},
+        {"name": "Ubicacion B", "code": "AX"},
+        {"name": "Ubicacion C", "code": "AL"},
+        {"name": "Ubicacion D", "code": "DZ"},
+        {"name": "Ubicacion 234567", "code": "AS"},
+        {"name": "Ubicacion E", "code": "AD"},
+        {"name": "Ubicacion F", "code": "AO"},
+        {"name": "Ubicacion G", "code": "AI"},
+        {"name": "Ubicacion I", "code": "AQ"},
+        {"name": "Ubicacion J", "code": "AG"},
+        {"name": "Ubicacion K", "code": "AR"},
+        {"name": "Ubicacion L", "code": "AM"},
+        {"name": "Ubicacion M", "code": "AW"},
+        {"name": "Ubicacion N", "code": "AU"},
+        {"name": "Ubicacion O", "code": "AT"},
+        {"name": "Ubicacion P", "code": "AZ"},
+        {"name": "Ubicacion Q", "code": "BS"},
+        {"name": "Ubicacion R", "code": "BH"},
+        {"name": "Ubicacion S", "code": "BD"},
+        {"name": "Ubicacion T", "code": "BB"},
+        {"name": "Ubicacion U", "code": "BY"},
+        {"name": "Ubicacion V", "code": "BE"},
+        {"name": "Ubicacion W", "code": "BZ"},
+        {"name": "Ubicacion X", "code": "BJ"},
+        {"name": "Ubicacion Y", "code": "BM"},
+        {"name": "Ubicacion Z", "code": "BT"},
+        {"name": "Ubicacion 234", "code": "BO"}
+       
+    ]
+}
+

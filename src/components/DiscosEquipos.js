@@ -40,7 +40,7 @@ const DiscosEquipos = ()   =>   {
     const [Discos, setDiscos] = useState({idDisco:null
     ,tipoDisco:''
     ,capacidadDisco:''
-    
+    ,medidaDisco:''
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -69,8 +69,8 @@ const DiscosEquipos = ()   =>   {
     
     
     const obtenerDisco = ()   =>   { //MODIFICAR EN SERVICE
-    discosService.obtenerDisco (txtCriterio).then(data => setLstDiscos(data));
-    };
+      discosService.obtenerDisco ().then(data => setLstDiscos(data));
+   };
     
     const seleccionaDisco = (pDiscos)   =>   {
     setCaptura(false);
@@ -122,6 +122,8 @@ const DiscosEquipos = ()   =>   {
     setDiscos({idDisco:null
        ,tipoDisco:''
        ,capacidadDisco:''
+       ,medidaDisco:''
+
     });
     formik.resetForm();
     };
@@ -202,9 +204,11 @@ const DiscosEquipos = ()   =>   {
           </div>
        </div>
        <DataTable value={lstDiscos} paginator={true} rows={10} responsive={true}>
-          <Column field="idDisco" header={t('DiscosEquipos:label.idDisco')} sortable={true}></Column>
-          <Column field="tipoDisco" header={t('DiscosEquipos:label.tipoDisco')} sortable={true}></Column>
-          <Column field="capacidadDisco" header={t('DiscosEquipos:label.capacidadDisco')} sortable={true}></Column>
+          <Column field="disco_id" header={t('DiscosEquipos:label.idDisco')} sortable={true}></Column>
+          <Column field="tipo" header={t('DiscosEquipos:label.tipoDisco')} sortable={true}></Column>
+          <Column field="capacidad" header={t('DiscosEquipos:label.capacidadDisco')} sortable={true}></Column>
+          <Column field="medida" header={t('DiscosEquipos:label.medidaDisco')} sortable={true}></Column>
+
           <Column body={actionTemplate} header={t('DiscosEquipos:rotulo.editar')}></Column>
        </DataTable>
        <Dialog header={t('DiscosEquipos:rotulo.agregar')} footer={dlgFooter} visible={dlgDiscos} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgDiscos(false)} blockScroll={false}>
@@ -223,7 +227,8 @@ const DiscosEquipos = ()   =>   {
                       </small>}                 
                    
                 </div>
-                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtCapacidadDisco">
+                
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtCapacidadDisco">
                       {t('DiscosEquipos:label.capacidadDisco')}
                       </label>
                    {{captura} ? ( 
@@ -231,6 +236,14 @@ const DiscosEquipos = ()   =>   {
                    ):(     <label id="txtCapacidadDisco">discos.capacidadCateg</label>)}
                    
                 </div>
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtMedidaDisco">
+                  {t('DiscosEquipos:label.medidaDisco')}
+                  </label>
+               {{captura} ? ( 
+                  <InputText id="txtMedidaDisco" placeholder={t('DiscosEquipos:placeholder.medidaDisco')} value={Discos.medidaDisco} className={formik.errors.txtMedidaDisco ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('medidaDisco', e.target.value)}></InputText>    
+                  ):(     <label id="txtMedidaDisco">discos.medidaDisco</label>)}
+                  
+            </div>
                     
              </div>
           </div>

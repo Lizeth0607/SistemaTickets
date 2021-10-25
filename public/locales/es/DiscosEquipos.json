@@ -38,18 +38,25 @@
 "label":{
         "idDisco":"ID Disco",
         "tipoDisco":"Tipo de Disco",
-        "capacidadDisco":"Capacidad del Disco"
+        "capacidadDisco":"Capacidad del Disco",
+        "medidaDisco": "Medida de disco"
        },
 
 "required":{
         "idDisco":"El ID Disco es requerido",
         "tipoDisco":"El tipo de Disco es requerido",
-        "capacidadDisco":"La capacidad del Disco es requerido"},
+        "capacidadDisco":"La capacidad del Disco es requerido",
+        "medidaDisco": "La Medida de disco es requerida"
+
+      },
 
 "placeholder":{
         "idDisco":"Escribe el ID Disco",
         "tipoDisco":"Escribe el tipo del Disco",
-        "capacidadDisco":"Escribe la capacidad del Disco"}
+        "capacidadDisco":"Escribe la capacidad del Disco",
+        "medidaDisco": "Escribe la Medida de disco"
+
+      }
     
  }   
 
