@@ -46,14 +46,14 @@ timer: '3000'
 const [lstEmpleados, setLstEmpleados] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgEmpleados, setDlgEmpleados] = useState(false);
-const [Empleados, setEmpleados] = useState({idEmpleado:null
-   ,nombreEmpleado:''
-   ,telefonoEmpleado:''
-   ,correoEmpleado:''
-   ,puestoEmpleado:''
-   ,idUbicacion:''
-   ,idSede:''
-   ,imagenperfil:''
+const [Empleados, setEmpleados] = useState({empleado_id:null
+   ,nombre:''
+   ,telefono:''
+   ,mail:''
+   ,puesto:''
+   ,imagen:'indefinido'
+   ,ubicacion_id:''
+   ,sede_id:''
 
 });
 
@@ -181,18 +181,18 @@ obtenerEmpleado();
 
 
 const agregaEmpleado = ()   =>   {
-empleadosService.agregaEmpleado (Empleados).
-then(data => {setEmpleados(data);
+empleadosService.agregaEmpleado (Empleados).then(data => {setEmpleados(data);
 empleadosSuccess('success',t('Empleados:cabecero.exito'),t('Empleados:mensaje.agregar'));
 setDlgEmpleados(false);
 obtenerEmpleado ();
 });
 };
 
-const eliminaEmpleado = ()   =>   {
-Empleados.eliminaEmpleado (Empleados);
+const eliminaEmpleado = (pEmpleados)   =>   {
+empleadosService.eliminaEmpleado (pEmpleados).then(data => setEmpleados(data));
 empleadosSuccess('success',t('Empleados:cabecero.exito'),t('Empleados:mensaje.eliminar'));
 setDlgEmpleados(false);
+obtenerEmpleado();
 obtenerEmpleado();
 obtenerEmpleado();
 };
@@ -215,14 +215,14 @@ setDlgEmpleados(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setEmpleados({idEmpleado:null
-   ,nombreEmpleado:''
-   ,telefonoEmpleado:''
-   ,correoEmpleado:''
-   ,puestoEmpleado:''
-   ,idUbicacion:''
-   ,idSede:''
-   ,imagenPerfil:''
+setEmpleados({empleado_id:null
+   ,nombre:''
+   ,telefono:''
+   ,mail:''
+   ,puesto:''
+   ,imagen:''
+   ,ubicacion_id:''
+   ,sede_id:''
 });
 formik.resetForm();
 };
@@ -233,7 +233,7 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Empleados.nombreEmpleado) {
+ if (!Empleados.nombre) {
 errors.txtNombreEmpleado= t('Empleados:required.nombreEmpleado');
 }
 return errors;
@@ -264,7 +264,10 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaEmpleado(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaEmpleado(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaEmpleado(rowData);} }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaEmpleado(rowData); } }></Button>
+</div>);
 }
 
 
@@ -321,7 +324,7 @@ return (
                   {t('Empleados:label.nombreEmpleado')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombreEmpleado')} value={Empleados.nombreEmpleado} className={formik.errors.txtNombreEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreEmpleado', e.target.value)}></InputText>    
+               <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombreEmpleado')} value={Empleados.nombre} className={formik.errors.txtNombreEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
                ):(     <label id="txtNombreEmpleado">empleados.nombreEmpleado</label>)}
                
                {formik.errors.txtNombreEmpleado  &&  <small id="txtNombreEmpleado-help" className="p-invalid">
@@ -333,7 +336,7 @@ return (
                   {t('Empleados:label.telefonoEmpleado')}
                   </label>
                {{captura} ? ( 
-                  <InputText id="txtTelefonoEmpleado" placeholder={t('Empleados:placeholder.telefonoEmpleado')} value={Empleados.telefonoEmpleado} className={formik.errors.txtTelefonoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('telefonoEmpleado', e.target.value)}></InputText>    
+                  <InputText id="txtTelefonoEmpleado" placeholder={t('Empleados:placeholder.telefonoEmpleado')} value={Empleados.telefono} className={formik.errors.telefono ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('telefono', e.target.value)}></InputText>    
                   ):(     <label id="txtTelefonoEmpleado">empleados.telefonoEmpleado</label>)}
                   
             </div>
@@ -341,7 +344,7 @@ return (
                   {t('Empleados:label.correoEmpleado')}
                   </label>
                {{captura} ? ( 
-                   <InputText id="txtCorreoEmpleado" placeholder={t('Empleados:placeholder.correoEmpleado')} value={Empleados.correoEmpleado} className={formik.errors.txtCorreoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('correoEmpleado', e.target.value)}></InputText>    
+                   <InputText id="txtCorreoEmpleado" placeholder={t('Empleados:placeholder.correoEmpleado')} value={Empleados.mail} className={formik.errors.txtCorreoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('mail', e.target.value)}></InputText>    
                    ):(     <label id="txtCorreoEmpleado">empleados.correoEmpleado</label>)}
                    
             </div>   
@@ -350,7 +353,7 @@ return (
                   {t('Empleados:label.puestoEmpleado')}
                   </label>
                {{captura} ? ( 
-                   <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.puestoEmpleado} className={formik.errors.txtPuestoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('puestoEmpleado', e.target.value)}></InputText>    
+                   <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.puesto} className={formik.errors.txtPuestoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('puesto', e.target.value)}></InputText>    
                    ):(     <label id="txtLicenciaEquipo">equipos.licenciaEquipo</label>)}
             </div>   
             
@@ -359,7 +362,7 @@ return (
                   {t('Empleados:label.idUbicacion')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedUbicaciones} suggestions={filteredUbicaciones} completeMethod={searchUbicacion} placeholder={t('Empleados:placeholder.idUbicacion')} field="name" dropdown forceSelection itemTemplate={itemTemplate} onChange={(e) => setSelectedUbicaciones(e.value)}  />
+            <InputText id="txtUbicacion_Id" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.ubicacion_id}  maxLength={45} onChange={(e) =>   updateProperty('ubicacion_id', e.target.value)}></InputText>
             ):(     <label id="txtIdUbicacion">empleados.idUbicacion</label>)}
                
             </div>    
@@ -367,7 +370,7 @@ return (
                   {t('Empleados:label.idSede')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedSedes} suggestions={filteredSedes} completeMethod={searchSede} placeholder={t('Empleados:placeholder.idSede')} field="name" dropdown forceSelection itemTemplate={itemTemplateSedes} onChange={(e) => setSelectedSedes(e.value)}  />
+            <InputText id="txtSede_Id" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.sede_id}  maxLength={45} onChange={(e) =>   updateProperty('sede_id', e.target.value)}></InputText>
             ):(     <label id="txtIdSede">empleados.idUbicacion</label>)}
                
             </div> 
@@ -385,14 +388,5 @@ return (
 
 
 }                
-export default Empleados;                                        	
-/*
-<div className="p-field p-col-12 p-md-6"><label htmlFor="txtImagenPerfil">
-                  {t('Empleados:label.imagenPerfil')}
-                  </label>
-               {{captura} ? ( 
-            <FileUpload mode="basic" name="demo[]" url="https://primefaces.org/primereact/showcase/upload.php" accept="image/*" maxFileSize={1000000} onUpload={onUpload} />
-            ):(     <label id="txtImagenPerfil">empleados.imagenPerfil</label>)}
-               
-            </div> */
+export default Empleados;                              
 
