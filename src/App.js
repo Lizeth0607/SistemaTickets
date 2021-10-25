@@ -22,6 +22,7 @@ import Servicios from './components/Servicios';
 import Empleados from './components/Empleados';
 import Roles from './components/Roles';
 import AplicacionesEquipos from './components/AplicacionesEquipos';
+import Historial from './components/Historial';
 
 
 
@@ -124,7 +125,7 @@ const App = () => {
                 items: [
                     {label:'Archivos', icon:'', to:'/Archivos'}, //1
                     {label:'Aplicaciones', icon:'', to:'/Aplicaciones'}, //2
-                    {label:'Sedes', icon:'', to:'/Equipos'}, //3
+                    {label:'Sedes', icon:'', to:'/Sedes'}, //3
                     {label:'Ubicaciones', icon:'', to:'/Ubicaciones'}, //3
 
              ]
@@ -151,7 +152,8 @@ const App = () => {
         {path:'/Empleados', component: Empleados, meta: { breadcrumb: [{ parent: 'Operación', label: 'Empleados' }] }},
         {path:'/Roles', component: Roles, meta: { breadcrumb: [{ parent: 'Operación', label: 'Roles' }] }},
         {path:'/AplicacionesEquipos', component: AplicacionesEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones Equipos' }] }},
-        
+        {path:'/Historial', component: Historial, meta: { breadcrumb: [{ parent: 'Operación', label: 'Historial' }] }},
+
     ];
 
     useEffect(() => {

@@ -1,0 +1,58 @@
+
+{
+    "entidad": "Historial de Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Historial de Equipo",
+    "agregar":"Nuevo Historial de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Historial de Equipo",    
+    "actualizar":"Actualizar Historial de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    
+    "cabecero":"Historial de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Historial de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idHistorial":"ID Historial",
+        "idMov":"ID del Movimiento del equipo",
+        "idEquipo":"ID del Equipo"
+       },
+
+"required":{
+        "idHistorial":"El ID Historial es requerido",
+        "idMov":"El ID del Movimiento del equipo es requerido",
+        "idEquipo":"Es ID del Equipo es requerido"
+},
+
+"placeholder":{
+        "idHistorial":"Escribe el ID Historial",
+        "idMov":"Escribe el ID del Movimiento del equipo",
+        "idEquipo":"Escribe el ID del Equipo"
+    }
+    
+ }   
+
