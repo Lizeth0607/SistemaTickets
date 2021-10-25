@@ -21,6 +21,7 @@ import Pantallas from './components/Pantallas';
 import Servicios from './components/Servicios';
 import Empleados from './components/Empleados';
 import Roles from './components/Roles';
+import AplicacionesEquipos from './components/AplicacionesEquipos';
 
 
 
@@ -65,7 +66,7 @@ const App = () => {
                 items: [
                     {label: 'Usuarios', icon: '', to: "/Usuarios"},
                     {label:'Empleados', icon:'', to:'/Empleados'}, //3
-                    {label: 'Permisos', icon: '', to: "/Permisos"}, 
+                    //{label: 'Permisos', icon: '', to: "/Permisos"}, 
                     {label:'Roles', icon:'', to:'/Roles'}, //3                  
                     /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
@@ -83,15 +84,15 @@ const App = () => {
             {
             label: "Equipos", icon: "pi pi-fw pi-align-left",
             items: [
-                {label: 'Aplicaciones Equipos', icon: 'keyboard_tab', to: "/Aplicaciones"},
+                {label: 'Aplicaciones Equipos', icon: 'keyboard_tab', to: "/AplicacionesEquipos"},
                 {label: 'Categorías Equipos', icon: 'keyboard_tab', to: "/CategoriasEquipos"},
                 {label: 'Equipos', icon: 'keyboard_tab', to: "/Equipos"},
                {label:'Discos', icon:'', to:'/DiscosEquipos'}, //3
                {label: 'Historial', icon: 'keyboard_tab', to: "/Historial"},
                {label:'Marcas', icon:'', to:'/Marcas'}, //3
                {label:'Movimientos', icon:'', to:'/Movimientos'}, //3
-               {label:'Ram', icon:'', to:'/Ram'}, //3
                {label:'Pantallas', icon:'', to:'/Pantallas'}, //3
+               {label:'Ram', icon:'', to:'/Ram'}, //3
                {label: 'Servicios', icon: 'keyboard_tab', to: "/Servicios"},
 
                 ]     
@@ -149,6 +150,8 @@ const App = () => {
         {path:'/Servicios', component: Servicios, meta: { breadcrumb: [{ parent: 'Operación', label: 'Servicios de Soporte' }] }},
         {path:'/Empleados', component: Empleados, meta: { breadcrumb: [{ parent: 'Operación', label: 'Empleados' }] }},
         {path:'/Roles', component: Roles, meta: { breadcrumb: [{ parent: 'Operación', label: 'Roles' }] }},
+        {path:'/AplicacionesEquipos', component: AplicacionesEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones Equipos' }] }},
+        
     ];
 
     useEffect(() => {
