@@ -1,32 +1,6 @@
 {
     "data": [
-        {"name": "Sede A", "code": "AF"},
-        {"name": "Sede B", "code": "AX"},
-        {"name": "Sede C", "code": "AL"},
-        {"name": "Sede D", "code": "DZ"},
-        {"name": "Sede 234567", "code": "AS"},
-        {"name": "Sede E", "code": "AD"},
-        {"name": "Sede F", "code": "AO"},
-        {"name": "Sede G", "code": "AI"},
-        {"name": "Sede I", "code": "AQ"},
-        {"name": "Sede J", "code": "AG"},
-        {"name": "Sede K", "code": "AR"},
-        {"name": "Sede L", "code": "AM"},
-        {"name": "Sede M", "code": "AW"},
-        {"name": "Sede N", "code": "AU"},
-        {"name": "Sede O", "code": "AT"},
-        {"name": "Sede P", "code": "AZ"},
-        {"name": "Sede Q", "code": "BS"},
-        {"name": "Sede R", "code": "BH"},
-        {"name": "Sede S", "code": "BD"},
-        {"name": "Sede T", "code": "BB"},
-        {"name": "Sede U", "code": "BY"},
-        {"name": "Sede V", "code": "BE"},
-        {"name": "Sede W", "code": "BZ"},
-        {"name": "Sede X", "code": "BJ"},
-        {"name": "Sede Y", "code": "BM"},
-        {"name": "Sede Z", "code": "BT"},
-        {"name": "Sede 234", "code": "BO"}
+        {"name": "Sede A", "code": "1"}
        
     ]
 }

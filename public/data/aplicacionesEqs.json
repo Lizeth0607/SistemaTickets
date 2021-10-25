@@ -1,32 +1,7 @@
 {
     "data": [
-        {"name": "Aplicacion A", "code": "AF"},
-        {"name": "Aplicacion B", "code": "AX"},
-        {"name": "Aplicacion C", "code": "AL"},
-        {"name": "Aplicacion D", "code": "DZ"},
-        {"name": "Aplicacion Samoa", "code": "AS"},
-        {"name": "Aplicacion E", "code": "AD"},
-        {"name": "Aplicacion F", "code": "AO"},
-        {"name": "Aplicacion G", "code": "AI"},
-        {"name": "Aplicacion I", "code": "AQ"},
-        {"name": "Aplicacion J", "code": "AG"},
-        {"name": "Aplicacion K", "code": "AR"},
-        {"name": "Aplicacion L", "code": "AM"},
-        {"name": "Aplicacion M", "code": "AW"},
-        {"name": "Aplicacion N", "code": "AU"},
-        {"name": "Aplicacion O", "code": "AT"},
-        {"name": "Aplicacion P", "code": "AZ"},
-        {"name": "Aplicacion Q", "code": "BS"},
-        {"name": "Aplicacion R", "code": "BH"},
-        {"name": "Aplicacion S", "code": "BD"},
-        {"name": "Aplicacion T", "code": "BB"},
-        {"name": "Aplicacion U", "code": "BY"},
-        {"name": "Aplicacion V", "code": "BE"},
-        {"name": "Aplicacion W", "code": "BZ"},
-        {"name": "Aplicacion X", "code": "BJ"},
-        {"name": "Aplicacion Y", "code": "BM"},
-        {"name": "Aplicacion Z", "code": "BT"},
-        {"name": "Aplicacion 234", "code": "BO"}
+        {"name": "Aplicacion A", "code": "1"}
+
        
     ]
 }

@@ -1,33 +1,6 @@
 {
     "data": [
-        {"name": "Usuarios A", "code": "AF"},
-        {"name": "Usuarios B", "code": "AX"},
-        {"name": "Usuarios C", "code": "AL"},
-        {"name": "Usuarios D", "code": "DZ"},
-        {"name": "Usuarios 678", "code": "AS"},
-        {"name": "Usuarios 67890", "code": "AD"},
-        {"name": "Usuarios F", "code": "AO"},
-        {"name": "Usuarios G", "code": "AI"},
-        {"name": "Usuarios I", "code": "AQ"},
-        {"name": "Usuarios J", "code": "AG"},
-        {"name": "Usuarios K", "code": "AR"},
-        {"name": "Usuarios L", "code": "AM"},
-        {"name": "Usuarios M", "code": "AW"},
-        {"name": "Usuarios N", "code": "AU"},
-        {"name": "Usuarios O", "code": "AT"},
-        {"name": "Usuarios P", "code": "AZ"},
-        {"name": "Usuarios Q", "code": "BS"},
-        {"name": "Usuarios R", "code": "BH"},
-        {"name": "Usuarios S", "code": "BD"},
-        {"name": "Usuarios T", "code": "BB"},
-        {"name": "Usuarios U", "code": "BY"},
-        {"name": "Usuarios V", "code": "BE"},
-        {"name": "Usuarios W", "code": "BZ"},
-        {"name": "Usuarios X", "code": "BJ"},
-        {"name": "Usuarios Y", "code": "BM"},
-        {"name": "Usuarios Z", "code": "BT"},
-        {"name": "Usuarios 234", "code": "BO"}
-       
+        {"name": "Usuarios A", "code": "1"}
     ]
 }
 

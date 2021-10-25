@@ -49,18 +49,10 @@ const indicadoresService = new IndicadoresService(); //MODIFICAR SERVICES
 const [selectedUM, setSelectedUM] = useState(null);
 const [selectedCategoria, setSelectedCategoria] = useState(null);
 const unidad_med = [
-   { name: 'UnidadMedida1', code: 'UM1' },
-   { name: 'UnidadMedida2', code: 'UM2' },
-   { name: 'UnidadMedida3', code: 'UM3' },
-   { name: 'UnidadMedida4', code: 'UM4' },
-   { name: 'UnidadMedida5', code: 'UM5' }
+   { name: 'UnidadMedida1', code: '1' }
 ];
 const categorias = [
-   { name: 'Categoria1', code: 'C1' },
-   { name: 'Categoria2', code: 'C2' },
-   { name: 'Categoria3', code: 'C3' },
-   { name: 'Categoria4', code: 'C4' },
-   { name: 'Categoria5', code: 'C5' }
+   { name: 'Categoria1', code: '1' }
 ];
 const onUnidadMedChange = (e) => {
    setSelectedUM(e.value);

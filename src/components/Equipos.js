@@ -72,32 +72,16 @@ const marcas = [
    { name: 'Marca5', code: 'M5' }
 ];
 const categoriasEquipo = [
-   { name: 'CategoriaEquipo1', code: 'CE1' },
-   { name: 'CategoriaEquipo2', code: 'CE2' },
-   { name: 'CategoriaEquipo3', code: 'CE3' },
-   { name: 'CategoriaEquipo4', code: 'CE4' },
-   { name: 'CategoriaEquipo5', code: 'CE5' }
+   { name: 'CategoriaEquipo1', code: '1' }
 ];
 const ram = [
-    { name: 'Ram1', code: 'R1' },
-    { name: 'Ram2', code: 'R2' },
-    { name: 'Ram3', code: 'R3' },
-    { name: 'Ram4', code: 'R4' },
-    { name: 'Ram5', code: 'R5' }
+    { name: 'Ram1', code: '1' }
  ];
  const discos = [
-    { name: 'Disco1', code: 'D1' },
-    { name: 'Disco2', code: 'D2' },
-    { name: 'Disco3', code: 'D3' },
-    { name: 'Disco4', code: 'D4' },
-    { name: 'Disco5', code: 'D5' }
+    { name: 'Disco1', code: '1' }
  ];
  const pantallas = [
-    { name: 'Pantalla1', code: 'P1' },
-    { name: 'Pantalla2', code: 'P2' },
-    { name: 'Pantalla3', code: 'P3' },
-    { name: 'Pantalla4', code: 'P4' },
-    { name: 'Pantalla5', code: 'P5' }
+    { name: 'Pantalla1', code: '1' }
  ];
 const onMarcaChange = (e) => {
    setSelectedMarca(e.value);

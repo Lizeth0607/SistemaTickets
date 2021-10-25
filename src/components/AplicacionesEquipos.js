@@ -89,24 +89,47 @@ const itemTemplateEquipos = (item) => {
 }
 
 //Autocomplete 2
-const [apps, setApps] = useState([]);
-const [tablaApps, setTablasApps] =useState('');
-const [busqueda, setBusqueda] = useState([]);
+const [aplicaciones, setAplicaciones] = useState([]);
+const [selectedAplicaciones, setSelectedAplicaciones] = useState(null);
+const [filteredAplicaciones, setFilteredAplicaciones] = useState(null);
+const aplicacionesDatosService = new AplicacionesDatosService();
 
-const peticionGet=async()=>{
-    await axios.get("https://backliz1.herokuapp.com/app")
-    .then(response=>{
-        setApps(response.data);
-        setTablasApps(response.data);
-    }).catch(error=>{
-        console.log(error);
-    })
+const itemsAplicacion = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
+
+useEffect(() => {
+    aplicacionesDatosService.getAplicacionesEqs().then(data => setAplicaciones(data));
+}, []); 
+
+const searchAplicacion = (event) => {
+    setTimeout(() => {
+        let _filteredAplicaciones;
+        if (!event.query.trim().length) {
+            _filteredAplicaciones = [...aplicaciones];
+        }
+        else {
+            _filteredAplicaciones = aplicaciones.filter((country) => {
+                return aplicaciones.name.toLowerCase().startsWith(event.query.toLowerCase());
+            });
+        }
+
+        setFilteredAplicaciones(_filteredAplicaciones);
+    }, 250);
 }
-useEffect(()=>{
-    peticionGet();
-}, [])
+
     
-    
+
+const itemTemplateAplicaciones = (item) => {
+    return (
+        <div className="aplicacion-item">
+            <div>{item.name}</div>
+        </div>
+    );
+}
+
+
+
+
+
     
     const aplicacionesEqsSuccess = (severidad,cabecero,detalle)   =>   {
     let mensajeCopy = Object.assign({}, mensaje);
@@ -291,7 +314,14 @@ useEffect(()=>{
             ):(     <label id="txtIdEquipo">aplicacionesEqs.idEquipo</label>)}
                
             </div>  
-                    
+            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdAplicacion">
+                  {t('AplicacionesEquipos:label.idAplicacion')}
+                  </label>
+               {{captura} ? ( 
+            <AutoComplete value={selectedAplicaciones} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idAplicacion')} field="aplicacion_id" dropdown forceSelection itemTemplate={itemTemplateAplicaciones} onChange={(e) => setSelectedEquipos(e.value)} />
+            ):(     <label id="txtIdAplicaciones">aplicacionesEqs.idAplicacion</label>)}
+               
+            </div> 
              </div>
           </div>
           

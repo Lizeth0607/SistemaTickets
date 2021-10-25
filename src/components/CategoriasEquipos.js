@@ -88,7 +88,7 @@ obtenerCategoria();
 
 const agregaCategoria = ()   =>   {
 categoriasService.agregaCategoria(Categorias).then(data => {setCategorias(data);
-categoriasSuccess('success',t('CategoriasEquipos:cabecero.exito'),t('CategoriasEquipos:mensaje.agregar'));
+categoriasSuccess('success',t('CategoriasEquipos:mensaje.cabecero'),t('CategoriasEquipos:mensaje.agregar'));
 setDlgCategorias(false);
 obtenerCategoria ();
 });
