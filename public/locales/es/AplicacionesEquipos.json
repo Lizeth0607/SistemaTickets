@@ -36,25 +36,25 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "idAplicacionEquipo":"ID AplicacionEquipo",
-        "fechaInstalacion":"Fecha de instalación",
-        "idAplicacion":"Aplicación",
-        "idEquipo": "Equipo"
+        "instalacion_id":"ID AplicacionEquipo",
+        "fecha_instalacion":"Fecha de instalación",
+        "aplicacion_id":"Aplicación",
+        "equipo_id": "Equipo"
        },
 
 "required":{
-        "idAplicacionEquipo":"El ID AplicacionEquipo es requerido",
-        "fechaInstalacion":"La Fecha de instalación es requerida",
-        "idAplicacion":"La Aplicación es requerida",
-        "idEquipo": "El Equipo es requerido"
+        "instalacion_id":"El ID AplicacionEquipo es requerido",
+        "fecha_instalacion":"La Fecha de instalación es requerida",
+        "aplicacion_id":"La Aplicación es requerida",
+        "equipo_id": "El Equipo es requerido"
 
       },
 
 "placeholder":{
-        "idAplicacionEquipo":"Escribe el ID AplicacionEquipo",
-        "fechaInstalacion":"Escribe la Fecha de instalación",
-        "idAplicacion":"Selecciona la Aplicación",
-        "idEquipo": "Selecciona elEquipo"
+        "instalacion_id":"Escribe el ID AplicacionEquipo",
+        "fecha_instalacion":"Escribe la Fecha de instalación",
+        "aplicacion_id":"Selecciona la Aplicación",
+        "equipo_id": "Selecciona elEquipo"
       }
     
  }   

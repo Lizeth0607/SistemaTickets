@@ -41,10 +41,10 @@ const AplicacionesEquipos = ()   =>   {
     const [lstAplicacionesEqs, setLstAplicacionesEqs] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgAplicacionesEqs, setDlgAplicacionesEqs] = useState(false);
-    const [AplicacionesEqs, setAplicacionesEqs] = useState({idAplicacionEquipo:null
-    ,fechaInstalacion:''
-    ,idAplicacion:''
-    ,idEquipo:''
+    const [AplicacionesEqs, setAplicacionesEqs] = useState({instalacion_id:null
+    ,fecha_instalacion:''
+    ,aplicacion_id:''
+    ,equipo_id:''
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -163,8 +163,7 @@ const itemTemplateAplicaciones = (item) => {
     
     
     const agregaAplicacionEq = ()   =>   {
-    aplicacionesEqsService.agregaAplicacionEq (AplicacionesEqs).
-    then(data => {setAplicacionesEqs(data);
+    aplicacionesEqsService.agregaAplicacionEq (AplicacionesEqs).then(data => {setAplicacionesEqs(data);
     aplicacionesEqsSuccess('success',t('AplicacionesEquipos:cabecero.exito'),t('AplicacionesEquipos:mensaje.agregar'));
     setDlgAplicacionesEqs(false);
     obtenerAplicacionEq ();
@@ -197,10 +196,10 @@ const itemTemplateAplicaciones = (item) => {
     };
     
     const iniciaComponentes = ()   =>   {
-    setAplicacionesEqs({idAplicacionEquipo:null
-        ,fechaInstalacion:''
-        ,idAplicacion:''
-        ,idEquipo:''
+    setAplicacionesEqs({instalacion_id:null
+        ,fecha_instalacion:''
+        ,aplicacion_id:''
+        ,equipo_id:''
 
     });
     formik.resetForm();
@@ -212,15 +211,14 @@ const itemTemplateAplicaciones = (item) => {
     */
     const validate = () => {
     const errors = {};
-     if (!AplicacionesEqs.txtFechaInstalacion) {
-    errors.txtFechaInstalacion= t('AplicacionesEquipos:required.fechaInstalacion');
+     if (!AplicacionesEqs.txtfecha_instalacion) {
+    errors.txtfecha_instalacion= t('AplicacionesEquipos:required.fecha_instalacion');
     }
     return errors;
     };
     
     const formik = useFormik({
     initialValues: {} ,
-    validate,
     onSubmit: () => {
     if(captura){
     agregaAplicacionEq();
@@ -278,13 +276,13 @@ const itemTemplateAplicaciones = (item) => {
        <div className="p-grid p-fluid">
           <div className="p-col-12 p-md-12">
              <div className="p-inputgroup">
-                <InputText placeholder={t('AplicacionesEquipos:placeholder.idAplicacionEquipo')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('AplicacionesEquipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaAplicacionesEqs}></Button></div>
+                <InputText placeholder={t('AplicacionesEquipos:placeholder.instalacion_id')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('AplicacionesEquipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaAplicacionesEqs}></Button></div>
           </div>
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
-          <Column field="instalacion_id" header={t('AplicacionesEquipos:label.idAplicacionEquipo')} sortable={true}></Column>
-          <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fechaInstalacion')} sortable={true}></Column>
-          <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.idAplicacion')} sortable={true}></Column>
+          <Column field="instalacion_id" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
+          <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
+          <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
           <Column field="equipo_id" header={t('AplicacionesEquipos:label.idEquipo')} sortable={true}></Column>
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
@@ -293,15 +291,15 @@ const itemTemplateAplicaciones = (item) => {
           { AplicacionesEqs  &&  
           <div>
              <div className="p-fluid p-formgrid p-grid">
-                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtFechaInstalacion">
-                      {t('AplicacionesEquipos:label.fechaInstalacion')}
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtfecha_instalacion">
+                      {t('AplicacionesEquipos:label.fecha_instalacion')}
                       </label>
                    {{captura} ? ( 
-                    <Calendar id="txtFechaInstalacion" value={AplicacionesEqs.fechaInstalacion} onChange={(e) => updateProperty('fechaInstalacion', e.target.value)} className={formik.errors.txtFechaInstalacion ? 'p-invalid':'p-inputtext'} mask="99/99/9999"/>
-                    ):(     <label id="txtFechaInstalacion">aplicacionesEqs.fechaInstalacion</label>)}
+                    <InputText id="txtfecha_instalacion" value={AplicacionesEqs.fecha_instalacion} onChange={(e) => updateProperty('fecha_instalacion', e.target.value)}  mask="99/99/9999"/>
+                    ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fecha_instalacion</label>)}
                
-                   {formik.errors.txtFechaInstalacion  &&  <small id="txtFechaInstalacion-help" className="p-invalid">
-                      {formik.errors.txtFechaInstalacion}
+                   {formik.errors.txtfecha_instalacion  &&  <small id="txtfecha_instalacion-help" className="p-invalid">
+                      {formik.errors.txtfecha_instalacion}
                       </small>}                 
                    
                 </div>
@@ -310,16 +308,16 @@ const itemTemplateAplicaciones = (item) => {
                   {t('AplicacionesEquipos:label.idEquipo')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedEquipos} suggestions={filteredEquipos} completeMethod={searchEquipo} placeholder={t('AplicacionesEquipos:placeholder.idEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplateEquipos} onChange={(e) => setSelectedEquipos(e.value)}  />
+            <InputText id="txtfecha_instalacion" value={AplicacionesEqs.aplicacion_id} onChange={(e) => updateProperty('aplicacion_id', e.target.value)}  mask="99/99/9999"/>
             ):(     <label id="txtIdEquipo">aplicacionesEqs.idEquipo</label>)}
                
             </div>  
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdAplicacion">
-                  {t('AplicacionesEquipos:label.idAplicacion')}
+            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtaplicacion_id">
+                  {t('AplicacionesEquipos:label.aplicacion_id')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedAplicaciones} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idAplicacion')} field="name" dropdown forceSelection itemTemplate={itemTemplateAplicaciones} onChange={(e) => setSelectedAplicaciones(e.value)} />
-            ):(     <label id="txtIdAplicaciones">aplicacionesEqs.idAplicacion</label>)}
+            <InputText id="txtfecha_instalacion" value={AplicacionesEqs.equipo_id} onChange={(e) => updateProperty('equipo_id', e.target.value)}  mask="99/99/9999"/>
+            ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
                
             </div> 
              </div>
