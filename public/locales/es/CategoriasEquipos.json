@@ -37,19 +37,19 @@
   },
 "label":{
         "idCategoria":"ID Categoría",
-        "nombreCateg":"Nombre de Categoría",
-        "descCateg":"Descripción de la Categoría"
+        "nombre":"Nombre de Categoría",
+        "descripcion":"Descripción de la Categoría"
        },
 
 "required":{
         "idCategoria":"El ID Categoría es requerido",
-        "nombreCateg":"El Nombre de la Categoría es requerido",
-        "descCateg":"La Descripción de la Categoría es requerida"},
+        "nombre":"El Nombre de la Categoría es requerido",
+        "descripcion":"La Descripción de la Categoría es requerida"},
 
 "placeholder":{
         "idCategoria":"Escribe el ID Categoría",
-        "nombreCateg":"Escribe el Nombre de la Categoría",
-        "descCateg":"Escribe la Descripción de la Categoría"}
+        "nombre":"Escribe el Nombre de la Categoría",
+        "descripcion":"Escribe la Descripción de la Categoría"}
     
  }   
 

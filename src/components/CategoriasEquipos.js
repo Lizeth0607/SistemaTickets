@@ -38,8 +38,8 @@ const [lstCategorias, setLstCategorias] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgCategorias, setDlgCategorias] = useState(false);
 const [Categorias, setCategorias] = useState({idCategoria:null
-,nombreCateg:''
-,descCateg:''
+,nombre:''
+,descripcion:''
 
 });
 
@@ -85,8 +85,7 @@ obtenerCategoria();
 
 
 const agregaCategoria = ()   =>   {
-categoriasService.agregaCategoria (Categorias).
-then(data => {setCategorias(data);
+categoriasService.agregaCategoria(Categorias).then(data => {setCategorias(data);
 categoriasSuccess('success',t('CategoriasEquipos:cabecero.exito'),t('CategoriasEquipos:mensaje.agregar'));
 setDlgCategorias(false);
 obtenerCategoria ();
@@ -120,8 +119,8 @@ setDlgCategorias(true);
 
 const iniciaComponentes = ()   =>   {
 setCategorias({idCategoria:null
-   ,nombreCateg:''
-   ,descCateg:''
+   ,nombre:''
+   ,descripcion:''
 });
 formik.resetForm();
 };
@@ -132,8 +131,8 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Categorias.nombreCateg) {
-errors.txtNombreCateg= t('CategoriasEquipos:required.nombreCateg');
+ if (!Categorias.nombre) {
+errors.txtnombre= t('CategoriasEquipos:required.nombre');
 }
 return errors;
 };
@@ -175,7 +174,7 @@ const rightFooter = (
       <div className="p-inputgroup"><Button tooltip={t('CategoriasEquipos:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgCategorias(false) }></Button>                 
          { !captura   &&  <Button tooltip={t('CategoriasEquipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaCategoria }></Button>}                 
          { !captura   &&  <Button tooltip={t('CategoriasEquipos:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
-         { captura   &&  <Button tooltip={t('CategoriasEquipos:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+         { captura   &&  <Button tooltip={t('CategoriasEquipos:boton.agregar')} type="button" icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          
       </div>
    </div>
@@ -198,37 +197,37 @@ return (
    <div className="p-grid p-fluid">
       <div className="p-col-12 p-md-12">
          <div className="p-inputgroup">
-            <InputText placeholder={t('CategoriasEquipos:placeholder.nombreCateg')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('CategoriasEquipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaCategorias}></Button></div>
+            <InputText placeholder={t('CategoriasEquipos:placeholder.nombre')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('CategoriasEquipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaCategorias}></Button></div>
       </div>
    </div>
    <DataTable value={lstCategorias} paginator={true} rows={10} responsive={true}>
       <Column field="categoria_id" header={t('CategoriasEquipos:label.idCategoria')} sortable={true}></Column>
-      <Column field="nombre" header={t('CategoriasEquipos:label.nombreCateg')} sortable={true}></Column>
-      <Column field="descripcion" header={t('CategoriasEquipos:label.descCateg')} sortable={true}></Column>
+      <Column field="nombre" header={t('CategoriasEquipos:label.nombre')} sortable={true}></Column>
+      <Column field="descripcion" header={t('CategoriasEquipos:label.descripcion')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('CategoriasEquipos:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('CategoriasEquipos:rotulo.agregar')} footer={dlgFooter} visible={dlgCategorias} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgCategorias(false)} blockScroll={false}>
       { Categorias  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreCateg">
-                  {t('CategoriasEquipos:label.nombreCateg')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtnombre">
+                  {t('CategoriasEquipos:label.nombre')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreCateg" placeholder={t('CategoriasEquipos:placeholder.nombreCateg')} value={Categorias.nombreCateg} className={formik.errors.txtNombreCateg ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreCateg', e.target.value)}></InputText>    
-               ):(     <label id="txtNombreCateg">categorias.nombreCateg</label>)}
+               <InputText id="txtnombre" placeholder={t('CategoriasEquipos:placeholder.nombre')} value={Categorias.nombre} className={formik.errors.txtnombre ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
+               ):(     <label id="txtnombre">categorias.nombre</label>)}
                
-               {formik.errors.txtNombreCateg  &&  <small id="txtNombreCateg-help" className="p-invalid">
-                  {formik.errors.txtNombreCateg}
+               {formik.errors.txtnombre  &&  <small id="txtnombre-help" className="p-invalid">
+                  {formik.errors.txtnombre}
                   </small>}                 
                
             </div>
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtDescCateg">
-                  {t('CategoriasEquipos:label.descCateg')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtdescripcion">
+                  {t('CategoriasEquipos:label.descripcion')}
                   </label>
                {{captura} ? ( 
-                <InputTextarea value={value1} onChange={(e) => setValue1(e.target.value)} rows={4} cols={30}placeholder={t('CategoriasEquipos:placeholder.descCateg')} onChange={(e) =>   updateProperty('descCateg', e.target.value)} />
-                ):(     <label id="txtDescCateg">categorias.descCateg</label>)}
+                <InputTextarea value={Categorias.descripcion} onChange={(e) => setValue1(e.target.value)} rows={4} cols={30}placeholder={t('CategoriasEquipos:placeholder.descripcion')} onChange={(e) =>   updateProperty('descripcion', e.target.value)} />
+                ):(     <label id="txtdescripcion">categorias.descripcion</label>)}
                
             </div>
                 
