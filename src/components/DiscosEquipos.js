@@ -37,10 +37,10 @@ const DiscosEquipos = ()   =>   {
     const [lstDiscos, setLstDiscos] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgDiscos, setDlgDiscos] = useState(false);
-    const [Discos, setDiscos] = useState({idDisco:null
-    ,tipoDisco:''
-    ,capacidadDisco:''
-    ,medidaDisco:''
+    const [Discos, setDiscos] = useState({disco_id:null
+    ,tipo:''
+    ,capacidad:''
+    ,medida:''
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -85,18 +85,18 @@ const DiscosEquipos = ()   =>   {
     
     
     const agregaDisco = ()   =>   {
-    discosService.agregaDisco (Discos).
-    then(data => {setDiscos(data);
+    discosService.agregaDisco (Discos).then(data => {setDiscos(data);
     discosSuccess('success',t('DiscosEquipos:cabecero.exito'),t('DiscosEquipos:mensaje.agregar'));
     setDlgDiscos(false);
     obtenerDisco ();
     });
     };
     
-    const eliminaCategoria = ()   =>   {
-    Discos.eliminaCategoria (Discos);
+    const eliminaDisco = (pDiscos)   =>   {
+      discosService.eliminaDisco (pDiscos).then(data => setDiscos(data));
     discosSuccess('success',t('DiscosEquipos:cabecero.exito'),t('DiscosEquipos:mensaje.eliminar'));
     setDlgDiscos(false);
+    obtenerDisco();
     obtenerDisco();
     obtenerDisco();
     };
@@ -119,10 +119,10 @@ const DiscosEquipos = ()   =>   {
     };
     
     const iniciaComponentes = ()   =>   {
-    setDiscos({idDisco:null
-       ,tipoDisco:''
-       ,capacidadDisco:''
-       ,medidaDisco:''
+    setDiscos({disco_id:null
+       ,tipo:''
+       ,capacidad:''
+       ,medida:''
 
     });
     formik.resetForm();
@@ -134,7 +134,7 @@ const DiscosEquipos = ()   =>   {
     */
     const validate = () => {
     const errors = {};
-     if (!Discos.tipoDisco) {
+     if (!Discos.tipo) {
     errors.txtTipoDisco= t('DiscosEquipos:required.tipoDisco');
     }
     return errors;
@@ -165,7 +165,10 @@ const DiscosEquipos = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaDisco(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaDisco(rowData); } }></Button></div>);
+    <div>
+       <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaDisco(rowData);} }></Button>
+       <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaDisco(rowData); } }></Button>
+       </div>);
     }
     
     
@@ -175,7 +178,7 @@ const DiscosEquipos = ()   =>   {
     <div className="p-grid p-fluid">
        <div className="p-col-12">
           <div className="p-inputgroup"><Button tooltip={t('DiscosEquipos:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgDiscos(false) }></Button>                 
-             { !captura   &&  <Button tooltip={t('DiscosEquipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaCategoria }></Button>}                 
+             { !captura   &&  <Button tooltip={t('DiscosEquipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaDisco }></Button>}                 
              { !captura   &&  <Button tooltip={t('DiscosEquipos:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              { captura   &&  <Button tooltip={t('DiscosEquipos:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              
@@ -219,7 +222,7 @@ const DiscosEquipos = ()   =>   {
                       {t('DiscosEquipos:label.tipoDisco')}
                       </label>
                    {{captura} ? ( 
-                   <InputText id="txtTipoDisco" placeholder={t('DiscosEquipos:placeholder.tipoDisco')} value={Discos.tipoDisco} className={formik.errors.txtTipoDisco ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipoDisco', e.target.value)}></InputText>    
+                   <InputText id="txtTipoDisco" placeholder={t('DiscosEquipos:placeholder.tipoDisco')} value={Discos.tipo} className={formik.errors.txtTipoDisco ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipo', e.target.value)}></InputText>    
                    ):(     <label id="txtTipoDisco">discos.tipoDisco</label>)}
                    
                    {formik.errors.txtTipoDisco  &&  <small id="txtTipoDisco-help" className="p-invalid">
@@ -232,7 +235,7 @@ const DiscosEquipos = ()   =>   {
                       {t('DiscosEquipos:label.capacidadDisco')}
                       </label>
                    {{captura} ? ( 
-                   <InputNumber  id="txtCapacidadDisco" placeholer={t('DiscosEquipos:placeholder.capacidadDisco')} value={Discos.capacidadDisco} className={formik.errors.txtCapacidadDisco ? 'p-invalid':'p-inputtext'}  /*onChange={(e) =>   updateProperty('capacidadDisco', e.target.value)}*/></InputNumber>    
+                   <InputText  id="txtCapacidadDisco" placeholer={t('DiscosEquipos:placeholder.capacidadDisco')} value={Discos.capacidad} className={formik.errors.txtCapacidadDisco ? 'p-invalid':'p-inputtext'} onChange={(e) =>   updateProperty('capacidad', e.target.value)}></InputText>    
                    ):(     <label id="txtCapacidadDisco">discos.capacidadCateg</label>)}
                    
                 </div>
@@ -240,7 +243,7 @@ const DiscosEquipos = ()   =>   {
                   {t('DiscosEquipos:label.medidaDisco')}
                   </label>
                {{captura} ? ( 
-                  <InputText id="txtMedidaDisco" placeholder={t('DiscosEquipos:placeholder.medidaDisco')} value={Discos.medidaDisco} className={formik.errors.txtMedidaDisco ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('medidaDisco', e.target.value)}></InputText>    
+                  <InputText id="txtMedidaDisco" placeholder={t('DiscosEquipos:placeholder.medidaDisco')} value={Discos.medida} className={formik.errors.txtMedidaDisco ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('medida', e.target.value)}></InputText>    
                   ):(     <label id="txtMedidaDisco">discos.medidaDisco</label>)}
                   
             </div>

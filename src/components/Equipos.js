@@ -39,18 +39,18 @@ timer: '3000'
 const [lstEquipos, setLstEquipos] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgEquipos, setDlgEquipos] = useState(false);
-const [Equipos, setEquipos] = useState({idEquipo:null
-    ,nombreEquipo: ''
-    ,serialEquipo: ''
-    ,ipEquipo: ''
-    ,licenciaEquipo: ''
-    ,fechaCompra: ''
-    ,marcaEquipo: ''
-    ,categEquipo: ''
-    ,ramEquipo: ''
-    ,discoEquipo: ''
-    ,pantallaEquipo: ''
-    ,empleadoEquipo: ''
+const [Equipos, setEquipos] = useState({equipo_id:null
+    ,nombre: ''
+    ,serial: ''
+    ,ip_equipo: ''
+    ,licencia: ''
+    ,fecha_compra: ''
+    ,marca_id: ''
+    ,categoria_id: ''
+    ,ram_id: ''
+    ,disco_id: ''
+    ,pantalla_id: ''
+    ,empleado_id: ''
 
 });
 
@@ -205,18 +205,18 @@ setDlgEquipos(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setEquipos({idEquipo:null
-    ,nombreEquipo: ''
-    ,serialEquipo: ''
-    ,ipEquipo: ''
-    ,licenciaEquipo: ''
-    ,fechaCompra: ''
-    ,marcaEquipo: ''
-    ,categEquipo: ''
-    ,ramEquipo: ''
-    ,discoEquipo: ''
-    ,pantallaEquipo: ''
-    ,empleadoEquipo: ''
+setEquipos({equipo_id:null
+    ,nombre: ''
+    ,serial: ''
+    ,ip_equipo: ''
+    ,licencia: ''
+    ,fecha_compra: ''
+    ,marca_id: ''
+    ,categoria_id: ''
+    ,ram_id: ''
+    ,disco_id: ''
+    ,pantalla_id: ''
+    ,empleado_id: ''
 });
 formik.resetForm();
 };
@@ -227,7 +227,7 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Equipos.idEquipo) {
+ if (!Equipos.equipo_id) {
 errors.txtIdEquipo= t('Equipos:required.idEquipo');
 }
 return errors;

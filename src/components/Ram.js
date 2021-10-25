@@ -37,9 +37,10 @@ const Ram = ()   =>   {
     const [lstRam, setLstRam] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgRam, setDlgRam] = useState(false);
-    const [Ram, setRam] = useState({idRam:null
-    ,tipoRam:''
-    ,capacidadRam:''
+    const [Ram, setRam] = useState({ram_id:null
+    ,tipo:''
+    ,capacidad:''
+    ,medida:''
     
     });
     
@@ -90,10 +91,11 @@ const Ram = ()   =>   {
     });
     };
     
-    const eliminaRam = ()   =>   {
-    Ram.eliminaRam (Ram);
+    const eliminaRam = (pRam)   =>   {
+    ramService.eliminaRam (pRam).then(data => setRam(data));
     ramSuccess('success',t('Ram:cabecero.exito'),t('Ram:mensaje.eliminar'));
     setDlgRam(false);
+    obtenerRam();
     obtenerRam();
     obtenerRam();
     };
@@ -116,9 +118,10 @@ const Ram = ()   =>   {
     };
     
     const iniciaComponentes = ()   =>   {
-    setRam({idRam:null
-       ,tipoRam:''
-       ,capacidadRam:''
+    setRam({ram_id:null
+      ,tipo:''
+      ,capacidad:''
+      ,medida:''
     });
     formik.resetForm();
     };
@@ -129,7 +132,7 @@ const Ram = ()   =>   {
     */
     const validate = () => {
     const errors = {};
-     if (!Ram.tipoRam) {
+     if (!Ram.tipo) {
     errors.txtTipoRam= t('Ram:required.tipoRam');
     }
     return errors;
@@ -160,7 +163,10 @@ const Ram = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaRam(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaRam(rowData); } }></Button></div>);
+    <div>
+       <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaRam(rowData);} }></Button>
+       <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaRam(rowData); } }></Button>
+       </div>);
     }
     
     
@@ -202,6 +208,7 @@ const Ram = ()   =>   {
           <Column field="ram_id" header={t('Ram:label.idRam')} sortable={true}></Column>
           <Column field="tipo" header={t('Ram:label.tipoRam')} sortable={true}></Column>
           <Column field="capacidad" header={t('Ram:label.capacidadRam')} sortable={true}></Column>
+          <Column field="medida" header={t('Ram:label.capacidadRam')} sortable={true}></Column>
           <Column body={actionTemplate} header={t('Ram:rotulo.editar')}></Column>
        </DataTable>
        <Dialog header={t('Ram:rotulo.agregar')} footer={dlgFooter} visible={dlgRam} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgRam(false)} blockScroll={false}>
@@ -212,7 +219,7 @@ const Ram = ()   =>   {
                       {t('Ram:label.tipoRam')}
                       </label>
                    {{captura} ? ( 
-                   <InputText id="txtTipoRam" placeholder={t('Ram:placeholder.tipoRam')} value={Ram.tipoRam} className={formik.errors.txtTipoRam ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipoRam', e.target.value)}></InputText>    
+                   <InputText id="txtTipoRam" placeholder={t('Ram:placeholder.tipoRam')} value={Ram.tipo} className={formik.errors.txtTipoRam ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipo', e.target.value)}></InputText>    
                    ):(     <label id="txtTipoRam">ram.tipoRam</label>)}
                    
                    {formik.errors.txtTipoRam &&  <small id="txtTipoRam-help" className="p-invalid">
@@ -224,8 +231,16 @@ const Ram = ()   =>   {
                       {t('Ram:label.capacidadRam')}
                       </label>
                    {{captura} ? ( 
-                   <InputNumber  id="txtCapacidadRam" placeholer={t('Ram:placeholder.capacidadRam')} value={Ram.capacidadRam} className={formik.errors.txtCapacidadRam ? 'p-invalid':'p-inputtext'}  /*onChange={(e) =>   updateProperty('capacidadDisco', e.target.value)}*/></InputNumber>    
+                   <InputText  id="txtCapacidadRam" placeholer={t('Ram:placeholder.capacidadRam')} value={Ram.capacidad} className={formik.errors.txtCapacidadRam ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('capacidad', e.target.value)}></InputText>    
                    ):(     <label id="txtCapacidadRam">ram.capacidadRam</label>)}
+                   
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtmedidaRam">
+                      {t('Ram:label.capacidadRam')}
+                      </label>
+                   {{captura} ? ( 
+                   <InputText  id="txtmedidaRam" placeholer={t('Ram:placeholder.capacidadRam')} value={Ram.medida} className={formik.errors.txtmedidaRam ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('medida', e.target.value)}></InputText>    
+                   ):(     <label id="txtmedidaRam">ram.capacidadRam</label>)}
                    
                 </div>
                     
