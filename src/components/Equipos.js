@@ -65,11 +65,7 @@ const [selectedDisco, setSelectedDisco] = useState(null);
 const [selectedPantalla, setSelectedPantalla] = useState(null);
 
 const marcas = [
-   { name: 'Marca1', code: 'M1' },
-   { name: 'Marca2', code: 'M2' },
-   { name: 'Marca3', code: 'M3' },
-   { name: 'Marca4', code: 'M4' },
-   { name: 'Marca5', code: 'M5' }
+   { name: 'Marca1', code: '1' }
 ];
 const categoriasEquipo = [
    { name: 'CategoriaEquipo1', code: '1' }
@@ -159,7 +155,7 @@ Swal.fire(mensajeCopy);
 
 
 const obtenerEquipo = ()   =>   { //MODIFICAR EN SERVICE
-equiposService.obtenerEquipo (txtCriterio).then(data => setLstEquipos(data));
+equiposService.obtenerEquipo ().then(data => setLstEquipos(data));
 };
 
 const seleccionaEquipo = (pEquipos)   =>   {
@@ -301,18 +297,18 @@ return (
       </div>
    </div>
    <DataTable value={lstEquipos} paginator={true} rows={10} responsive={true}>
-      <Column field="idEquipo" header={t('Equipos:label.idEquipo')} sortable={true}></Column>
-      <Column field="nombreEquipo" header={t('Equipos:label.nombreEquipo')} sortable={true}></Column>
-      <Column field="serialEquipo" header={t('Equipos:label.serialEquipo')} sortable={true}></Column>
-      <Column field="ipEquipo" header={t('Equipos:label.ipEquipo')} sortable={true}></Column>
-      <Column field="licenciaEquipo" header={t('Equipos:label.licenciaEquipo')} sortable={true}></Column>
-      <Column field="fechaCompra" header={t('Equipos:label.fechaCompra')} sortable={true}></Column>
-      <Column field="marcaEquipo" header={t('Equipos:label.marcaEquipo')} sortable={true}></Column>
-      <Column field="categEquipo" header={t('Equipos:label.categEquipo')} sortable={true}></Column>
-      <Column field="ramEquipo" header={t('Equipos:label.ramEquipo')} sortable={true}></Column>
-      <Column field="discoEquipo" header={t('Equipos:label.discoEquipo')} sortable={true}></Column>
-      <Column field="pantallaEquipo" header={t('Equipos:label.pantallaEquipo')} sortable={true}></Column>
-      <Column field="empleadoEquipo" header={t('Equipos:label.empleadoEquipo')} sortable={true}></Column>
+      <Column field="equipo_id" header={t('Equipos:label.idEquipo')} sortable={true}></Column>
+      <Column field="nombre" header={t('Equipos:label.nombreEquipo')} sortable={true}></Column>
+      <Column field="serial" header={t('Equipos:label.serialEquipo')} sortable={true}></Column>
+      <Column field="ip_equipo" header={t('Equipos:label.ipEquipo')} sortable={true}></Column>
+      <Column field="licencia" header={t('Equipos:label.licenciaEquipo')} sortable={true}></Column>
+      <Column field="fecha_compra" header={t('Equipos:label.fechaCompra')} sortable={true}></Column>
+      <Column field="marca_id" header={t('Equipos:label.marcaEquipo')} sortable={true}></Column>
+      <Column field="categoria_id" header={t('Equipos:label.categEquipo')} sortable={true}></Column>
+      <Column field="ram_id" header={t('Equipos:label.ramEquipo')} sortable={true}></Column>
+      <Column field="disco_id" header={t('Equipos:label.discoEquipo')} sortable={true}></Column>
+      <Column field="pantalla_id" header={t('Equipos:label.pantallaEquipo')} sortable={true}></Column>
+      <Column field="empleado_id" header={t('Equipos:label.empleadoEquipo')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Equipos:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('Equipos:rotulo.agregar')} footer={dlgFooter} visible={dlgEquipos} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgEquipos(false)} blockScroll={false}>
@@ -365,15 +361,15 @@ return (
                   {t('Equipos:label.fechaCompra')}
                   </label>
                {{captura} ? ( 
-               <InputMask id="txtFechaCompra" mask="9999-99-99T99:99:99" placeholder={t('Equipos:placeholder.fechaCompra')} value={Equipos.fechaCompra} className={formik.errors.txtFechaCompra ? 'p-invalid':'p-inputtext'} maxLength={19} onChange={(e) =>   updateProperty('fechaCompra', e.target.value)}></InputMask>    
-               ):(     <label id="txtFechaCompra">equipos.fechaCompra</label>)}
+               <Calendar id="mask" value={Equipos.fechaCompra} placeholder={t('Equipos:placeholder.fechaCompra')} onChange={(e) => updateProperty('fechaCompra', e.target.value)} mask="99/99/9999" />
+               ):(    <label id="txtFechaCompra">equipos.fechaCompra</label>)}
                
             </div>     
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtMarcaEquipo">
                   {t('Equipos:label.marcaEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedMarca} options={marcas} onChange={onMarcaChange} optionLabel="name" placeholder={t('Equipos:placeholder.marcaEquipo')} onChange={(e) =>   updateProperty('marcaEquipo', e.target.value)} />               
+                  <Dropdown value={selectedMarca} options={marcas} onChange={onMarcaChange} optionLabel="name" placeholder={t('Equipos:placeholder.marcaEquipo')}  />               
                   ):(     <label id="txtMarcaEquipo">equipos.marcaEquipo</label>)}
                
             </div>   
@@ -381,7 +377,7 @@ return (
                   {t('Equipos:label.categEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedCategoriaEquipo} options={categoriasEquipo} onChange={onCategoriaEquipoChange} optionLabel="name" placeholder={t('Equipos:placeholder.categEquipo')} onChange={(e) =>   updateProperty('categEquipo', e.target.value)}/>               
+                  <Dropdown value={selectedCategoriaEquipo} options={categoriasEquipo} onChange={onCategoriaEquipoChange} optionLabel="name" placeholder={t('Equipos:placeholder.categEquipo')} />               
                   ):(     <label id="txtCatEquipo">equipos.categEquipo</label>)}
                
             </div>    
@@ -389,7 +385,7 @@ return (
                   {t('Equipos:label.ramEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedRam} options={ram} onChange={onRamChange} optionLabel="name" placeholder={t('Equipos:placeholder.ramEquipo')} onChange={(e) =>   updateProperty('ramEquipo', e.target.value)}/>               
+                  <Dropdown value={selectedRam} options={ram} onChange={onRamChange} optionLabel="name" placeholder={t('Equipos:placeholder.ramEquipo')} />               
                   ):(     <label id="txtRamEquipo">equipos.ramEquipo</label>)}
                
             </div>   
@@ -397,7 +393,7 @@ return (
                   {t('Equipos:label.discoEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedDisco} options={discos} onChange={onDiscoChange} optionLabel="name" placeholder={t('Equipos:placeholder.discoEquipo')}  onChange={(e) =>   updateProperty('discoEquipo', e.target.value)}/>               
+                  <Dropdown value={selectedDisco} options={discos} onChange={onDiscoChange} optionLabel="name" placeholder={t('Equipos:placeholder.discoEquipo')} />               
                   ):(     <label id="txtDiscoEquipo">equipos.discoEquipo</label>)}
                
             </div>   
@@ -405,7 +401,7 @@ return (
                   {t('Equipos:label.pantallaEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedPantalla} options={pantallas} onChange={onPantallaChange} optionLabel="name" placeholder={t('Equipos:placeholder.pantallaEquipo')} onChange={(e) =>   updateProperty('pantallaEquipo', e.target.value)} />               
+                  <Dropdown value={selectedPantalla} options={pantallas} onChange={onPantallaChange} optionLabel="name" placeholder={t('Equipos:placeholder.pantallaEquipo')} />               
                   ):(     <label id="txtPantallaEquipo">equipos.pantallaEquipo</label>)}
               
 
