@@ -38,8 +38,8 @@ timer: '3000'
 const [lstMarcas, setLstMarcas] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgMarcas, setDlgMarcas] = useState(false);
-const [Marcas, setMarcas] = useState({idMarca:null
-,nombreMarca:''
+const [Marcas, setMarcas] = useState({marca_id:null
+,nombre:''
 
 });
 
@@ -94,8 +94,8 @@ obtenerMarca ();
 });
 };
 
-const eliminaMarca = ()   =>   {
-Marcas.eliminaMarca (Marcas);
+const eliminaMarca = (pMarcas)   =>   {
+   marcasService.eliminaMarca (pMarcas).then(data => setMarcas(data));
 marcasSuccess('success',t('Marcas:cabecero.exito'),t('Marcas:mensaje.eliminar'));
 setDlgMarcas(false);
 obtenerMarca();
@@ -120,8 +120,8 @@ setDlgMarcas(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setMarcas({idMarca:null
-   ,nombreMarca:''
+setMarcas({marca_id:null
+   ,nombre:''
 });
 formik.resetForm();
 };
@@ -132,7 +132,7 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Marcas.nombreMarca) {
+ if (!Marcas.nombre) {
 errors.txtNombreMarca= t('Marcas:required.nombreMarca');
 }
 return errors;
@@ -163,7 +163,10 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaMarca(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaMarca(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaMarca(rowData);} }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaMarca(rowData); } }></Button>
+</div>);
 }
 
 
@@ -214,7 +217,7 @@ return (
                   {t('Marcas:label.nombreMarca')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreMarca" placeholder={t('Marcas:placeholder.nombreMarca')} value={Marcas.nombreMarca} className={formik.errors.txtNombreMarca ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreMarca', e.target.value)}></InputText>    
+               <InputText id="txtNombreMarca" placeholder={t('Marcas:placeholder.nombreMarca')} value={Marcas.nombre} className={formik.errors.txtNombreMarca ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
                ):(     <label id="txtNombreMarca">marcas.nombreMarca</label>)}
                
                {formik.errors.txtNombreMarca  &&  <small id="txtNombreMarca-help" className="p-invalid">

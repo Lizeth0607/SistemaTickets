@@ -16,16 +16,18 @@ return axios.get(seleccionaUrl  + '/' + pMarcas.idMarca).then(response  =>  resp
 }
 
 agregaMarca (pMarcas) {
-let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pMarcas).then(response  =>  response.data);
+let agregaUrl = 'https://backliz1.herokuapp.com/mark';
+console.log(pMarcas);
+const params = new URLSearchParams()
+params.append('nombre',pMarcas.nombre)
+const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
 eliminaMarca (pMarcas) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pMarcas.idMarca, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pMarcas
-});
+    let eliminaUrl = 'https://backliz1.herokuapp.com/mark'; //Modificar
+    console.log("asda ",pMarcas.marca_id);
+    return axios.delete(eliminaUrl + '/' + pMarcas.marca_id);
 
 }
 
