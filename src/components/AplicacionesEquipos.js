@@ -14,11 +14,10 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { AutoComplete } from 'primereact/autocomplete';
-
 import Moment from 'react-moment';
 import 'moment-timezone';
 import AplicacionesEquiposService from '../service/AplicacionesEquiposService';
-
+import axios from 'axios';
 import { EquiposDatosService }  from '../service/EquiposDatosService';
 import  AplicacionesDatosService  from '../service/AplicacionesDatosService';
 
@@ -73,7 +72,7 @@ const searchEquipo = (event) => {
             _filteredEquipos = [...equipos];
         }
         else {
-            _filteredEquipos = equipos.filter((country) => {
+            _filteredEquipos = equipos.filter((equipos) => {
                 return equipos.name.toLowerCase().startsWith(event.query.toLowerCase());
             });
         }
@@ -90,47 +89,22 @@ const itemTemplateEquipos = (item) => {
 }
 
 //Autocomplete 2
-const [aplicaciones, setAplicaciones] = useState([]);
-const [selectedAplicaciones, setSelectedAplicaciones] = useState(null);
-const [filteredAplicaciones, setFilteredAplicaciones] = useState(null);
-const aplicacionesDatosService = new AplicacionesDatosService();
+const [apps, setApps] = useState([]);
+const [tablaApps, setTablasApps] =useState('');
+const [busqueda, setBusqueda] = useState([]);
 
-const itemsAplicacion = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-useEffect(() => {
-    aplicacionesDatosService.getAplicacionesEqs().then(data => setAplicaciones(data));
-}, []); 
-
-const searchAplicacion = (event) => {
-    setTimeout(() => {
-        let _filteredAplicaciones;
-        if (!event.query.trim().length) {
-            _filteredAplicaciones = [...aplicaciones];
-        }
-        else {
-            _filteredAplicaciones = aplicaciones.filter((country) => {
-                return aplicaciones.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredAplicaciones(_filteredAplicaciones);
-    }, 250);
+const peticionGet=async()=>{
+    await axios.get("https://backliz1.herokuapp.com/app")
+    .then(response=>{
+        setApps(response.data);
+        setTablasApps(response.data);
+    }).catch(error=>{
+        console.log(error);
+    })
 }
-
-    
-
-const itemTemplateAplicaciones = (item) => {
-    return (
-        <div className="aplicacion-item">
-            <div>{item.name}</div>
-        </div>
-    );
-}
-
-
-
-
-    
+useEffect(()=>{
+    peticionGet();
+}, [])
     
     
     
@@ -308,19 +282,12 @@ const itemTemplateAplicaciones = (item) => {
                       </small>}                 
                    
                 </div>
-                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdAplicacion">
-                  {t('AplicacionesEquipos:label.idAplicacion')}
-                  </label>
-               {{captura} ? ( 
-            <AutoComplete value={selectedAplicaciones} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idAplicacion')} field="name" dropdown forceSelection itemTemplate={itemTemplateAplicaciones} onChange={(e) => setSelectedAplicaciones(e.value)}  />
-            ):(     <label id="txtIdAplicaciones">aplicacionesEqs.idAplicacion</label>)}
                
-            </div> 
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdEquioo">
                   {t('AplicacionesEquipos:label.idEquipo')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedEquipos} suggestions={filteredAplicaciones} completeMethod={searchAplicacion} placeholder={t('AplicacionesEquipos:placeholder.idEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplateEquipos} onChange={(e) => setSelectedEquipos(e.value)}  />
+            <AutoComplete value={selectedEquipos} suggestions={filteredEquipos} completeMethod={searchEquipo} placeholder={t('AplicacionesEquipos:placeholder.idEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplateEquipos} onChange={(e) => setSelectedEquipos(e.value)}  />
             ):(     <label id="txtIdEquipo">aplicacionesEqs.idEquipo</label>)}
                
             </div>  

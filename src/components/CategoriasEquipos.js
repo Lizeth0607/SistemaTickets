@@ -12,6 +12,7 @@ import { ToggleButton } from 'primereact/togglebutton';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputTextarea } from 'primereact/inputtextarea';
+import axios from 'axios';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -47,6 +48,7 @@ const [txtCriterio, setTxtCriterio] = useState('');
 const { t } = useTranslation(['translation','CategoriasEquipos']);
 const [captura, setCaptura] = useState(false);
 const categoriasService = new CategoriasEquiposService(); //MODIFICAR SERVICES
+
 
 
 
