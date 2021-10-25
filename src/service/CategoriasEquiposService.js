@@ -18,8 +18,12 @@ return axios.get(seleccionaUrl  + '/' + pCategorias.idCategiria).then(response  
 }
 
 agregaCategoria (pCategorias) {
-let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pCategorias).then(response  =>  response.data);
+let agregaUrl = 'https://backliz1.herokuapp.com/category';
+const params = new URLSearchParams()
+params.append('nombre', pCategorias.nombre)
+params.append('descripcion', pCategorias.descripcion)
+const config = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+return axios.post(agregaUrl, params, config).then(response  =>  response.data);
 }
 
 eliminaCategoria (pCategorias) {
