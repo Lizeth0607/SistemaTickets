@@ -38,7 +38,7 @@ timer: '3000'
 const [lstRoles, setLstRoles] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgRoles, setDlgRoles] = useState(false);
-const [Roles, setRoles] = useState({idRol:null
+const [Roles, setRoles] = useState({rol_id:null
 ,nombreRol:''
 
 });
@@ -86,16 +86,15 @@ obtenerRol();
 
 
 const agregaRol = ()   =>   {
-rolesService.agregaRol (Roles).
-then(data => {setRoles(data);
+rolesService.agregaRol (Roles).then(data => {setRoles(data);
 rolesSuccess('success',t('Roles:cabecero.exito'),t('Roles:mensaje.agregar'));
 setDlgRoles(false);
 obtenerRol ();
 });
 };
 
-const eliminaRol = ()   =>   {
-    Roles.eliminaRol (Roles);
+const eliminaRol = (pRoles)   =>   {
+rolesService.eliminaRol (pRoles).then(data => setRoles(data));
 rolesSuccess('success',t('Roles:cabecero.exito'),t('Roles:mensaje.eliminar'));
 setDlgRoles(false);
 obtenerRol();
@@ -120,8 +119,8 @@ setDlgRoles(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setRoles({idRol:null
-   ,nombreRol:''
+setRoles({rol_id:null
+   ,nombre:''
 });
 formik.resetForm();
 };
@@ -132,7 +131,7 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Roles.nombreRol) {
+ if (!Roles.nombre) {
 errors.txtNombreRol= t('Roles:required.nombreRol');
 }
 return errors;
@@ -163,7 +162,10 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaRol(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaRol(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaRol(rowData);} }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaRol(rowData); } }></Button>
+</div>);
 }
 
 
@@ -214,7 +216,7 @@ return (
                   {t('Roles:label.nombreRol')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreRol" placeholder={t('Roles:placeholder.nombreRol')} value={Roles.nombreRol} className={formik.errors.txtNombreRol ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreRol', e.target.value)}></InputText>    
+               <InputText id="txtNombreRol" placeholder={t('Roles:placeholder.nombreRol')} value={Roles.nombre} className={formik.errors.nombre ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
                ):(     <label id="txtNombreRol">roles.nombreRol</label>)}
                
                {formik.errors.txtNombreRol  &&  <small id="txtNombreRol-help" className="p-invalid">

@@ -16,16 +16,18 @@ return axios.get(seleccionaUrl  + '/' + pRoles.idRol).then(response  =>  respons
 }
 
 agregaRol (pRoles) {
-let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pRoles).then(response  =>  response.data);
+    let agregaUrl = 'https://backliz1.herokuapp.com/role';
+    console.log(pRoles);
+    const params = new URLSearchParams()
+    params.append('nombre',pRoles.nombre)
+    const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
 eliminaRol (pRoles) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pRoles.idRol, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pRoles
-});
+    let eliminaUrl = 'https://backliz1.herokuapp.com/role'; //Modificar
+    console.log("asda ",pRoles.rol_id);
+    return axios.delete(eliminaUrl + '/' + pRoles.rol_id);
 
 }
 
