@@ -12,7 +12,6 @@ import { ToggleButton } from 'primereact/togglebutton';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputTextarea } from 'primereact/inputtextarea';
-import axios from 'axios';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -48,7 +47,6 @@ const [txtCriterio, setTxtCriterio] = useState('');
 const { t } = useTranslation(['translation','CategoriasEquipos']);
 const [captura, setCaptura] = useState(false);
 const categoriasService = new CategoriasEquiposService(); //MODIFICAR SERVICES
-
 
 
 
@@ -94,10 +92,11 @@ obtenerCategoria ();
 });
 };
 
-const eliminaCategoria = ()   =>   {
-Categorias.eliminaCategoria (Categorias);
+const eliminaCategoria = (pCategoria)   =>   {
+categoriasService.eliminaCategoria (pCategoria).then(data => setCategorias(data));
 categoriasSuccess('success',t('CategoriasEquipos:cabecero.exito'),t('CategoriasEquipos:mensaje.eliminar'));
 setDlgCategorias(false);
+obtenerCategoria();
 obtenerCategoria();
 obtenerCategoria();
 };
@@ -164,7 +163,10 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaCategoria(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaCategoria(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()   =>   {eliminaCategoria(rowData); } }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaCategoria(rowData); } }></Button>
+</div>);
 }
 
 
@@ -217,7 +219,7 @@ return (
                   </label>
                {{captura} ? ( 
                <InputText id="txtnombre" placeholder={t('CategoriasEquipos:placeholder.nombre')} value={Categorias.nombre} className={formik.errors.txtnombre ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
-               ):(     <label id="txtnombre">categorias.nombre</label>)}
+               ):(     <label id="txtnombre">Categorias.nombre</label>)}
                
                {formik.errors.txtnombre  &&  <small id="txtnombre-help" className="p-invalid">
                   {formik.errors.txtnombre}
@@ -229,7 +231,7 @@ return (
                   </label>
                {{captura} ? ( 
                 <InputTextarea value={Categorias.descripcion} onChange={(e) => setValue1(e.target.value)} rows={4} cols={30}placeholder={t('CategoriasEquipos:placeholder.descripcion')} onChange={(e) =>   updateProperty('descripcion', e.target.value)} />
-                ):(     <label id="txtdescripcion">categorias.descripcion</label>)}
+                ):(     <label id="txtdescripcion">Categorias.descripcion</label>)}
                
             </div>
                 
