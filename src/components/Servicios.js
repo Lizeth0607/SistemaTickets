@@ -200,16 +200,15 @@ const Servicios = ()   =>   {
     
     
     const agregaServicio = ()   =>   {
-    serviciosService.agregaServicio (Servicios).
-    then(data => {setServicios(data);
+    serviciosService.agregaServicio (Servicios).then(data => {setServicios(data);
     serviciosSuccess('success',t('Servicios:cabecero.exito'),t('Servicios:mensaje.agregar'));
     setDlgServicios(false);
     obtenerServicio ();
     });
     };
     
-    const eliminaServicio = ()   =>   {
-        Servicios.eliminaServicio (Servicios);
+    const eliminaServicio = (pServicios)   =>   {
+        serviciosService.eliminaServicio (pServicios);
     serviciosSuccess('success',t('Servicios:cabecero.exito'),t('Servicios:mensaje.eliminar'));
     setDlgServicios(false);
     obtenerServicio();
@@ -284,7 +283,10 @@ const Servicios = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaServicio(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaServicio(rowData); } }></Button></div>);
+    <div>
+        <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaServicio(rowData);} }></Button>
+        <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaServicio(rowData); } }></Button>
+        </div>);
     }
     
     
@@ -296,7 +298,7 @@ const Servicios = ()   =>   {
           <div className="p-inputgroup"><Button tooltip={t('Servicios:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgServicios(false) }></Button>                 
              { !captura   &&  <Button tooltip={t('Servicios:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaServicio }></Button>}                 
              { !captura   &&  <Button tooltip={t('Servicios:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
-             { captura   &&  <Button tooltip={t('Servicios:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+             { captura   &&  <Button tooltip={t('Servicios:boton.agregar')} type="submit" icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              
           </div>
        </div>
@@ -326,6 +328,7 @@ const Servicios = ()   =>   {
        <DataTable value={lstServicios} paginator={true} rows={10} responsive={true}>
           <Column field="servicio_id" header={t('Servicios:label.idServicio')} sortable={true}></Column>
           <Column field="servicio" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
+          <Column field="descripcion" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
           <Column field="prioridad" header={t('Servicios:label.prioridadServicio')} sortable={true}></Column>
           <Column field="estado" header={t('Servicios:label.estadoServicio')} sortable={true}></Column>
           <Column field="fecha_solicitud" header={t('Servicios:label.fechaSolicitud')} sortable={true}></Column>
@@ -380,7 +383,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.fechaSolicitud')}
                       </label>
                    {{captura} ? ( 
-                        <Calendar id="mask" value={Servicios.fecha_solicitud} onChange={(e) => updateProperty('fecha_solicitud', e.target.value)} mask="9999/99/99"/>
+                        <InputText  value={Servicios.fecha_solicitud} onChange={(e) => updateProperty('fecha_solicitud', e.target.value)} />
                         ):(     <label id="txtFechaSolicitud">servicios.fecha_solicitud</label>)}
                    
                 </div>
@@ -388,7 +391,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.fechaTermino')}
                       </label>
                    {{captura} ? ( 
-                        <Calendar id="mask" value={Servicios.fecha_termino} onChange={(e) => updateProperty('fecha_termino', e.target.value)} mask="9999/99/99"/>
+                        <InputText  value={Servicios.fecha_termino} onChange={(e) => updateProperty('fecha_termino', e.target.value)} />
                         ):(     <label id="txtFechaTermino">servicios.fecha_termino</label>)}
                    
                 </div>
