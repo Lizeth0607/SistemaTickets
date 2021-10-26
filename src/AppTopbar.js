@@ -18,8 +18,7 @@ const AppTopbar = (props) => {
                 <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
                     <AppBreadcrumb routers={props.routers} />
                 </div>
-
-                <img id="logo-mobile" className="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
+               
             </div>
 
             <div className="topbar-right">

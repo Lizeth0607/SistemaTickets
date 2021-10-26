@@ -283,7 +283,7 @@ const itemTemplateAplicaciones = (item) => {
           <Column field="instalacion_id" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
           <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
           <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
-          <Column field="equipo_id" header={t('AplicacionesEquipos:label.idEquipo')} sortable={true}></Column>
+          <Column field="equipo_id" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
        </DataTable>
