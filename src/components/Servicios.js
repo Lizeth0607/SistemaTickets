@@ -207,8 +207,8 @@ const Servicios = ()   =>   {
     });
     };
     
-    const eliminaServicio = ()   =>   {
-        Servicios.eliminaServicio (Servicios);
+    const eliminaServicio = (pServicios)   =>   {
+        serviciosService.eliminaServicio (pServicios);
     serviciosSuccess('success',t('Servicios:cabecero.exito'),t('Servicios:mensaje.eliminar'));
     setDlgServicios(false);
     obtenerServicio();
@@ -283,7 +283,10 @@ const Servicios = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaServicio(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaServicio(rowData); } }></Button></div>);
+    <div>
+        <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaServicio(rowData);} }></Button>
+        <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaServicio(rowData); } }></Button>
+        </div>);
     }
     
     
