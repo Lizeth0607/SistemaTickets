@@ -369,40 +369,40 @@ return (
                   {t('Equipos:label.marcaEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedMarca} options={marcas} onChange={onMarcaChange} optionLabel="name" placeholder={t('Equipos:placeholder.marcaEquipo')}  />               
-                  ):(     <label id="txtMarcaEquipo">equipos.marcaEquipo</label>)}
+                  <InputText id="txtMarcaEquipo" placeholder={t('Equipos:placeholder.marcaEquipo')} value={Equipos.marca_id} className={formik.errors.txtMarcaEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('marcaEquipo', e.target.value)}></InputText>    
+                  ):(    <label id="txtMarcaEquipo">equipos.marca_id</label>)}
                
             </div>   
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtCatEquipo">
                   {t('Equipos:label.categEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedCategoriaEquipo} options={categoriasEquipo} onChange={onCategoriaEquipoChange} optionLabel="name" placeholder={t('Equipos:placeholder.categEquipo')} />               
-                  ):(     <label id="txtCatEquipo">equipos.categEquipo</label>)}
+                 <InputText id="txtCatEquipo" placeholder={t('Equipos:placeholder.categEquipo')} value={Equipos.categoria_id} className={formik.errors.txtCatEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('catEquipo', e.target.value)}></InputText>    
+                 ):(   <label id="txtCatEquipo">equipos.categoria_id</label>)}
                
             </div>    
             <div className="p-field p-col-12 p-md-4"><label htmlFor="txtRamEquipo">
                   {t('Equipos:label.ramEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedRam} options={ram} onChange={onRamChange} optionLabel="name" placeholder={t('Equipos:placeholder.ramEquipo')} />               
-                  ):(     <label id="txtRamEquipo">equipos.ramEquipo</label>)}
+                  <InputText id="txtRamEquipo" placeholder={t('Equipos:placeholder.ramEquipo')} value={Equipos.ram_id} className={formik.errors.txtRamEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('ramEquipo', e.target.value)}></InputText>    
+                  ):(     <label id="txtRamEquipo">equipos.ram_id</label>)}
                
             </div>   
             <div className="p-field p-col-12 p-md-4"><label htmlFor="txtDiscoEquipo">
                   {t('Equipos:label.discoEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedDisco} options={discos} onChange={onDiscoChange} optionLabel="name" placeholder={t('Equipos:placeholder.discoEquipo')} />               
-                  ):(     <label id="txtDiscoEquipo">equipos.discoEquipo</label>)}
+                  <InputText id="txtDiscoEquipo" placeholder={t('Equipos:placeholder.discoEquipo')} value={Equipos.disco_id} className={formik.errors.txtDiscoEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('discoEquipo', e.target.value)}></InputText>    
+                 ):(      <label id="txtDiscoEquipo">equipos.disco_id</label>)}
                
             </div>   
             <div className="p-field p-col-12 p-md-4"><label htmlFor="txtPantallaEquipo">
                   {t('Equipos:label.pantallaEquipo')}
                   </label>
                {{captura} ? ( 
-                  <Dropdown value={selectedPantalla} options={pantallas} onChange={onPantallaChange} optionLabel="name" placeholder={t('Equipos:placeholder.pantallaEquipo')} />               
-                  ):(     <label id="txtPantallaEquipo">equipos.pantallaEquipo</label>)}
+                  <InputText id="txtPantallaEquipo" placeholder={t('Equipos:placeholder.pantallaEquipo')} value={Equipos.pantalla_id} className={formik.errors.txtPantallaEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('pantallaEquipo', e.target.value)}></InputText>    
+                  ):(      <label id="txtPantallaEquipo">equipos.pantalla_id</label>)}
               
 
             </div>  
@@ -410,8 +410,8 @@ return (
                   {t('Equipos:label.empleadoEquipo')}
                   </label>
                {{captura} ? ( 
-            <AutoComplete value={selectedCountry2} suggestions={filteredempleados} completeMethod={searchCountry} placeholder={t('Equipos:placeholder.empleadoEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplate} onChange={(e) => setSelectedCountry2(e.value)}  />
-            ):(     <label id="txtEmplEquipo">equipos.empleadoEquipo</label>)}
+            <InputText id="txtEmpleadosEquipo" placeholder={t('Equipos:placeholder.empleadoEquipo')} value={Equipos.empleado_id} className={formik.errors.txtEmpleadoEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('empleadoEquipo', e.target.value)}></InputText>    
+            ):(     <label id="txtEmplEquipo">equipos.empleado_id</label>)}
                
             </div>      
          </div>
