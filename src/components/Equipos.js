@@ -171,16 +171,15 @@ obtenerEquipo();
 
 
 const agregaEquipo = ()   =>   {
-equiposService.agregaEquipo (Equipos).
-then(data => {setEquipos(data);
+equiposService.agregaEquipo (Equipos).then(data => {setEquipos(data);
 equiposSuccess('success',t('Equipos:cabecero.exito'),t('Equipos:mensaje.agregar'));
 setDlgEquipos(false);
 obtenerEquipo ();
 });
 };
 
-const eliminaEquipo = ()   =>   {
-Equipos.eliminaEquipo (Equipos);
+const eliminaEquipo = (pEquipos)   =>   {
+   equiposService.eliminaEquipo (pEquipos).then(data => setEquipos(data));
 equiposSuccess('success',t('Equipos:cabecero.exito'),t('Equipos:mensaje.eliminar'));
 setDlgEquipos(false);
 obtenerEquipo();
@@ -258,7 +257,10 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaEquipo(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaEquipo(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaEquipo(rowData);} }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaEquipo(rowData); } }></Button>
+</div>);
 }
 
 

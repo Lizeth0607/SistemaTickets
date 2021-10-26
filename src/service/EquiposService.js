@@ -18,9 +18,9 @@ return axios.get(seleccionaUrl  + '/' + pEquipos.idEquipo).then(response  =>  re
 
 agregaEquipo (pEquipos) {
     let agregaUrl = 'https://backliz1.herokuapp.com/device';
-    console.log(pEquipos);
+    console.log("sasa", pEquipos);
     const params = new URLSearchParams()
-    params.append('equipo_id',pEquipos.equipo_id)
+    //params.append('equipo_id',pEquipos.equipo_id)
     params.append('nombre',pEquipos.nombre)
     params.append('serial',pEquipos.serial)
     params.append('ip_equipo',pEquipos.ip_equipo)
@@ -37,11 +37,9 @@ agregaEquipo (pEquipos) {
     }
 
 eliminaEquipo (pEquipos) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pEquipos.idEquipo, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pEquipos
-});
+    let eliminaUrl = 'https://backliz1.herokuapp.com/device'; //Modificar
+    console.log("asda ",pEquipos.equipo_id);
+    return axios.delete(eliminaUrl + '/' + pEquipos.equipo_id);
 
 }
 
