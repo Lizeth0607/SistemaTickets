@@ -305,11 +305,7 @@ return (
       <Column field="ip_equipo" header={t('Equipos:label.ipEquipo')} sortable={true}></Column>
       <Column field="licencia" header={t('Equipos:label.licenciaEquipo')} sortable={true}></Column>
       <Column field="fecha_compra" header={t('Equipos:label.fechaCompra')} sortable={true}></Column>
-      <Column field="marca_id" header={t('Equipos:label.marcaEquipo')} sortable={true}></Column>
-      <Column field="categoria_id" header={t('Equipos:label.categEquipo')} sortable={true}></Column>
-      <Column field="ram_id" header={t('Equipos:label.ramEquipo')} sortable={true}></Column>
-      <Column field="disco_id" header={t('Equipos:label.discoEquipo')} sortable={true}></Column>
-      <Column field="pantalla_id" header={t('Equipos:label.pantallaEquipo')} sortable={true}></Column>
+      
       <Column field="empleado_id" header={t('Equipos:label.empleadoEquipo')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Equipos:rotulo.editar')}></Column>
    </DataTable>
