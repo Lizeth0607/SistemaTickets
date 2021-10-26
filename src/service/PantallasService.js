@@ -16,17 +16,20 @@ export default class  PantallasService {
     }
 
     agregaPantalla (pPantallas) {
-    let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-    return axios.post(agregaUrl, pPantallas).then(response  =>  response.data);
-    }
+        let agregaUrl = 'https://backliz1.herokuapp.com/screen';
+        console.log(pPantallas);
+        const params = new URLSearchParams()
+        params.append('tipo',pPantallas.tipo)
+        params.append('tamano',pPantallas.tamano)
+        const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+        return axios.post(agregaUrl, params,config).then(response  =>  response.data);
+        }
 
     eliminaPantalla (pPantallas) {
-    let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-    axios.delete(eliminaUrl  + '/' + pPantallas.idPantalla, {
-    headers: {'Content-Type': 'application/json;charset=UTF-8'},
-    data: pPantallas
-    });
-
+        let eliminaUrl = 'https://backliz1.herokuapp.com/screen'; //Modificar
+        console.log("asda ",pPantallas.pantalla_id);
+        return axios.delete(eliminaUrl + '/' + pPantallas.pantalla_id);
+    
     }
 
     actualizaPantalla (pPantallas) {

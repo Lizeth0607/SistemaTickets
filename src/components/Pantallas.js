@@ -37,9 +37,9 @@ const Pantallas = ()   =>   {
     const [lstPantallas, setLstPantallas] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgPantallas, setDlgPantallas] = useState(false);
-    const [Pantallas, setPantallas] = useState({idPantalla:null
-    ,tipoPantalla:''
-    ,tamPantalla:''
+    const [Pantallas, setPantallas] = useState({pantalla_id:null
+    ,tipo:''
+    ,tamano:''
     
     });
     
@@ -82,16 +82,15 @@ const Pantallas = ()   =>   {
     
     
     const agregaPantalla = ()   =>   {
-    pantallasService.agregaPantalla (Pantallas).
-    then(data => {setPantallas(data);
+    pantallasService.agregaPantalla (Pantallas).then(data => {setPantallas(data);
     pantallasSuccess('success',t('Pantallas:cabecero.exito'),t('Pantallas:mensaje.agregar'));
     setDlgPantallas(false);
     obtenerPantalla ();
     });
     };
     
-    const eliminaPantalla = ()   =>   {
-        Pantallas.eliminaPantalla (Pantallas);
+    const eliminaPantalla = (pPantallas)   =>   {
+      pantallasService.eliminaPantalla (pPantallas).then(data => setPantallas(data));
     pantallasSuccess('success',t('Pantallas:cabecero.exito'),t('Pantallas:mensaje.eliminar'));
     setDlgPantallas(false);
     obtenerPantalla();
@@ -116,9 +115,9 @@ const Pantallas = ()   =>   {
     };
     
     const iniciaComponentes = ()   =>   {
-    setPantallas({idPantalla:null
-       ,tipoPantalla:''
-       ,tamPantalla:''
+    setPantallas({pantalla_id:null
+       ,tipo:''
+       ,tamano:''
     });
     formik.resetForm();
     };
@@ -129,7 +128,7 @@ const Pantallas = ()   =>   {
     */
     const validate = () => {
     const errors = {};
-     if (!Pantallas.tipoPantalla) {
+     if (!Pantallas.tipo) {
     errors.txtTipoPantalla= t('Pantallas:required.tipoPantalla');
     }
     return errors;
@@ -137,7 +136,7 @@ const Pantallas = ()   =>   {
     
     const formik = useFormik({
     initialValues: {} ,
-    validate,
+    //validate,
     onSubmit: () => {
     if(captura){
     agregaPantalla();
@@ -160,7 +159,10 @@ const Pantallas = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaPantalla(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaPantalla(rowData); } }></Button></div>);
+    <div>
+       <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaPantalla(rowData);} }></Button>
+       <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaPantalla(rowData); } }></Button>
+       </div>);
     }
     
     
@@ -212,7 +214,7 @@ const Pantallas = ()   =>   {
                       {t('Pantallas:label.tipoPantalla')}
                       </label>
                    {{captura} ? ( 
-                   <InputText id="txtTipoPantalla" placeholder={t('Pantallas:placeholder.tipoPantalla')} value={Pantallas.tipoPantalla} className={formik.errors.txtTipoPantalla ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipoPantalla', e.target.value)}></InputText>    
+                   <InputText id="txtTipoPantalla" placeholder={t('Pantallas:placeholder.tipoPantalla')} value={Pantallas.tipo} className={formik.errors.txtTipoPantalla ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipo', e.target.value)}></InputText>    
                    ):(     <label id="txtTipoPantalla">pantallas.tipoPantalla</label>)}
                    
                    {formik.errors.txtTipoPantalla &&  <small id="txtTipoPantalla-help" className="p-invalid">
@@ -224,7 +226,7 @@ const Pantallas = ()   =>   {
                       {t('Pantallas:label.tamPantalla')}
                       </label>
                    {{captura} ? ( 
-                   <InputNumber  id="txtTamPantalla" placeholer={t('Pantallas:placeholder.tamPantalla')} value={Pantallas.tamPantalla} className={formik.errors.txtTamPantalla ? 'p-invalid':'p-inputtext'}  /*onChange={(e) =>   updateProperty('capacidadDisco', e.target.value)}*/></InputNumber>    
+                   <InputText  id="txtTamPantalla" placeholer={t('Pantallas:placeholder.tamPantalla')} value={Pantallas.tamano} className={formik.errors.txtTamPantalla ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('tamano', e.target.value)}></InputText>    
                    ):(     <label id="txtTamPantalla">pantallas.tamPantalla</label>)}
                    
                 </div>
