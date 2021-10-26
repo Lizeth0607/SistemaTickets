@@ -15,8 +15,9 @@ let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSent
 return axios.get(seleccionaUrl  + '/' + pServicios.idServicio).then(response  =>  response.data);
 }
 
-agregaEquipo (pServicios) {
+agregaServicio (pServicios) {
     let agregaUrl = 'https://backliz1.herokuapp.com/service';
+    console.log(pServicios);
     const params = new URLSearchParams()
     params.append('servicio', pServicios.servicio)
     params.append('descripcion', pServicios.descripcion)
