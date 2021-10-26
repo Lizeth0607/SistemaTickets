@@ -11,7 +11,8 @@ obtenerEmpleado (){
 
 
 seleccionaEmpleado(pEmpleados) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = 'https://backliz1.herokuapp.com/employee'; //Modificar
+console.log("asda ",pEmpleados.empleado_id);
 return axios.get(seleccionaUrl  + '/' + pEmpleados.idEmpleado).then(response  =>  response.data);
 }
 

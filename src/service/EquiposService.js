@@ -17,16 +17,29 @@ return axios.get(seleccionaUrl  + '/' + pEquipos.idEquipo).then(response  =>  re
 }
 
 agregaEquipo (pEquipos) {
-let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pEquipos).then(response  =>  response.data);
-}
+    let agregaUrl = 'https://backliz1.herokuapp.com/device';
+    console.log("sasa", pEquipos);
+    const params = new URLSearchParams()
+    //params.append('equipo_id',pEquipos.equipo_id)
+    params.append('nombre',pEquipos.nombre)
+    params.append('serial',pEquipos.serial)
+    params.append('ip_equipo',pEquipos.ip_equipo)
+    params.append('licencia',pEquipos.licencia)
+    params.append('fecha_compra',pEquipos.fecha_compra)
+    params.append('marca_id',pEquipos.marca_id)
+    params.append('categoria_id',pEquipos.categoria_id)
+    params.append('ram_id',pEquipos.ram_id)
+    params.append('disco_id',pEquipos.disco_id)
+    params.append('pantalla_id',pEquipos.pantalla_id)
+    params.append('empleado_id',pEquipos.empleado_id)
+    const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    return axios.post(agregaUrl, params,config).then(response  =>  response.data);
+    }
 
 eliminaEquipo (pEquipos) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pEquipos.idEquipo, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pEquipos
-});
+    let eliminaUrl = 'https://backliz1.herokuapp.com/device'; //Modificar
+    console.log("asda ",pEquipos.equipo_id);
+    return axios.delete(eliminaUrl + '/' + pEquipos.equipo_id);
 
 }
 

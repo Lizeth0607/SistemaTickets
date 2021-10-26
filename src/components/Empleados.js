@@ -302,7 +302,7 @@ return (
    <div className="p-grid p-fluid">
       <div className="p-col-12 p-md-12">
          <div className="p-inputgroup">
-            <InputText placeholder={t('Empleados:placeholder.idEmpleado')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Empleados:boton.agregar')} icon="pi pi-plus" onClick={iniciaEmpleados}></Button></div>
+            <InputText placeholder={t('Empleados:placeholder.idEmpleado')} value={Empleados.empleado_id} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Empleados:boton.agregar')} icon="pi pi-plus" onClick={iniciaEmpleados}></Button></div>
       </div>
    </div>
    <DataTable value={lstEmpleados} paginator={true} rows={10} responsive={true}>
