@@ -132,7 +132,7 @@ formik.resetForm();
 const validate = () => {
 const errors = {};
  if (!Sedes.nombre) {
-errors.txtNombrSede= t('Sedes:required.nombreSede');
+errors.txtNombreSede= t('Sedes:required.nombreSede');
 }
 return errors;
 };
@@ -212,7 +212,7 @@ return (
       { Sedes  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreSedes">
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreSede">
                   {t('Sedes:label.nombreSede')}
                   </label>
                {{captura} ? ( 
