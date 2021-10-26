@@ -148,14 +148,15 @@ const Servicios = ()   =>   {
     const [lstServicios, setLstServicios] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgServicios, setDlgServicios] = useState(false);
-    const [Servicios, setServicios] = useState({idSevicio:null
-        ,nombreServicio:''
-        ,descServicio: ''
-        ,fechaSolicitud: ''
-        ,fechaTermino: ''
-        ,idEquipo: ''
-        ,idEmpleado: ''
-        ,idUsuario: ''
+    const [Servicios, setServicios] = useState({servicio_id:null
+        ,servicio:''
+        ,descripcion: ''
+        ,prioridad: ''
+        ,estado: ''
+        ,fecha_solicitud: ''
+        ,fecha_termino: ''
+        ,equipo_id: ''
+        ,usuario_id: ''
 
     
     });
@@ -233,14 +234,15 @@ const Servicios = ()   =>   {
     };
     
     const iniciaComponentes = ()   =>   {
-    setServicios({idPantalla:null
-        ,nombreServicio:''
-        ,descServicio: ''
-        ,fechaSolicitud: ''
-        ,fechaTermino: ''
-        ,idEquipo: ''
-        ,idEmpleado: ''
-        ,idUsuario: ''
+    setServicios({servicio_id:null
+        ,servicio:''
+        ,descripcion: ''
+        ,prioridad: ''
+        ,estado: ''
+        ,fecha_solicitud: ''
+        ,fecha_termino: ''
+        ,equipo_id: ''
+        ,usuario_id: ''
     });
     formik.resetForm();
     };
@@ -251,7 +253,7 @@ const Servicios = ()   =>   {
     */
     const validate = () => {
     const errors = {};
-     if (!Servicios.nombreServicio) {
+     if (!Servicios.servicio) {
     errors.txtNombreServicio= t('Servicios:required.nombreServicio');
     }
     return errors;
@@ -324,7 +326,8 @@ const Servicios = ()   =>   {
        <DataTable value={lstServicios} paginator={true} rows={10} responsive={true}>
           <Column field="servicio_id" header={t('Servicios:label.idServicio')} sortable={true}></Column>
           <Column field="servicio" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
-          <Column field="descripcion" header={t('Servicios:label.descServicio')} sortable={true}></Column>
+          <Column field="prioridad" header={t('Servicios:label.prioridadServicio')} sortable={true}></Column>
+          <Column field="estado" header={t('Servicios:label.estadoServicio')} sortable={true}></Column>
           <Column field="fecha_solicitud" header={t('Servicios:label.fechaSolicitud')} sortable={true}></Column>
           <Column field="fecha_termino" header={t('Servicios:label.fechaTermino')} sortable={true}></Column>
           <Column field="equipo_id" header={t('Servicios:label.idEquipo')} sortable={true}></Column>
@@ -341,8 +344,8 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.nombreServicio')}
                       </label>
                    {{captura} ? ( 
-                   <InputText id="txtNombreServicio" placeholder={t('Servicios:placeholder.nombreServicio')} value={Servicios.nombreServicio} className={formik.errors.txtNombreServicio ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreServicio', e.target.value)}></InputText>    
-                   ):(     <label id="txtNombreServicio">servicios.nombreServicio</label>)}
+                   <InputText id="txtNombreServicio" placeholder={t('Servicios:placeholder.nombreServicio')} value={Servicios.servicio} className={formik.errors.txtNombreServicio ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('servicio', e.target.value)}></InputText>    
+                   ):(     <label id="txtNombreServicio">servicios.servicio</label>)}
                    
                    {formik.errors.txtNombreServicio &&  <small id="txtNombreServicio-help" className="p-invalid">
                       {formik.errors.txtNombreServicio}
@@ -353,48 +356,58 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.descServicio')}
                       </label>
                    {{captura} ? ( 
-                <InputTextarea value={Servicios.descServicio} onChange={(e) =>  updateProperty('descServicio', e.target.value)} rows={3} cols={20} autoResize />
-                ):(     <label id="txtDescServicio">servicios.descServicio</label>)}
+                <InputTextarea value={Servicios.descripcion} onChange={(e) =>  updateProperty('descripcion', e.target.value)} rows={3} cols={20} autoResize />
+                ):(     <label id="txtDescServicio">servicios.descripcion</label>)}
+                   
+                </div>
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtPrioridadServicio">
+                      {t('Servicios:label.prioridadServicio')}
+                      </label>
+                   {{captura} ? ( 
+           <InputText  id="txtPrioridadServicio" placeholer={t('Servicios:placeholder.prioridadServicio')} value={Servicios.prioridad} className={formik.errors.txtPrioridadServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('prioridad', e.target.value)}></InputText>    
+           ):(    <label id="txtPrioridadServicio">servicios.prioridad</label>)}
+                   
+                </div>
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtEstadoServicio">
+                      {t('Servicios:label.estadoServicio')}
+                      </label>
+                   {{captura} ? ( 
+           <InputText  id="txtEstadoServicio" placeholer={t('Servicios:placeholder.estadoServicio')} value={Servicios.estado} className={formik.errors.txtEstadoServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('estado', e.target.value)}></InputText>    
+           ):(    <label id="txtEstadoServicio">servicios.estado</label>)}
                    
                 </div>
                 <div className="p-field p-col-12 p-md-6"><label htmlFor="txtFechaSolicitud">
                       {t('Servicios:label.fechaSolicitud')}
                       </label>
                    {{captura} ? ( 
-                        <Calendar id="mask" value={Servicios.fechaSolicitud} onChange={(e) => updateProperty('fechaSolicitud', e.target.value)} mask="99/99/9999"/>
-                        ):(     <label id="txtFechaSolicitud">servicios.fechaSolicitud</label>)}
+                        <Calendar id="mask" value={Servicios.fecha_solicitud} onChange={(e) => updateProperty('fecha_solicitud', e.target.value)} mask="9999/99/99"/>
+                        ):(     <label id="txtFechaSolicitud">servicios.fecha_solicitud</label>)}
                    
                 </div>
                 <div className="p-field p-col-12 p-md-6"><label htmlFor="txtFechaTermino">
                       {t('Servicios:label.fechaTermino')}
                       </label>
                    {{captura} ? ( 
-                        <Calendar id="mask" value={Servicios.fechaTermino} onChange={(e) => updateProperty('fechaTermino', e.target.value)} mask="99/99/9999"/>
-                        ):(     <label id="txtFechaTermino">servicios.fechaTermino</label>)}
+                        <Calendar id="mask" value={Servicios.fecha_termino} onChange={(e) => updateProperty('fecha_termino', e.target.value)} mask="9999/99/99"/>
+                        ):(     <label id="txtFechaTermino">servicios.fecha_termino</label>)}
                    
                 </div>
+                
                 <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdEquipo">
                       {t('Servicios:label.idEquipo')}
                       </label>
                    {{captura} ? ( 
-            <AutoComplete value={Servicios.idEquipo} suggestions={filteredEquipos} completeMethod={searchEquipo} placeholder={t('Servicios:placeholder.idEquipo')} field="name" dropdown forceSelection itemTemplate={itemTemplateEquipos} onChange={(e) =>  updateProperty('idEquipo', e.target.value)}  />
-            ):(     <label id="txtIdEquipo">servicios.idEquipo</label>)}
+           <InputText  id="txtIdEquipo" placeholer={t('Servicios:placeholder.idEquipo')} value={Servicios.equipo_id} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('equipo_id', e.target.value)}></InputText>    
+           ):(    <label id="txtIdEquipo">servicios.equipo_id</label>)}
                    
                 </div>
-                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdEmpleado">
-                      {t('Servicios:label.idEmpleado')}
-                      </label>
-                   {{captura} ? ( 
-            <AutoComplete value={Servicios.idEmpleado} suggestions={filteredEmpleados} completeMethod={searchEmpleado} placeholder={t('Servicios:placeholder.idEmpleado')} field="name" dropdown forceSelection itemTemplate={itemTemplateEmpleados} onChange={(e) =>  updateProperty('idEmpleado', e.target.value)}  />
-            ):(     <label id="txtIdEmpleado">servicios.idEmpleado</label>)}
-                   
-                </div>
+                
                 <div className="p-field p-col-12 p-md-12"><label htmlFor="txtIdUsuario">
                       {t('Servicios:label.idUsuario')}
                       </label>
                    {{captura} ? ( 
-            <AutoComplete value={Servicios.idUsuario} suggestions={filteredUsuarios} completeMethod={searchUsuario} placeholder={t('Servicios:placeholder.idUsuario')} field="name" dropdown forceSelection itemTemplate={itemTemplateUsuario} onChange={(e) =>  updateProperty('idUsuario', e.target.value)}  />
-            ):(     <label id="txtIdUsuario">servicios.idUsuario</label>)}
+            <InputText  id="txtIdUsuario" placeholer={t('Servicios:placeholder.idUsuario')} value={Servicios.usuario_id} className={formik.errors.txtIdUsuario ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('usuario_id', e.target.value)}></InputText>    
+            ):(    <label id="txtIdUsuario">servicios.usuario_id</label>)}
                    
                 </div>
              </div>

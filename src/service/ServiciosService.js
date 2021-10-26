@@ -16,16 +16,24 @@ return axios.get(seleccionaUrl  + '/' + pServicios.idServicio).then(response  =>
 }
 
 agregaEquipo (pServicios) {
-let agregaUrl = '/expediente/tblSentidosSentencias/agregaTblSentidosSentencias';
-return axios.post(agregaUrl, pServicios).then(response  =>  response.data);
+    let agregaUrl = 'https://backliz1.herokuapp.com/service';
+    const params = new URLSearchParams()
+    params.append('servicio', pServicios.servicio)
+    params.append('descripcion', pServicios.descripcion)
+    params.append('prioridad', pServicios.prioridad)
+    params.append('estado', pServicios.estado)
+    params.append('fecha_solicitud', pServicios.fecha_solicitud)
+    params.append('fecha_termino', pServicios.fecha_termino)
+    params.append('equipo_id', pServicios.equipo_id)
+    params.append('usuario_id', pServicios.usuario_id)
+    const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    return axios.post(agregaUrl, params, config).then(response => response.data);
 }
 
 eliminaServicio (pServicios) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
-axios.delete(eliminaUrl  + '/' + pServicios.idServicio, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pServicios
-});
+    let eliminaUrl = 'https://backliz1.herokuapp.com/service'; //Modificar
+    //console.log("asda ",pServicios.servicio_id);
+    return axios.delete(eliminaUrl + '/' + pServicios.servicio_id);
 
 }
 

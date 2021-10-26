@@ -19,8 +19,8 @@ export default class HistorialService {
     agregaHistorial(pHistorial) {
         let agregaUrl = 'https://backliz1.herokuapp.com/record';
         const params = new URLSearchParams()
-        params.append('nombre', pHistorial.nombre)
-        params.append('descripcion', pHistorial.descripcion)
+        params.append('mov_id', pHistorial.mov_id)
+        params.append('equipo_id', pHistorial.equipo_id)
         const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
         return axios.post(agregaUrl, params, config).then(response => response.data);
     }

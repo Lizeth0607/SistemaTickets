@@ -37,9 +37,9 @@ timer: '3000'
 const [lstHistoriales, setLstHistoriales] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgHistoriales, setDlgHistoriales] = useState(false);
-const [Historiales, setHistoriales] = useState({idHistorial:null
-    ,idMov:''
-,idEquipo:''
+const [Historiales, setHistoriales] = useState({historial_id:null
+    ,mov_id:''
+,equipo_id:''
 
 });
 
@@ -114,9 +114,9 @@ setDlgHistoriales(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setHistoriales({idHistorial:null
-    ,idMov:''
-    ,idEquipo:''
+setHistoriales({historial_id:null
+   ,mov_id:''
+,equipo_id:''
     
 });
 formik.resetForm();
@@ -128,7 +128,7 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Historiales.idMov) {
+ if (!Historiales.mov_id) {
 errors.txtIdMov= t('Historial:required.idMov');
 }
 return errors;
@@ -214,7 +214,7 @@ return (
                   {t('Historial:label.idMov')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtIdMov" placeholder={t('Historial:placeholder.idMov')} value={Historiales.idMov} className={formik.errors.txtIdMov ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('idMov', e.target.value)}></InputText>    
+               <InputText id="txtIdMov" placeholder={t('Historial:placeholder.idMov')} value={Historiales.mov_id} className={formik.errors.txtIdMov ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('mov_id', e.target.value)}></InputText>    
                ):(     <label id="txtIdMov">historiales.idMov</label>)}
                
                {formik.errors.txtIdMov  &&  <small id="txtIdMov-help" className="p-invalid">
@@ -226,7 +226,7 @@ return (
                   {t('Historial:label.idEquipo')}
                   </label>
                {{captura} ? ( 
-                <InputText id="txtIdEquipo" placeholder={t('Historial:placeholder.idEquipo')} value={Historiales.idEquipo} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('idEquipo', e.target.value)}></InputText>    
+                <InputText id="txtIdEquipo" placeholder={t('Historial:placeholder.idEquipo')} value={Historiales.equipo_id} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('equipo_id', e.target.value)}></InputText>    
                 ):(     <label id="txtIdEquipo">historiales.idEquipo</label>)}
                 
             </div>

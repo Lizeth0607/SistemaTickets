@@ -23,6 +23,8 @@ import Empleados from './components/Empleados';
 import Roles from './components/Roles';
 import AplicacionesEquipos from './components/AplicacionesEquipos';
 import Historial from './components/Historial';
+import Ubicaciones from './components/Ubicaciones';
+import Sedes from './components/Sedes';
 
 
 
@@ -153,6 +155,8 @@ const App = () => {
         {path:'/Roles', component: Roles, meta: { breadcrumb: [{ parent: 'Operación', label: 'Roles' }] }},
         {path:'/AplicacionesEquipos', component: AplicacionesEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones Equipos' }] }},
         {path:'/Historial', component: Historial, meta: { breadcrumb: [{ parent: 'Operación', label: 'Historial' }] }},
+        {path:'/Ubicaciones', component: Ubicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ubicaciones' }] }},
+        {path:'/Sedes', component: Sedes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Sedes' }] }},
 
     ];
 
