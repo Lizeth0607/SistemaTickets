@@ -1,0 +1,57 @@
+
+{
+    "entidad": "Usuarios",
+    
+  "rotulo":{
+    "buscar":"Buscar Usuario",
+    "agregar":"Nuevo Usuario",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Usuario",    
+    "actualizar":"Actualizar Usuario",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Usuarios",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Usuarios",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idUsuario":"Numero de Usuario",
+        "nombreUsu":"Nombre",
+        "cveUsuario":"Usuario",
+        "rolUsu":"Rol"},
+
+"required":{
+        "idUsuario":"El numero de usuario es requerido",
+        "nombreUsu":"El nombre del usuario es requerido",
+        "cveUsuario":"La unidad de medida es requerida",
+        "rolUsu":"El rol es requerido"},
+
+"placeholder":{
+        "idUsuario":"Numero de Usuario",
+        "nombreUsu":"Escribe el nombre",
+        "cveUsuario":"Escribe el usuario",
+        "rolUsu":"Selecciona el rol del usuario"}
+    
+ }   
+

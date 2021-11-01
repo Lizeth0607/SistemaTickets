@@ -280,9 +280,10 @@ const itemTemplateAplicaciones = (item) => {
           </div>
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
-          <Column field="instalacion_id" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
-          <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
-          <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
+          <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
+          <Column field="fec_compra" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
+          <Column field="version" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
+          <Column field="nombre" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
           <Column field="equipo_id" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
@@ -316,7 +317,8 @@ const itemTemplateAplicaciones = (item) => {
                   {t('AplicacionesEquipos:label.aplicacion_id')}
                   </label>
                {{captura} ? ( 
-            <InputText id="txtfecha_instalacion" value={AplicacionesEqs.equipo_id} onChange={(e) => updateProperty('equipo_id', e.target.value)}  mask="99/99/9999"/>
+            
+            <Dropdown  options={lstAplicacionesEqs}  optionLabel="nombre" placeholder="" onChange={(e) => updateProperty('aplicacion_id', e.target.value)} />
             ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
                
             </div> 

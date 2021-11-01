@@ -1,0 +1,55 @@
+
+{
+    "entidad": "RAM de Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Ram de Equipo",
+    "agregar":"Nuevo Ram de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Ram de Equipo",    
+    "actualizar":"Actualizar Ram de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Ram de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"RAM de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idRam":"ID Ram",
+        "tipoRam":"Tipo de Ram",
+        "capacidadRam":"Capacidad de Ram"
+       },
+
+"required":{
+        "idRam":"El ID Ram es requerido",
+        "tipoRam":"El tipo de Ram es requerido",
+        "capacidadRam":"La capacidad de Ram es requerido"},
+
+"placeholder":{
+        "idRam":"Escribe el ID Ram",
+        "tipoRam":"Escribe el tipo de Ram",
+        "capacidadRam":"Escribe la capacidad delRam"}
+    
+ }   
+

@@ -1,0 +1,54 @@
+
+{
+    "entidad": "Ubicaciones",
+    
+  "rotulo":{
+    "buscar":"Buscar ubicación",
+    "agregar":"Nuevo ubicación",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar ubicación",    
+    "actualizar":"Actualizar ubicación",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Ubicaciones",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Ubicaciones",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idUbicacion":"ID Ubicacion",
+        "nombreUbicacion":"Nombre de Ubicacion"
+       },
+
+"required":{
+        "idUbicacion":"El ID Ubicacion es requerido",
+        "nombreUbicacion":"El Nombre de la Ubicacion es requerida"
+        },
+
+"placeholder":{
+        "idUbicacion":"Escribe el ID Ubicacion",
+        "nombreUbicacion":"Escribe el Nombre de la Ubicacion"
+        }
+    
+ }   
+

@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  AplicacionesEquiposService {
 
 obtenerAplicacionEq (){
-    return axios.get("https://backliz1.herokuapp.com/installation").then(res => res.data);
+    return axios.get("https://backliz1.herokuapp.com/app").then(res => res.data);
 
 }
 

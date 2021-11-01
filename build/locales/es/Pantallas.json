@@ -1,0 +1,55 @@
+
+{
+    "entidad": "Pantallas de Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Pantalla de Equipo",
+    "agregar":"Nuevo Pantalla de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Pantalla de Equipo",    
+    "actualizar":"Actualizar Pantalla de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Pantallas de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Pantallas de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idPantalla":"ID Pantalla",
+        "tipoPantalla":"Tipo de Pantalla",
+        "tamPantalla":"Tamaño de Pantalla(en pulgadas)"
+       },
+
+"required":{
+        "idPantalla":"El ID Pantalla es requerido",
+        "tipoPantalla":"El tipo de Pantalla es requerido",
+        "tamPantalla":"El tamaño de Pantalla(en pulgadas) es requerido"},
+
+"placeholder":{
+        "idPantalla":"Escribe el ID Pantalla",
+        "tipoPantalla":"Escribe el tipo de Pantalla",
+        "tamPantalla":"Escribe el tamaño(en pulgadas) de la Pantalla"}
+    
+ }   
+

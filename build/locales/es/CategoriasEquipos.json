@@ -1,0 +1,56 @@
+
+{
+    "entidad": "Categorías de Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Categoría de Equipo",
+    "agregar":"Nuevo Categoría de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Categoría de Equipo",    
+    "actualizar":"Actualizar Categoría de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    
+    "cabecero":"Categorías de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Categorías de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idCategoria":"ID Categoría",
+        "nombre":"Nombre de Categoría",
+        "descripcion":"Descripción de la Categoría"
+       },
+
+"required":{
+        "idCategoria":"El ID Categoría es requerido",
+        "nombre":"El Nombre de la Categoría es requerido",
+        "descripcion":"La Descripción de la Categoría es requerida"},
+
+"placeholder":{
+        "idCategoria":"Escribe el ID Categoría",
+        "nombre":"Escribe el Nombre de la Categoría",
+        "descripcion":"Escribe la Descripción de la Categoría"}
+    
+ }   
+
