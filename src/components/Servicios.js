@@ -42,102 +42,7 @@ const Servicios = ()   =>   {
     //TextArea
     const [value1, setValue1] = useState('');
     //Autocomplete Equipos
-    const [equipos, setEquipos] = useState([]);
-    const [filteredEquipos, setFilteredEquipos] = useState(null);
-    const equiposDatosService = new EquiposDatosService();
-
-    const itemsEquipos = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-    useEffect(() => {
-        equiposDatosService.getEquipos().then(data => setEquipos(data));
-    }, []); 
-    const searchEquipo = (event) => {
-        setTimeout(() => {
-            let _filteredEquipos;
-            if (!event.query.trim().length) {
-                _filteredEquipos = [...equipos];
-            }
-            else {
-                _filteredEquipos = equipos.filter((equipo) => {
-                    return equipo.name.toLowerCase().startsWith(event.query.toLowerCase());
-                });
-            }
-
-            setFilteredEquipos(_filteredEquipos);
-        }, 250);
-    }
-
-    const itemTemplateEquipos = (itemEquipo) => {
-        return (
-            <div className="equipo-item">
-                <div>{itemEquipo.name}</div>
-            </div>
-        );
-    }
-    //Autocomplete Empleados
-    const [empleados, setEmpleados] = useState([]);
-    const [filteredEmpleados, setFilteredEmpleados] = useState(null);
-    const empleadosDatosService = new EmpleadosDatosService();
-
-    const itemsEmpleados = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-    useEffect(() => {
-        empleadosDatosService.getEmpleados().then(data => setEmpleados(data));
-    }, []); 
-    const searchEmpleado = (event) => {
-        setTimeout(() => {
-            let _filteredEmpleados;
-            if (!event.query.trim().length) {
-                _filteredEmpleados = [...empleados];
-            }
-            else {
-                _filteredEmpleados = empleados.filter((empleado) => {
-                    return empleado.name.toLowerCase().startsWith(event.query.toLowerCase());
-                });
-            }
-
-            setFilteredEmpleados(_filteredEmpleados);
-        }, 250);
-    }
-	
-    const itemTemplateEmpleados = (itemEmpleado) => {
-        return (
-            <div className="empleado-item">
-                <div>{itemEmpleado.name}</div>
-            </div>
-        );
-    }
-
-    //Autocomplete Usuarios
-    const [usuarios, setUsuarios] = useState([]);
-    const [filteredUsuarios, setFilteredUsuarios] = useState(null);
-    const usuariosDatosService = new UsuariosDatosService();
-
-    const itemsUsuarios = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-    useEffect(() => {
-        usuariosDatosService.getUsuarios().then(data => setUsuarios(data));
-    }, []); 
-    const searchUsuario = (event) => {
-        setTimeout(() => {
-            let _filteredUsuarios;
-            if (!event.query.trim().length) {
-                _filteredUsuarios = [...usuarios];
-            }
-            else {
-                _filteredUsuarios = usuarios.filter((empleado) => {
-                    return empleado.name.toLowerCase().startsWith(event.query.toLowerCase());
-                });
-            }
-
-            setFilteredUsuarios(_filteredUsuarios);
-        }, 250);
-    }
     
-    const itemTemplateUsuario = (itemUsuario) => {
-        return (
-            <div className="usuario-item">
-                <div>{itemUsuario.name}</div>
-            </div>
-        );
-    }
 
 
 
@@ -328,7 +233,6 @@ const Servicios = ()   =>   {
        <DataTable value={lstServicios} paginator={true} rows={10} responsive={true}>
           <Column field="servicio_id" header={t('Servicios:label.idServicio')} sortable={true}></Column>
           <Column field="servicio" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
-          <Column field="descripcion" header={t('Servicios:label.nombreServicio')} sortable={true}></Column>
           <Column field="prioridad" header={t('Servicios:label.prioridadServicio')} sortable={true}></Column>
           <Column field="estado" header={t('Servicios:label.estadoServicio')} sortable={true}></Column>
           <Column field="fecha_solicitud" header={t('Servicios:label.fechaSolicitud')} sortable={true}></Column>
@@ -359,7 +263,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.descServicio')}
                       </label>
                    {{captura} ? ( 
-                <InputTextarea value={Servicios.descripcion} onChange={(e) =>  updateProperty('descripcion', e.target.value)} rows={3} cols={20} autoResize />
+                <InputTextarea placeholder={t('Servicios:placeholder.descServicio')} value={Servicios.descripcion} onChange={(e) =>  updateProperty('descripcion', e.target.value)} rows={3} cols={20} autoResize />
                 ):(     <label id="txtDescServicio">servicios.descripcion</label>)}
                    
                 </div>
@@ -367,7 +271,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.prioridadServicio')}
                       </label>
                    {{captura} ? ( 
-           <InputText  id="txtPrioridadServicio" placeholer={t('Servicios:placeholder.prioridadServicio')} value={Servicios.prioridad} className={formik.errors.txtPrioridadServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('prioridad', e.target.value)}></InputText>    
+           <InputText placeholder={t('Servicios:placeholder.prioridadServicio')} id="txtPrioridadServicio"value={Servicios.prioridad} className={formik.errors.txtPrioridadServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('prioridad', e.target.value)}></InputText>    
            ):(    <label id="txtPrioridadServicio">servicios.prioridad</label>)}
                    
                 </div>
@@ -375,7 +279,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.estadoServicio')}
                       </label>
                    {{captura} ? ( 
-           <InputText  id="txtEstadoServicio" placeholer={t('Servicios:placeholder.estadoServicio')} value={Servicios.estado} className={formik.errors.txtEstadoServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('estado', e.target.value)}></InputText>    
+           <InputText placeholder={t('Servicios:placeholder.estadoServicio')} id="txtEstadoServicio"  value={Servicios.estado} className={formik.errors.txtEstadoServicio ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('estado', e.target.value)}></InputText>    
            ):(    <label id="txtEstadoServicio">servicios.estado</label>)}
                    
                 </div>
@@ -383,7 +287,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.fechaSolicitud')}
                       </label>
                    {{captura} ? ( 
-                        <InputText  value={Servicios.fecha_solicitud} onChange={(e) => updateProperty('fecha_solicitud', e.target.value)} />
+                        <InputText placeholder={t('Servicios:placeholder.fechaSolicitud')} value={Servicios.fecha_solicitud} onChange={(e) => updateProperty('fecha_solicitud', e.target.value)} />
                         ):(     <label id="txtFechaSolicitud">servicios.fecha_solicitud</label>)}
                    
                 </div>
@@ -391,7 +295,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.fechaTermino')}
                       </label>
                    {{captura} ? ( 
-                        <InputText  value={Servicios.fecha_termino} onChange={(e) => updateProperty('fecha_termino', e.target.value)} />
+                        <InputText placeholder={t('Servicios:placeholder.fechaTermino')} value={Servicios.fecha_termino} onChange={(e) => updateProperty('fecha_termino', e.target.value)} />
                         ):(     <label id="txtFechaTermino">servicios.fecha_termino</label>)}
                    
                 </div>
@@ -400,16 +304,16 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.idEquipo')}
                       </label>
                    {{captura} ? ( 
-           <InputText  id="txtIdEquipo" placeholer={t('Servicios:placeholder.idEquipo')} value={Servicios.equipo_id} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('equipo_id', e.target.value)}></InputText>    
+           <InputText placeholder={t('Servicios:placeholder.idEquipo')} id="txtIdEquipo" value={Servicios.equipo_id} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('equipo_id', e.target.value)}></InputText>    
            ):(    <label id="txtIdEquipo">servicios.equipo_id</label>)}
                    
                 </div>
                 
-                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtIdUsuario">
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdUsuario">
                       {t('Servicios:label.idUsuario')}
                       </label>
                    {{captura} ? ( 
-            <InputText  id="txtIdUsuario" placeholer={t('Servicios:placeholder.idUsuario')} value={Servicios.usuario_id} className={formik.errors.txtIdUsuario ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('usuario_id', e.target.value)}></InputText>    
+            <InputText placeholder={t('Servicios:placeholder.idUsuario')} id="txtIdUsuario" value={Servicios.usuario_id} className={formik.errors.txtIdUsuario ? 'p-invalid':'p-inputtext'}  onChange={(e) =>   updateProperty('usuario_id', e.target.value)}></InputText>    
             ):(    <label id="txtIdUsuario">servicios.usuario_id</label>)}
                    
                 </div>

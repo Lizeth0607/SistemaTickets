@@ -70,89 +70,6 @@ const onUpload = () => {
 
 
 
-    
-
-    
-//Autocomplete
-const [ubicaciones, setUbicaciones] = useState([]);
-const [selectedUbicaciones, setSelectedUbicaciones] = useState(null);
-const [filteredUbicaciones, setFilteredUbicaciones] = useState(null);
-const ubicacionesDatosService = new UbicacionesDatosService();
-
-
-const items = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-useEffect(() => {
-    ubicacionesDatosService.getUbicaciones().then(data => setUbicaciones(data));
-}, []); 
-
-const searchUbicacion = (event) => {
-    setTimeout(() => {
-        let _filteredUbicaciones;
-        if (!event.query.trim().length) {
-            _filteredUbicaciones = [...ubicaciones];
-        }
-        else {
-            _filteredUbicaciones = ubicaciones.filter((country) => {
-                return ubicaciones.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredUbicaciones(_filteredUbicaciones);
-    }, 250);
-}
-const itemTemplate = (item) => {
-   return (
-       <div className="ubicacion-item">
-           <div>{item.name}</div>
-       </div>
-   );
-}
-
-//Autocomplete 2
-const [sedes, setSedes] = useState([]);
-const [selectedSedes, setSelectedSedes] = useState(null);
-const [filteredSedes, setFilteredSedes] = useState(null);
-const sedesDatosService = new SedesDatosService();
-
-
-const itemsSede = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-useEffect(() => {
-    sedesDatosService.getSedes().then(data => setSedes(data));
-}, []); 
-
-const searchSede = (event) => {
-    setTimeout(() => {
-        let _filteredSedes;
-        if (!event.query.trim().length) {
-            _filteredSedes = [...sedes];
-        }
-        else {
-            _filteredSedes = sedes.filter((country) => {
-                return sedes.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredSedes(_filteredSedes);
-    }, 250);
-}
-
-
-    
-
-const itemTemplateSedes = (item) => {
-    return (
-        <div className="sede-item">
-            <div>{item.name}</div>
-        </div>
-    );
-}
-
-
-
-
-
 
 const empleadosSuccess = (severidad,cabecero,detalle)   =>   {
 let mensajeCopy = Object.assign({}, mensaje);
@@ -309,8 +226,7 @@ return (
    <Column field="imagen" header={t('Empleados:label.imagenPerfil')} sortable={true}></Column>
       <Column field="empleado_id" header={t('Empleados:label.idEmpleado')} sortable={true}></Column>
       <Column field="nombre" header={t('Empleados:label.nombreEmpleado')} sortable={true}></Column>
-      <Column field="telefono" header={t('Empleados:label.telefonoEmpleado')} sortable={true}></Column>
-      <Column field="mail" header={t('Empleados:label.correoEmpleado')} sortable={true}></Column>
+      
       <Column field="puesto" header={t('Empleados:label.puestoEmpleado')} sortable={true}></Column>
       <Column field="ubicacion_id" header={t('Empleados:label.idUbicacion')} sortable={true}></Column>
       <Column field="sede_id" header={t('Empleados:label.idSede')} sortable={true}></Column>
@@ -366,7 +282,7 @@ return (
             ):(     <label id="txtIdUbicacion">empleados.idUbicacion</label>)}
                
             </div>    
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdSede">
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtIdSede">
                   {t('Empleados:label.idSede')}
                   </label>
                {{captura} ? ( 
