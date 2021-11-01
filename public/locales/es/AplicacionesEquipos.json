@@ -38,23 +38,26 @@
 "label":{
         "instalacion_id":"ID AplicacionEquipo",
         "fecha_instalacion":"Fecha de instalación",
-        "aplicacion_id":"Aplicación",
-        "equipo_id": "Equipo"
+        "estacion":"Equipo",
+        "version": "Versión",
+        "nombre": "Nombre de Aplicacion"
        },
 
 "required":{
-        "instalacion_id":"El ID AplicacionEquipo es requerido",
-        "fecha_instalacion":"La Fecha de instalación es requerida",
-        "aplicacion_id":"La Aplicación es requerida",
-        "equipo_id": "El Equipo es requerido"
+      "instalacion_id":"ID AplicacionEquipo es requerido",
+      "fecha_instalacion":"Fecha de instalación es requerida",
+      "estacion":"Equipo es requerido",
+      "version": "Versión es requerida",
+      "nombre": "Nombre de Aplicacion es requerida"
 
       },
 
 "placeholder":{
-        "instalacion_id":"Escribe el ID AplicacionEquipo",
-        "fecha_instalacion":"Escribe la Fecha de instalación",
-        "aplicacion_id":"Selecciona la Aplicación",
-        "equipo_id": "Selecciona elEquipo"
+      "instalacion_id":"Escribe el ID AplicacionEquipo",
+      "fecha_instalacion":"Escribe la Fecha de instalación",
+      "estacion":"Selecciona el equipo",
+      "version": "Versión",
+      "nombre": "Selecciona la aplicacion"
       }
     
  }   

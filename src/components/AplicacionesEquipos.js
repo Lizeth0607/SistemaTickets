@@ -210,10 +210,10 @@ const AplicacionesEquipos = ()   =>   {
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
 
-          <Column field="estacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
-          <Column field="nombre" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
-          <Column field="version" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
-          <Column field="instalacion" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
+          <Column field="estacion" header={t('AplicacionesEquipos:label.estacion')} sortable={true}></Column>
+          <Column field="nombre" header={t('AplicacionesEquipos:label.nombre')} sortable={true}></Column>
+          <Column field="version" header={t('AplicacionesEquipos:label.version')} sortable={true}></Column>
+          <Column field="instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
        </DataTable>
@@ -236,7 +236,7 @@ const AplicacionesEquipos = ()   =>   {
                
             
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtaplicacion_id">
-                  {t('AplicacionesEquipos:label.aplicacion_id')}
+                  {t('AplicacionesEquipos:label.nombre')}
                   </label>
                {{captura} ? ( 
             
