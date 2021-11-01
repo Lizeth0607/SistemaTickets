@@ -25,7 +25,6 @@ import AplicacionesEquipos from './components/AplicacionesEquipos';
 import Historial from './components/Historial';
 import Ubicaciones from './components/Ubicaciones';
 import Sedes from './components/Sedes';
-import Ejemplo from './components/Ejemplo';
 
 
 
@@ -70,7 +69,6 @@ const App = () => {
                 items: [
                     {label: 'Usuarios', icon: '', to: "/Usuarios"},
                     {label:'Empleados', icon:'', to:'/Empleados'}, //3
-                    {label: 'Permisos', icon: '', to: "/Ejemplo"}, 
                     {label:'Roles', icon:'', to:'/Roles'}, //3                  
                     /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
@@ -158,7 +156,6 @@ const App = () => {
         {path:'/Historial', component: Historial, meta: { breadcrumb: [{ parent: 'Operación', label: 'Historial' }] }},
         {path:'/Ubicaciones', component: Ubicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ubicaciones' }] }},
         {path:'/Sedes', component: Sedes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Sedes' }] }},
-        {path:'/Ejemplo', component: Ejemplo, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ejemplo' }] }},
 
     ];
 

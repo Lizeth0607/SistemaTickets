@@ -209,11 +209,11 @@ const AplicacionesEquipos = ()   =>   {
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
+
           <Column field="estacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
           <Column field="nombre" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
           <Column field="version" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
           <Column field="instalacion" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
-
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
        </DataTable>
@@ -234,19 +234,13 @@ const AplicacionesEquipos = ()   =>   {
                    
                 </div>
                
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdEquioo">
-                  {t('AplicacionesEquipos:label.idEquipo')}
-                  </label>
-               {{captura} ? ( 
-            <InputText id="txtfecha_instalacion" value={AplicacionesEqs.aplicacion_id} onChange={(e) => updateProperty('aplicacion_id', e.target.value)}  mask="99/99/9999"/>
-            ):(     <label id="txtIdEquipo">aplicacionesEqs.idEquipo</label>)}
-               
-            </div>  
+            
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtaplicacion_id">
                   {t('AplicacionesEquipos:label.aplicacion_id')}
                   </label>
                {{captura} ? ( 
-            <InputText id="txtfecha_instalacion" value={AplicacionesEqs.equipo_id} onChange={(e) => updateProperty('equipo_id', e.target.value)}  mask="99/99/9999"/>
+            
+            <Dropdown  options={lstAplicacionesEqs}  optionLabel="nombre" placeholder="" onChange={(e) => updateProperty('aplicacion_id', e.target.value)} />
             ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
                
             </div> 

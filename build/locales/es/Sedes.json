@@ -1,0 +1,54 @@
+
+{
+    "entidad": "Sedes",
+    
+  "rotulo":{
+    "buscar":"Buscar sede",
+    "agregar":"Nuevo sede",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar sede",    
+    "actualizar":"Actualizar sede",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Sedes",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Sedes",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idSede":"ID Sede",
+        "nombreSede":"Nombre de Sede"
+       },
+
+"required":{
+        "idSede":"El ID Sede es requerido",
+        "nombreSede":"El Nombre de la Sede es requerida"
+        },
+
+"placeholder":{
+        "idSede":"Escribe el ID Sede",
+        "nombreSede":"Escribe el Nombre de la Sede"
+        }
+    
+ }   
+

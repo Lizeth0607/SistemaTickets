@@ -6,6 +6,7 @@ import axios from 'axios';
 export default class  AplicacionesEquiposService {
 
 obtenerAplicacionEq (){
+
     return axios.get("https://api-hpp.herokuapp.com/install").then(res => res.data);
 
 }

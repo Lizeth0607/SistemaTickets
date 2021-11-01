@@ -1,0 +1,80 @@
+
+{
+    "entidad": "Servicios de Soporte de IT",
+    
+  "rotulo":{
+    "buscar":"Buscar Servicio",
+    "agregar":"Nuevo Servicio",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Servicio",    
+    "actualizar":"Actualizar Servicio",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Servicios",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Servicios",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idServicio":"ID Servicio",
+        "nombreServicio":"Nombre del Servicio",
+        "descServicio":"Descripción del Servicio",
+        "prioridadServicio":"Prioridad del Servicio",
+        "estadoServicio":"Estado del Servicio",
+        "fechaSolicitud":"Fecha de solicitud",
+        "fechaTermino":"Fecha de término",
+        "idEquipo":"Id Equipo",
+        "idEmpleado":"Empleado Equipo",
+        "idUsuario":"Usuario Asignado"
+    
+    },
+
+"required":{
+        "idServicio":"El ID Servicio es requerido",
+        "nombreServicio":"El Nombre del Servicio es requerido",
+        "descServicio":"La Descripción del Servicio es requerida",
+        "prioridadServicio":"La Prioridad del Servicio es requerida",
+        "estadoServicio":"El Estado del Servicio es requerido",
+        "fechaSolicitud":"La Fecha de solicitud es requerida",
+        "fechaTermino":"La Fecha de término es requerida",
+        "idEquipo":"El Id Equipo es requerido",
+        "idEmpleado":"El Empleado Equipo es requerido",
+        "idUsuario":"El Usuario Asignado es requerido"
+
+    },
+
+"placeholder":{
+        "idServicio":"Escribe el ID Servicio",
+        "nombreServicio":"Escribe el Nombre del Servicio",
+        "descServicio":"Escribe la Descripción del Servicio",
+        "prioridadServicio":"Escribe la Prioridad del Servicio",
+        "estadoServicio":"Escribe el Estado del Servicio",
+        "fechaSolicitud":"Escribe la Fecha de solicitud",
+        "fechaTermino":"Escribe la Fecha de término",
+        "idEquipo":"Selecciona el Id Equipo",
+        "idEmpleado":"Selecciona el Empleado Equipo",
+        "idUsuario":"Selecciona el Usuario Asignado"    
+    }
+    
+ }   
+

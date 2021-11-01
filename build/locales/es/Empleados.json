@@ -1,0 +1,72 @@
+
+{
+    "entidad": "Empleados",
+    
+  "rotulo":{
+    "buscar":"Buscar Empleado",
+    "agregar":"Nuevo Empleado",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Empleado",    
+    "actualizar":"Actualizar Empleado",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Empleados",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Empleados",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idEmpleado":"ID Empleado",
+        "nombreEmpleado":"Nombre del Empleado",
+        "telefonoEmpleado":"Telefono",
+        "correoEmpleado":"Correo electrónico",
+        "puestoEmpleado":"Puesto",
+        "idUbicacion":"Ubicacion" ,
+        "idSede":"Sede" ,
+        "imagenPerfil":"Perfil" 
+      },
+
+"required":{
+        "idEmpleado":"ID Empleado es requerido",
+        "nombreEmpleado":"Nombre del Empleado es requerido",
+        "telefonoEmpleado":"El telefono es requerido",
+        "correoEmpleado":"El correo electrónico es requerido",
+        "puestoEmpleado":"Puesto es requerido",
+        "idUbicacion":"Ubicacion es requerida" ,
+        "idSede":"Sede es reqeerida",
+        "imagenPerfil":"La imagen Perfil es requerida" 
+ },
+
+"placeholder":{
+        "idEmpleado":"Escribe el ID Empleado",
+        "nombreEmpleado":"Escribe el Nombre del Empleado",
+        "telefonoEmpleado":"Escribe el telefono",
+        "correoEmpleado":"Escribe el correo electrónico",
+        "puestoEmpleado":"Escribe el Puesto",
+        "idUbicacion":"Escribe la Ubicacion" ,
+        "idSede":"Escribe la Sede",
+        "imagenPerfil":"Selecciona imagen de Perfil" 
+       }
+    
+ }   
+

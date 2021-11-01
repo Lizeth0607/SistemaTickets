@@ -1,0 +1,54 @@
+
+{
+    "entidad": "Roles de Usuarios",
+    
+  "rotulo":{
+    "buscar":"Buscar Rol de Usuario",
+    "agregar":"Nuevo Rol de Usuario",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Rol de Usuario",    
+    "actualizar":"Actualizar Rol de Usuario",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Roles de Usuarios",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Roles de Usuarios",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idRol":"ID Rol",
+        "nombreRol":"Nombre de Rol"
+       },
+
+"required":{
+        "idRol":"El ID Rol es requerido",
+        "nombreRol":"El Nombre del Rol es requerido"
+        },
+
+"placeholder":{
+        "idRol":"Escribe el ID Rol",
+        "nombreRol":"Escribe el Nombre del Rol"
+        }
+    
+ }   
+

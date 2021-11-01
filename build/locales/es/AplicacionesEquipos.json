@@ -1,0 +1,61 @@
+
+{
+    "entidad": "Aplicaciones Equipos",
+    
+  "rotulo":{
+    "buscar":"Buscar Aplicacion de Equipo",
+    "agregar":"Nuevo Aplicacion de Equipo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Aplicacion de Equipo",    
+    "actualizar":"Actualizar Aplicacion de Equipo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Aplicaciones de Equipos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Aplicaciones de Equipos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "instalacion_id":"ID AplicacionEquipo",
+        "fecha_instalacion":"Fecha de instalación",
+        "aplicacion_id":"Aplicación",
+        "equipo_id": "Equipo"
+       },
+
+"required":{
+        "instalacion_id":"El ID AplicacionEquipo es requerido",
+        "fecha_instalacion":"La Fecha de instalación es requerida",
+        "aplicacion_id":"La Aplicación es requerida",
+        "equipo_id": "El Equipo es requerido"
+
+      },
+
+"placeholder":{
+        "instalacion_id":"Escribe el ID AplicacionEquipo",
+        "fecha_instalacion":"Escribe la Fecha de instalación",
+        "aplicacion_id":"Selecciona la Aplicación",
+        "equipo_id": "Selecciona elEquipo"
+      }
+    
+ }   
+

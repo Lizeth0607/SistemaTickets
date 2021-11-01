@@ -1,0 +1,57 @@
+
+{
+    "entidad": "Indicadores (KPI)",
+    
+  "rotulo":{
+    "buscar":"Buscar Indicador",
+    "agregar":"Nuevo Indicador",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar Indicador",    
+    "actualizar":"Actualizar Indicador",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Indicadores",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Indicadores",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "idInd":"ID Indicador",
+        "nombreInd":"Nombre del Indicador",
+        "unidadMedida":"Unidad de Medida",
+        "categoria":"Categorías"},
+
+"required":{
+        "idInd":"IDIndicador es requerido",
+        "nombreInd":"El nombre del indicador es requerido",
+        "unidadMedidad":"La unidad de medida es requerida",
+        "categoria":"La categoría es requerida"},
+
+"placeholder":{
+        "idInd":"ID Indicador",
+        "nombreInd":"Escribe el nombre del indicador",
+        "unidadMedida":"Selecciona la unidad de medida",
+        "categoria":"Selecciona la categoría"}
+    
+ }   
+
