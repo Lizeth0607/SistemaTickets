@@ -26,7 +26,7 @@ import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
 import { Skeleton } from 'primereact/skeleton';
-
+//import Component from '@fullcalendar/core/component/Component';
 
 const AplicacionesEquipos = ()   =>   {
     const  [mensaje, setMensaje] = useState({
@@ -38,13 +38,15 @@ const AplicacionesEquipos = ()   =>   {
     });
     
     
+    
+                                            
     const [lstAplicacionesEqs, setLstAplicacionesEqs] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgAplicacionesEqs, setDlgAplicacionesEqs] = useState(false);
-    const [AplicacionesEqs, setAplicacionesEqs] = useState({instalacion_id:null
-    ,fecha_instalacion:''
-    ,aplicacion_id:''
-    ,equipo_id:''
+    const [AplicacionesEqs, setAplicacionesEqs] = useState({ID:null
+    ,app:''
+    ,equipo:''
+
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -54,81 +56,7 @@ const AplicacionesEquipos = ()   =>   {
     
     
     //Autocomplete
-const [equipos, setEquipos] = useState([]);
-const [selectedEquipos, setSelectedEquipos] = useState(null);
-const [filteredEquipos, setFilteredEquipos] = useState(null);
-const equiposDatosService = new EquiposDatosService();
-
-const itemsEquipos = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-useEffect(() => {
-    equiposDatosService.getEquipos().then(data => setEquipos(data));
-}, []); 
-
-const searchEquipo = (event) => {
-    setTimeout(() => {
-        let _filteredEquipos;
-        if (!event.query.trim().length) {
-            _filteredEquipos = [...equipos];
-        }
-        else {
-            _filteredEquipos = equipos.filter((equipos) => {
-                return equipos.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredEquipos(_filteredEquipos);
-    }, 250);
-}
-const itemTemplateEquipos = (item) => {
-   return (
-       <div className="equipo-item">
-           <div>{item.name}</div>
-       </div>
-   );
-}
-
-//Autocomplete 2
-const [aplicaciones, setAplicaciones] = useState([]);
-const [selectedAplicaciones, setSelectedAplicaciones] = useState(null);
-const [filteredAplicaciones, setFilteredAplicaciones] = useState(null);
-const aplicacionesDatosService = new AplicacionesDatosService();
-
-const itemsAplicacion = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-useEffect(() => {
-    aplicacionesDatosService.getAplicacionesEqs().then(data => setAplicaciones(data));
-}, []); 
-
-const searchAplicacion = (event) => {
-    setTimeout(() => {
-        let _filteredAplicaciones;
-        if (!event.query.trim().length) {
-            _filteredAplicaciones = [...aplicaciones];
-        }
-        else {
-            _filteredAplicaciones = aplicaciones.filter((aplicaciones) => {
-                return aplicaciones.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredAplicaciones(_filteredAplicaciones);
-    }, 250);
-}
-
     
-
-const itemTemplateAplicaciones = (item) => {
-    return (
-        <div className="aplicacion-item">
-            <div>{item.name}</div>
-        </div>
-    );
-}
-
-
-
-
 
     
     const aplicacionesEqsSuccess = (severidad,cabecero,detalle)   =>   {
@@ -196,11 +124,9 @@ const itemTemplateAplicaciones = (item) => {
     };
     
     const iniciaComponentes = ()   =>   {
-    setAplicacionesEqs({instalacion_id:null
-        ,fecha_instalacion:''
-        ,aplicacion_id:''
-        ,equipo_id:''
-
+    setAplicacionesEqs({ID:null
+        ,app:''
+        ,equipo:''
     });
     formik.resetForm();
     };
@@ -262,8 +188,10 @@ const itemTemplateAplicaciones = (item) => {
     
     const dlgFooter = 
     <Toolbar right={rightFooter}></Toolbar>;                 
-    
-    
+    let today = new Date();
+
+    let invalidDates = [today];
+
     
     
     
@@ -280,10 +208,12 @@ const itemTemplateAplicaciones = (item) => {
           </div>
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
-          <Column field="instalacion_id" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
-          <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
-          <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
-          <Column field="equipo_id" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
+          <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
+          <Column field="estacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
+          <Column field="nombre" header={t('AplicacionesEquipos:label.aplicacion_id')} sortable={true}></Column>
+          <Column field="version" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
+          <Column field="instalacion" header={t('AplicacionesEquipos:label.equipo_id')} sortable={true}></Column>
+
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
        </DataTable>
@@ -295,8 +225,8 @@ const itemTemplateAplicaciones = (item) => {
                       {t('AplicacionesEquipos:label.fecha_instalacion')}
                       </label>
                    {{captura} ? ( 
-                    <InputText id="txtfecha_instalacion" value={AplicacionesEqs.fecha_instalacion} onChange={(e) => updateProperty('fecha_instalacion', e.target.value)}  mask="99/99/9999"/>
-                    ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fecha_instalacion</label>)}
+                        <Calendar id="txtFechaInstalacion" value={AplicacionesEqs.fecha_instalacion} onChange={(e) => updateProperty('fecha_instalacion',e.target.value)} disabledDates={invalidDates} disabledDays={[0, 6]} readOnlyInput />
+                        ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fecha_instalacion</label>)}
                
                    {formik.errors.txtfecha_instalacion  &&  <small id="txtfecha_instalacion-help" className="p-invalid">
                       {formik.errors.txtfecha_instalacion}

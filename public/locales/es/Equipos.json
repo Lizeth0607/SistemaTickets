@@ -36,47 +36,32 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "idEquipo":"ID Equipo",
-        "nombreEquipo":"Nombre del Equipo",
-        "serialEquipo":"Número de Serie",
-        "ipEquipo":"Dirección IP",
-        "licenciaEquipo":"Licencia" ,
-        "fechaCompra":"Fecha de Compra",
-        "marcaEquipo":"Marca",
-        "categEquipo":"Categoría" ,
-        "ramEquipo":"RAM" ,
-        "discoEquipo":"Disco" ,
-        "pantallaEquipo":"Pantalla" ,
-        "empleadoEquipo":"Empleado"   
+        "ID":"ID Equipo",
+        "num_serie":"Numero de Serie",
+        "compra":"Fecha de compra",
+        "estacion":"Estación",
+        "especificaciones":"Especificaciones" ,
+        "tipo":"Tipo",
+        "id_sede":"Sede"  
       },
 
 "required":{
-        "idEquipo":"El ID Equipo es requerido",
-        "nombreEquipo":"El Nombre del Equipo es requerido",
-        "serialEquipo":"El Número de Serie es requerido",
-        "ipEquipo":"La dirección IP es requerida",
-        "licenciaEquipo":"La Licencia es requerida" ,
-        "fechaCompra":"la Fecha de Compra es requerida",
-        "marcaEquipo":"La Marca es requerida",
-        "categEquipo":"La Categoría es requerida" ,
-        "ramEquipo":"La RAM es requerida" ,
-        "discoEquipo":"El Disco es requerido" ,
-        "pantallaEquipo":"La Pantalla es requerida" ,
-        "empleadoEquipo":"El Empleado es requerido" },
+        "ID":"ID Equipo es requerido" ,
+        "num_serie":"Numero de Serie es requerido",
+        "compra":"Fecha de compra es requerido",
+        "estacion":"Estación es requerida",
+        "especificaciones":"Las especificaciones son requeridas" ,
+        "tipo":"El tipo es requerida",
+        "id_sede":"La sede es es requerida"  },
 
 "placeholder":{
-        "idEquipo":"Escribe el ID Equipo",
-        "nombreEquipo":"Escribe el Nombre del Equipo",
-        "serialEquipo":"Escribe el Número de Serie",
-        "ipEquipo":"Escribe la dirección IP",
-        "licenciaEquipo":"Escribe la Licencia" ,
-        "fechaCompra":"Escribe la Fecha de Compra",
-        "marcaEquipo":"Selecciona la Marca",
-        "categEquipo":"Selecciona la Categoría" ,
-        "ramEquipo":"Selecciona la RAM" ,
-        "discoEquipo":"Selecciona el Disco" ,
-        "pantallaEquipo":"Selecciona la Pantalla" ,
-        "empleadoEquipo":"Buscar el Empleado" }
+        "ID":"Escribe el ID Equipo",
+        "num_serie":"Escribe el Numero de Serie",
+        "compra":"Escribe la Fecha de compra",
+        "estacion":"Escribe la Estación",
+        "especificaciones":"Escribe las Especificaciones" ,
+        "tipo":"Escribe el Tipo",
+        "id_sede":"Sede"  }
     
  }   
 

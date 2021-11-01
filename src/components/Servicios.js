@@ -28,6 +28,7 @@ import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
 import { Skeleton } from 'primereact/skeleton';
+//import { arrayToHash } from '@fullcalendar/core/util/object';
 
 
 const Servicios = ()   =>   {
@@ -42,14 +43,7 @@ const Servicios = ()   =>   {
     //TextArea
     const [value1, setValue1] = useState('');
     //Autocomplete Equipos
-    
-
-
-
-
-
-
-
+   
     const [lstServicios, setLstServicios] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgServicios, setDlgServicios] = useState(false);
@@ -251,8 +245,9 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.nombreServicio')}
                       </label>
                    {{captura} ? ( 
-                   <InputText id="txtNombreServicio" placeholder={t('Servicios:placeholder.nombreServicio')} value={Servicios.servicio} className={formik.errors.txtNombreServicio ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('servicio', e.target.value)}></InputText>    
-                   ):(     <label id="txtNombreServicio">servicios.servicio</label>)}
+                   <InputTextarea placeholder={t('Servicios:placeholder.nombreServicio')} value={Servicios.nombre} onChange={(e) =>  updateProperty('nombre', e.target.value)} rows={3} cols={20} autoResize />
+                   ):(     <label id="txtNombreServicio">servicios.nombre</label>)}
+                      
                    
                    {formik.errors.txtNombreServicio &&  <small id="txtNombreServicio-help" className="p-invalid">
                       {formik.errors.txtNombreServicio}
@@ -318,6 +313,9 @@ const Servicios = ()   =>   {
                    
                 </div>
              </div>
+             
+  
+
           </div>
           
           }

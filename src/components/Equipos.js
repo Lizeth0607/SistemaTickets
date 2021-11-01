@@ -39,18 +39,13 @@ timer: '3000'
 const [lstEquipos, setLstEquipos] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgEquipos, setDlgEquipos] = useState(false);
-const [Equipos, setEquipos] = useState({equipo_id:null
-    ,nombre: ''
-    ,serial: ''
-    ,ip_equipo: ''
-    ,licencia: ''
-    ,fecha_compra: ''
-    ,marca_id: ''
-    ,categoria_id: ''
-    ,ram_id: ''
-    ,disco_id: ''
-    ,pantalla_id: ''
-    ,empleado_id: ''
+const [Equipos, setEquipos] = useState({ID:null
+   ,num_serie: ''
+   ,compra: ''
+   ,estacion: ''
+   ,especificaciones: ''
+   ,tipo: ''
+   ,id_sede: ''
 
 });
 
@@ -204,18 +199,14 @@ setDlgEquipos(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setEquipos({equipo_id:null
-    ,nombre: ''
-    ,serial: ''
-    ,ip_equipo: ''
-    ,licencia: ''
-    ,fecha_compra: ''
-    ,marca_id: ''
-    ,categoria_id: ''
-    ,ram_id: ''
-    ,disco_id: ''
-    ,pantalla_id: ''
-    ,empleado_id: ''
+setEquipos({ID:null
+    ,num_serie: ''
+    ,compra: ''
+    ,estacion: ''
+    ,especificaciones: ''
+    ,tipo: ''
+    ,id_sede: ''
+   
 });
 formik.resetForm();
 };
@@ -226,8 +217,8 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Equipos.equipo_id) {
-errors.txtIdEquipo= t('Equipos:required.idEquipo');
+ if (!Equipos.num_serie) {
+errors.txtINumSerie= t('Equipos:required.NumSerie');
 }
 return errors;
 };

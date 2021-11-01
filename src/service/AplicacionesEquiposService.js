@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  AplicacionesEquiposService {
 
 obtenerAplicacionEq (){
-    return axios.get("https://backliz1.herokuapp.com/installation").then(res => res.data);
+    return axios.get("https://api-hpp.herokuapp.com/install").then(res => res.data);
 
 }
 
@@ -17,12 +17,12 @@ return axios.get(seleccionaUrl  + '/' + pAplicacionEqs.instalacion_id).then(resp
 }
 
 agregaAplicacionEq (pAplicacionEqs) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/installation';
+    let agregaUrl = 'https://api-hpp.herokuapp.com/install';
     console.log(pAplicacionEqs);
     const params = new URLSearchParams()
-    params.append('fecha_instalacion',pAplicacionEqs.fecha_instalacion)
-    params.append('aplicacion_id',pAplicacionEqs.aplicacion_id)
-    params.append('equipo_id',pAplicacionEqs.equipo_id)
+    //params.append('fecha_instalacion',pAplicacionEqs.fecha_instalacion)
+    params.append('app',pAplicacionEqs.app)
+    params.append('equipo',pAplicacionEqs.equipo)
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
     }
