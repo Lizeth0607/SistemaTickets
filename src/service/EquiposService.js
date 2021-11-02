@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  EquiposService {
 
 obtenerEquipo (pCriterio){
-    return axios.get("https://backliz1.herokuapp.com/device").then(res => res.data);
+    return axios.get("https://api-hpp.herokuapp.com/devices").then(res => res.data);
 
 }
 

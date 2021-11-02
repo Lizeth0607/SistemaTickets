@@ -17,9 +17,11 @@ import { AutoComplete } from 'primereact/autocomplete';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import AplicacionesEquiposService from '../service/AplicacionesEquiposService';
+import AplicacionesService from '../service/AplicacionesService';
+import EquiposService from '../service/EquiposService';
+
 import axios from 'axios';
-import { EquiposDatosService }  from '../service/EquiposDatosService';
-import  AplicacionesDatosService  from '../service/AplicacionesDatosService';
+
 
 
 import { useTranslation , Trans} from 'react-i18next';
@@ -39,7 +41,11 @@ const AplicacionesEquipos = ()   =>   {
     
     
     
-                                            
+        
+    const [lstApps, setLstApps] = useState([]);
+    const [lstDevices, setLstDevices] = useState([]);
+
+
     const [lstAplicacionesEqs, setLstAplicacionesEqs] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgAplicacionesEqs, setDlgAplicacionesEqs] = useState(false);
@@ -53,9 +59,10 @@ const AplicacionesEquipos = ()   =>   {
     const { t } = useTranslation(['translation','AplicacionesEquipos']);
     const [captura, setCaptura] = useState(false);
     const aplicacionesEqsService = new AplicacionesEquiposService(); //MODIFICAR SERVICES
-    
-    
-    //Autocomplete
+    const apps = new AplicacionesService();
+    const devices = new EquiposService();
+
+   
     
 
     
@@ -72,8 +79,12 @@ const AplicacionesEquipos = ()   =>   {
     const [value1, setValue1] = useState('');
     
     
-    
-    
+    const obtenerApp = ()   =>   { //MODIFICAR EN SERVICE
+      apps.obtenerApp ().then(data => setLstApps(data));
+   };
+   const obtenerEquipo = ()   =>   { //MODIFICAR EN SERVICE
+      devices.obtenerEquipo ().then(data => setLstDevices(data));
+   };
     const obtenerAplicacionEq = ()   =>   { //MODIFICAR EN SERVICE
       aplicacionesEqsService.obtenerAplicacionEq ().then(data => setLstAplicacionesEqs(data));
    };
@@ -88,7 +99,13 @@ const AplicacionesEquipos = ()   =>   {
     useEffect(()   =>   {
     obtenerAplicacionEq();
     },  [txtCriterio]);
-    
+   
+    useEffect(()   =>   {
+      obtenerApp();
+      },);
+      useEffect(()   =>   {
+         obtenerEquipo();
+         },);
     
     const agregaAplicacionEq = ()   =>   {
     aplicacionesEqsService.agregaAplicacionEq (AplicacionesEqs).then(data => {setAplicacionesEqs(data);
@@ -111,6 +128,8 @@ const AplicacionesEquipos = ()   =>   {
     then(data => { setDlgAplicacionesEqs(false); obtenerAplicacionEq();});
     };
     
+    
+
     const updateProperty = (propiedad, valor)   =>  {
     let aplicacionesEqsCopy = Object.assign({}, AplicacionesEqs);
     aplicacionesEqsCopy[propiedad] = valor;
@@ -208,6 +227,7 @@ const AplicacionesEquipos = ()   =>   {
           </div>
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
+          
           <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
 
           <Column field="estacion" header={t('AplicacionesEquipos:label.estacion')} sortable={true}></Column>
@@ -220,28 +240,23 @@ const AplicacionesEquipos = ()   =>   {
        <Dialog header={t('AplicacionesEquipos:rotulo.agregar')} footer={dlgFooter} visible={dlgAplicacionesEqs} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgAplicacionesEqs(false)} blockScroll={false}>
           { AplicacionesEqs  &&  
           <div>
-             <div className="p-fluid p-formgrid p-grid">
-                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtfecha_instalacion">
-                      {t('AplicacionesEquipos:label.fecha_instalacion')}
-                      </label>
-                   {{captura} ? ( 
-                        <Calendar id="txtFechaInstalacion" value={AplicacionesEqs.fecha_instalacion} onChange={(e) => updateProperty('fecha_instalacion',e.target.value)} disabledDates={invalidDates} disabledDays={[0, 6]} readOnlyInput />
-                        ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fecha_instalacion</label>)}
-               
-                   {formik.errors.txtfecha_instalacion  &&  <small id="txtfecha_instalacion-help" className="p-invalid">
-                      {formik.errors.txtfecha_instalacion}
-                      </small>}                 
-                   
-                </div>
-               
-            
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtaplicacion_id">
+             <div className="p-fluid p-formgrid p-grid">   
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
                   {t('AplicacionesEquipos:label.nombre')}
                   </label>
                {{captura} ? ( 
             
-            <Dropdown  options={lstAplicacionesEqs}  optionLabel="nombre" placeholder="" onChange={(e) => updateProperty('aplicacion_id', e.target.value)} />
+            <Dropdown  options={lstApps} value={AplicacionesEqs.app}  optionLabel="nombre" placeholder={t('AplicacionesEquipos:placeholder.nombre')} onChange={(e) => updateProperty('app', e.target.value)} />
             ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
+               
+            </div>
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
+                  {t('AplicacionesEquipos:label.estacion')}
+                  </label>
+               {{captura} ? ( 
+            
+            <Dropdown  options={lstDevices} value={AplicacionesEqs.equipo}  optionLabel="estacion" placeholder={t('AplicacionesEquipos:placeholder.estacion')} onChange={(e) => updateProperty('equipo', e.target.value)} />
+            ):(     <label id="txtaplicacion_ides">aplicacionesEqs.equipo</label>)}
                
             </div> 
              </div>
