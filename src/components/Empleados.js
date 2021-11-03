@@ -29,8 +29,6 @@ import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
 import { Skeleton } from 'primereact/skeleton';
-import  SedesDatosService  from '../service/SedesDatosService';
-import  UbicacionesDatosService  from '../service/UbicacionesDatosService';
 
 
 const Empleados = ()   =>   {

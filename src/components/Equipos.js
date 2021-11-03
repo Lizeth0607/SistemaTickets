@@ -22,7 +22,6 @@ import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
 import { Skeleton } from 'primereact/skeleton';
-import  EmpleadosDatosService  from '../service/EmpleadosDatosService';
 
 
 
@@ -97,48 +96,17 @@ const [empleados, setempleados] = useState([]);
 const [selectedCountry2, setSelectedCountry2] = useState(null);
 const [selectedItem, setSelectedItem] = useState(null);
 const [filteredempleados, setFilteredempleados] = useState(null);
-const empleadosServide = new EmpleadosDatosService();
 
 
 const items = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
 
-useEffect(() => {
-    empleadosServide.getEmpleados().then(data => setempleados(data));
-}, []); 
-
-const searchCountry = (event) => {
-    setTimeout(() => {
-        let _filteredempleados;
-        if (!event.query.trim().length) {
-            _filteredempleados = [...empleados];
-        }
-        else {
-            _filteredempleados = empleados.filter((country) => {
-                return country.name.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-
-        setFilteredempleados(_filteredempleados);
-    }, 250);
-}
-
-
-
-    
-
-const itemTemplate = (item) => {
-    return (
-        <div className="country-item">
-            <div>{item.name}</div>
-        </div>
-    );
-}
 
 
 
 
 
 
+//Equipo
 const equiposSuccess = (severidad,cabecero,detalle)   =>   {
 let mensajeCopy = Object.assign({}, mensaje);
 mensajeCopy['title'] = cabecero;

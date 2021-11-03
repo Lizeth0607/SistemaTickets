@@ -19,9 +19,6 @@ import { AutoComplete } from 'primereact/autocomplete';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import ServiciosService from '../service/ServiciosService';
-import { EquiposDatosService } from '../service/EquiposDatosService';
-import  EmpleadosDatosService   from '../service/EmpleadosDatosService';
-import UsuariosDatosService  from '../service/UsuariosDatosService';
 
 
 import { useTranslation , Trans} from 'react-i18next';
