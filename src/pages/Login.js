@@ -2,6 +2,12 @@ import React from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export const Login = () => {
 
@@ -17,7 +23,9 @@ export const Login = () => {
                         <InputText placeholder="Full Name" />
                         <InputText placeholder="Email" />
                         <Password placeholder="Password" />
-                        <Button label="CONTINUE" type="button"></Button>
+                        <Link to="/App">
+                           <Button  label="CONTINUAR" type="button"></Button>
+                        </Link>
                     </div>
 
                     <p>A problem? <a href="/">Click here</a> and let us help you.</p>

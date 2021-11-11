@@ -28,7 +28,7 @@ const AppTopbar = (props) => {
                             <i className="pi pi-search"></i>
                         </button>
                     </li>
-                   {/* <li className={notificationsItemClassName}>
+                    <li className={notificationsItemClassName}>
                         <button type="button" className="p-link" onClick={props.onTopbarNotification}>
                             <i className="pi pi-bell"></i>
                             <span className="topbar-badge">5</span>
@@ -80,9 +80,9 @@ const AppTopbar = (props) => {
                                 </button>
                             </li>
                         </ul>
-                    </li> */}
+                    </li> 
 
-                 {/*
+                 
                  <li className={profileItemClassName}>
                         <button type="button" className="p-link" onClick={props.onTopbarUserMenu}>
                             <img src="assets/demo/images/avatar/profile.jpg" alt="diamond-layout" className="profile-image" />
@@ -128,7 +128,7 @@ const AppTopbar = (props) => {
                         <button type="button" className="p-link" onClick={props.onRightMenuButtonClick}>
                             <i className="pi pi-align-right"></i>
                         </button>
-                    </li>*/}   
+                    </li>  
                 </ul>
             </div>
         </div>
