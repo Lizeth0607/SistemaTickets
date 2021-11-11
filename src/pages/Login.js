@@ -23,7 +23,7 @@ export const Login = () => {
                         <InputText placeholder="Full Name" />
                         <InputText placeholder="Email" />
                         <Password placeholder="Password" />
-                        <Link to="/App">
+                        <Link to="/">
                            <Button  label="CONTINUAR" type="button"></Button>
                         </Link>
                     </div>
