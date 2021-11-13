@@ -25,6 +25,7 @@ import AplicacionesEquipos from './components/AplicacionesEquipos';
 import Historial from './components/Historial';
 import Ubicaciones from './components/Ubicaciones';
 import Sedes from './components/Sedes';
+import Registros from './components/Registros';
 
 
 
@@ -69,7 +70,7 @@ const App = () => {
                 items: [
                     {label: 'Usuarios', icon: '', to: "/Usuarios"},
                     {label:'Empleados', icon:'', to:'/Empleados'}, //3
-                    {label:'Roles', icon:'', to:'/Roles'}, //3                  
+                    //{label:'Registros', icon:'', to:'/Registros'}, //3                  
                     /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
                     {label: 'Notificacion Electronica', icon:'', to:"/NotificacionElectronica" },
@@ -87,14 +88,14 @@ const App = () => {
             label: "Equipos", icon: "pi pi-fw pi-align-left",
             items: [
                 {label: 'Aplicaciones Equipos', icon: 'keyboard_tab', to: "/AplicacionesEquipos"},
-                {label: 'Categorías Equipos', icon: 'keyboard_tab', to: "/CategoriasEquipos"},
+                //{label: 'Categorías Equipos', icon: 'keyboard_tab', to: "/CategoriasEquipos"},
                 {label: 'Equipos', icon: 'keyboard_tab', to: "/Equipos"},
-               {label:'Discos', icon:'', to:'/DiscosEquipos'}, //3
+               /*{label:'Discos', icon:'', to:'/DiscosEquipos'}, //3
                {label: 'Historial', icon: 'keyboard_tab', to: "/Historial"},
                {label:'Marcas', icon:'', to:'/Marcas'}, //3
                {label:'Movimientos', icon:'', to:'/Movimientos'}, //3
                {label:'Pantallas', icon:'', to:'/Pantallas'}, //3
-               {label:'Ram', icon:'', to:'/Ram'}, //3
+               {label:'Ram', icon:'', to:'/Ram'}, //3*/
                {label: 'Servicios', icon: 'keyboard_tab', to: "/Servicios"},
 
                 ]     
@@ -126,7 +127,7 @@ const App = () => {
                 items: [
                     {label:'Archivos', icon:'', to:'/Archivos'}, //1
                     {label:'Aplicaciones', icon:'', to:'/Aplicaciones'}, //2
-                    {label:'Sedes', icon:'', to:'/Sedes'}, //3
+                    //{label:'Sedes', icon:'', to:'/Sedes'}, //3
                     {label:'Ubicaciones', icon:'', to:'/Ubicaciones'}, //3
 
              ]
@@ -156,6 +157,7 @@ const App = () => {
         {path:'/Historial', component: Historial, meta: { breadcrumb: [{ parent: 'Operación', label: 'Historial' }] }},
         {path:'/Ubicaciones', component: Ubicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ubicaciones' }] }},
         {path:'/Sedes', component: Sedes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Sedes' }] }},
+        {path:'/Registros', component: Registros, meta: { breadcrumb: [{ parent: 'Operación', label: 'Registros' }] }},
 
     ];
 

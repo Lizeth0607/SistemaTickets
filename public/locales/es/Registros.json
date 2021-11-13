@@ -1,0 +1,60 @@
+
+{
+    "entidad": "Registro de usuario",
+    
+  "rotulo":{
+    "buscar":"Buscar usuario",
+    "agregar":"Nuevo usuario",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar usuario",    
+    "actualizar":"Actualizar usuario",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Usuarios",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Usuarios",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "ID":"ID usuario",
+        "nombre_completo":"Nombre completo",
+        "nombre":"Nombre de usuario",
+        "password":"Contraseña"
+       },
+
+"required":{
+        "ID":"ID usuario es requerido",
+        "nombre_completo":"Nombre completo es requerido",
+        "nombre":"Nombre de usuario es requerido",
+        "password":"Contraseña es requerida"
+},
+
+"placeholder":{
+        "ID":"ID usuario",
+        "nombre_completo":"Escriba su Nombre completo",
+        "nombre":"Escriba su Nombre de usuario",
+        "password":"Escriba su Contraseña"
+    }
+    
+ }   
+

@@ -228,7 +228,6 @@ const AplicacionesEquipos = ()   =>   {
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           
-          <Column field="ID" header={t('AplicacionesEquipos:label.instalacion_id')} sortable={true}></Column>
 
           <Column field="estacion" header={t('AplicacionesEquipos:label.estacion')} sortable={true}></Column>
           <Column field="nombre" header={t('AplicacionesEquipos:label.nombre')} sortable={true}></Column>
