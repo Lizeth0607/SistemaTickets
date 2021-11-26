@@ -11,7 +11,7 @@ export default class  PantallasService {
 
 
     seleccionaPantalla(pPantallas) {
-    let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+    let seleccionaUrl = ''; //Modificar
     return axios.get(seleccionaUrl  + '/' + pPantallas.idPantalla).then(response  =>  response.data);
     }
 
@@ -33,7 +33,7 @@ export default class  PantallasService {
     }
 
     actualizaPantalla (pPantallas) {
-    let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+    let actualizaUrl = ''; //Modificar
     return axios.put(actualizaUrl + '/' + pPantallas.idPantalla,  pPantallas)
     .then(response  =>  response.data);
     }

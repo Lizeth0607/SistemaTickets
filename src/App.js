@@ -26,6 +26,9 @@ import Historial from './components/Historial';
 import Ubicaciones from './components/Ubicaciones';
 import Sedes from './components/Sedes';
 import Registros from './components/Registros';
+import ReportesMes  from './components/ReportesMes';
+import Aplicaciones  from './components/Aplicaciones';
+import Ejemplo  from './components/Ejemplo';
 
 
 
@@ -66,11 +69,11 @@ const App = () => {
             label: "Usuarios/Empleados", icon: "pi pi-folderpi pi-fw pi-align-left",
             items: [
 
-                {label: 'Usuarios', icon: 'pi pi-folderpi pi-fw pi-align-left', to: "/Usuarios",
+                {label: 'Empleados', icon: 'pi pi-folderpi pi-fw pi-align-left', to: "/Empleados",
                 items: [
-                    {label: 'Usuarios', icon: '', to: "/Usuarios"},
+                    //{label: 'Usuarios', icon: '', to: "/Usuarios"},
                     {label:'Empleados', icon:'', to:'/Empleados'}, //3
-                    //{label:'Registros', icon:'', to:'/Registros'}, //3                  
+                    {label:'Ejemplooooo', icon:'', to:'/Ejemplo'}, //3                  
                     /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
                     {label: 'Notificacion Electronica', icon:'', to:"/NotificacionElectronica" },
@@ -110,7 +113,7 @@ const App = () => {
             {
                 label: "Reportes", icon: "pi pi-fw pi-align-left",
                 items: [
-                    {label:'Generar reportes', icon:'', to:'/Reportes'}, //1
+                    {label:'Generar reportes', icon:'', to:'/ReportesMes'}, //1
                     {label:'Categorías', icon:'', to:'/Categorias'}, //2
                     {label:'Indicadores', icon:'', to:'/Indicadores'}, //LISTO
                     {label:'Unidades de Medida', icon:'', to:'/UnidadMEdida'}, //5
@@ -158,6 +161,9 @@ const App = () => {
         {path:'/Ubicaciones', component: Ubicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ubicaciones' }] }},
         {path:'/Sedes', component: Sedes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Sedes' }] }},
         {path:'/Registros', component: Registros, meta: { breadcrumb: [{ parent: 'Operación', label: 'Registros' }] }},
+        {path:'/ReportesMes', component: ReportesMes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Reportes' }] }},
+        {path:'/Aplicaciones', component: Aplicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones' }] }},
+        {path:'/Ejemplo', component: Ejemplo, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ejemplo' }] }},
 
     ];
 

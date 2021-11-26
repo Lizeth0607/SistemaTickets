@@ -243,7 +243,7 @@ const Ram = ()   =>   {
                    ):(     <label id="txtmedidaRam">ram.capacidadRam</label>)}
                    
                 </div>
-                    
+
              </div>
           </div>
           

@@ -6,13 +6,13 @@ import axios from 'axios';
 export default class  EquiposService {
 
 obtenerEquipo (pCriterio){
-    return axios.get("https://api-hpp.herokuapp.com/devices").then(res => res.data);
+    return axios.get("http://127.0.0.1/api-soporte/public/equipo/index").then(res => res.data);
 
 }
 
 
 seleccionaEquipo(pEquipos) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pEquipos.idEquipo).then(response  =>  response.data);
 }
 
@@ -37,14 +37,14 @@ agregaEquipo (pEquipos) {
     }
 
 eliminaEquipo (pEquipos) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/device'; //Modificar
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/aplicacion/equipos'; //Modificar
     console.log("asda ",pEquipos.equipo_id);
     return axios.delete(eliminaUrl + '/' + pEquipos.equipo_id);
 
 }
 
 actualizaEquipo (pEquipos) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pEquipos.idEquipo,  pEquipos)
 .then(response  =>  response.data);
 }

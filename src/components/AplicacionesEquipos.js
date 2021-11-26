@@ -50,9 +50,9 @@ const AplicacionesEquipos = ()   =>   {
     const [errores, setErrores] = useState([]);
     const [dlgAplicacionesEqs, setDlgAplicacionesEqs] = useState(false);
     const [AplicacionesEqs, setAplicacionesEqs] = useState({ID:null
-    ,app:''
-    ,equipo:''
-
+    ,id_app:''
+    ,id_eq:''
+   , fec_inst:''
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -144,8 +144,9 @@ const AplicacionesEquipos = ()   =>   {
     
     const iniciaComponentes = ()   =>   {
     setAplicacionesEqs({ID:null
-        ,app:''
-        ,equipo:''
+      ,id_app:''
+      ,id_eq:''
+      , fec_inst:''
     });
     formik.resetForm();
     };
@@ -228,11 +229,10 @@ const AplicacionesEquipos = ()   =>   {
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           
+         <Column field="id" header={t('AplicacionesEquipos:label.id_eq')} sortable={true}></Column>
+         <Column field="equipo_id" header={t('AplicacionesEquipos:label.id_app')} sortable={true}></Column>
+         <Column field="fec_inst" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
 
-          <Column field="estacion" header={t('AplicacionesEquipos:label.estacion')} sortable={true}></Column>
-          <Column field="nombre" header={t('AplicacionesEquipos:label.nombre')} sortable={true}></Column>
-          <Column field="version" header={t('AplicacionesEquipos:label.version')} sortable={true}></Column>
-          <Column field="instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
        </DataTable>
@@ -240,21 +240,29 @@ const AplicacionesEquipos = ()   =>   {
           { AplicacionesEqs  &&  
           <div>
              <div className="p-fluid p-formgrid p-grid">   
+             <div className="p-field p-col-12 p-md-12"><label htmlFor="txtfecha_instalacion">
+                      {t('AplicacionesEquipos:label.fecha_instalacion')}
+                      </label>
+                   {{captura} ? ( 
+                        <Calendar id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.fec_inst} onChange={(e) => updateProperty('fec_inst', e.target.value)} disabledDates={invalidDates} disabledDays={[0, 6]} readOnlyInput />
+                        ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fec_inst</label>)}
+                   
+                </div>
             <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
-                  {t('AplicacionesEquipos:label.nombre')}
+                  {t('AplicacionesEquipos:label.id_app')}
                   </label>
                {{captura} ? ( 
             
-            <Dropdown  options={lstApps} value={AplicacionesEqs.app}  optionLabel="nombre" placeholder={t('AplicacionesEquipos:placeholder.nombre')} onChange={(e) => updateProperty('app', e.target.value)} />
+            <Dropdown  options={lstApps} value={AplicacionesEqs.id_app}  optionLabel="nombre" placeholder={t('AplicacionesEquipos:placeholder.id_app')} onChange={(e) => updateProperty('id_app', e.target.value)} />
             ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
                
             </div>
             <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
-                  {t('AplicacionesEquipos:label.estacion')}
+                  {t('AplicacionesEquipos:label.id_eq')}
                   </label>
                {{captura} ? ( 
             
-            <Dropdown  options={lstDevices} value={AplicacionesEqs.equipo}  optionLabel="estacion" placeholder={t('AplicacionesEquipos:placeholder.estacion')} onChange={(e) => updateProperty('equipo', e.target.value)} />
+            <Dropdown  options={lstDevices} value={AplicacionesEqs.id_eq}  optionLabel="estacion" placeholder={t('AplicacionesEquipos:placeholder.id_eq')} onChange={(e) => updateProperty('id_eq', e.target.value)} />
             ):(     <label id="txtaplicacion_ides">aplicacionesEqs.equipo</label>)}
                
             </div> 

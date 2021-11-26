@@ -39,7 +39,7 @@ eliminaEmpleado (pEmpleados) {
 }
 
 actualizaEmpleado (pEmpleados) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pEmpleados.idEmpleado,  pEmpleados)
 .then(response  =>  response.data);
 }

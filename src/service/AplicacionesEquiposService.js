@@ -7,13 +7,13 @@ export default class  AplicacionesEquiposService {
 
 obtenerAplicacionEq (){
 
-    return axios.get("https://api-hpp.herokuapp.com/install").then(res => res.data);
+    return axios.get("http://127.0.0.1/api-soporte/public/instalacion/index").then(res => res.data);
 
 }
 
 
 seleccionaAplicacionEq(pAplicacionEqs) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pAplicacionEqs.instalacion_id).then(response  =>  response.data);
 }
 
@@ -29,7 +29,7 @@ agregaAplicacionEq (pAplicacionEqs) {
     }
 
 eliminaAplicacionEq (pAplicacionEqs) {
-let eliminaUrl = '/expediente/tblSentidosSentencias/eliminaTblSentidosSentencias'; //Modificar
+let eliminaUrl = ''; //Modificar
 axios.delete(eliminaUrl  + '/' + pAplicacionEqs.instalacion_id, {
 headers: {'Content-Type': 'application/json;charset=UTF-8'},
 data: pAplicacionEqs
@@ -38,7 +38,7 @@ data: pAplicacionEqs
 }
 
 actualizaAplicacionEq (pAplicacionEqs) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pAplicacionEqs.instalacion_id,  pAplicacionEqs)
 .then(response  =>  response.data);
 }

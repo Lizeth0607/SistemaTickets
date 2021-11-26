@@ -11,12 +11,12 @@ obtenerMarca (){
 
 
 seleccionaMarca(pMarcas) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pMarcas.idMarca).then(response  =>  response.data);
 }
 
 agregaMarca (pMarcas) {
-let agregaUrl = 'https://backliz1.herokuapp.com/mark';
+let agregaUrl = '';
 console.log(pMarcas);
 const params = new URLSearchParams()
 params.append('nombre',pMarcas.nombre)
@@ -32,7 +32,7 @@ eliminaMarca (pMarcas) {
 }
 
 actualizaMarca (pMarcas) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pMarcas.idMarca,  pMarcas)
 .then(response  =>  response.data);
 }

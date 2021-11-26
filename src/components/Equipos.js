@@ -13,15 +13,19 @@ import { ToggleButton } from 'primereact/togglebutton';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { AutoComplete } from 'primereact/autocomplete';
+import { InputTextarea } from 'primereact/inputtextarea';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
-import EquiposService from '../service/EquiposService';
+import  EquiposService  from '../service/EquiposService';
+import SedesService from '../service/SedesService';
+
 
 import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
 import { Skeleton } from 'primereact/skeleton';
+import { addLocale } from 'primereact/api';
 
 
 
@@ -34,7 +38,22 @@ confirmButtonText: 'Aceptar',
 timer: '3000'
 });
 
+let today = new Date();
 
+    let invalidDates = [today];
+
+    addLocale('es', {
+        firstDayOfWeek: 1,
+        dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+        dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+        monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+        today: 'Hoy',
+        clear: 'Claro'
+    });
+   
+const [lstSedes, setLstSedes] = useState([]);
 const [lstEquipos, setLstEquipos] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgEquipos, setDlgEquipos] = useState(false);
@@ -52,56 +71,7 @@ const [txtCriterio, setTxtCriterio] = useState('');
 const { t } = useTranslation(['translation','Equipos']);
 const [captura, setCaptura] = useState(false);
 const equiposService = new EquiposService(); //MODIFICAR SERVICES
-const [selectedMarca, setSelectedMarca] = useState(null);
-const [selectedCategoriaEquipo, setSelectedCategoriaEquipo] = useState(null);
-const [selectedRam, setSelectedRam] = useState(null);
-const [selectedDisco, setSelectedDisco] = useState(null);
-const [selectedPantalla, setSelectedPantalla] = useState(null);
-
-const marcas = [
-   { name: 'Marca1', code: '1' }
-];
-const categoriasEquipo = [
-   { name: 'CategoriaEquipo1', code: '1' }
-];
-const ram = [
-    { name: 'Ram1', code: '1' }
- ];
- const discos = [
-    { name: 'Disco1', code: '1' }
- ];
- const pantallas = [
-    { name: 'Pantalla1', code: '1' }
- ];
-const onMarcaChange = (e) => {
-   setSelectedMarca(e.value);
-}
-const onCategoriaEquipoChange = (e) => {
-   setSelectedCategoriaEquipo(e.value);
-}
-const onRamChange = (e) => {
-    setSelectedRam(e.value);
- }
- const onDiscoChange = (e) => {
-    setSelectedDisco(e.value);
- }
- const onPantallaChange = (e) => {
-    setSelectedPantalla(e.value);
- }
-
-//Autocomplete
-
-
-const [empleados, setempleados] = useState([]);
-const [selectedCountry2, setSelectedCountry2] = useState(null);
-const [selectedItem, setSelectedItem] = useState(null);
-const [filteredempleados, setFilteredempleados] = useState(null);
-
-
-const items = Array.from({ length: 100000 }).map((_, i) => ({ label: `Item #${i}`, value: i }));
-
-
-
+const sedesService = new SedesService();
 
 
 
@@ -120,14 +90,18 @@ Swal.fire(mensajeCopy);
 const obtenerEquipo = ()   =>   { //MODIFICAR EN SERVICE
 equiposService.obtenerEquipo ().then(data => setLstEquipos(data));
 };
-
+const obtenerSede = ()   =>   { //MODIFICAR EN SERVICE
+   sedesService.obtenerSede ().then(data => setLstSedes(data));
+};
 const seleccionaEquipo = (pEquipos)   =>   {
 setCaptura(false);
 formik.resetForm();
 equiposService.seleccionaEquipo (pEquipos).then(data => setEquipos(data));
 setDlgEquipos(true);
 };
-
+useEffect(()   =>   {
+   obtenerSede();
+   },);
 useEffect(()   =>   {
 obtenerEquipo();
 },  [txtCriterio]);
@@ -186,7 +160,7 @@ formik.resetForm();
 const validate = () => {
 const errors = {};
  if (!Equipos.num_serie) {
-errors.txtINumSerie= t('Equipos:required.NumSerie');
+errors.txtSerialEquipo= t('Equipos:required.num_serie');
 }
 return errors;
 };
@@ -254,123 +228,74 @@ return (
    <div className="p-grid p-fluid">
       <div className="p-col-12 p-md-12">
          <div className="p-inputgroup">
-            <InputText placeholder={t('Equipos:placeholder.idEquipo')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Equipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaEquipos}></Button></div>
+            <InputText placeholder={t('Equipos:placeholder.num_serie')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Equipos:boton.agregar')} icon="pi pi-plus" onClick={iniciaEquipos}></Button></div>
       </div>
    </div>
    <DataTable value={lstEquipos} paginator={true} rows={10} responsive={true}>
-      <Column field="equipo_id" header={t('Equipos:label.idEquipo')} sortable={true}></Column>
-      <Column field="nombre" header={t('Equipos:label.nombreEquipo')} sortable={true}></Column>
-      <Column field="serial" header={t('Equipos:label.serialEquipo')} sortable={true}></Column>
-      <Column field="ip_equipo" header={t('Equipos:label.ipEquipo')} sortable={true}></Column>
-      <Column field="licencia" header={t('Equipos:label.licenciaEquipo')} sortable={true}></Column>
-      <Column field="fecha_compra" header={t('Equipos:label.fechaCompra')} sortable={true}></Column>
-      
-      <Column field="empleado_id" header={t('Equipos:label.empleadoEquipo')} sortable={true}></Column>
+      <Column field="num_serie" header={t('Equipos:label.num_serie')} sortable={true}></Column>
+      <Column field="compra" header={t('Equipos:label.compra')} sortable={true}></Column>
+      <Column field="estacion" header={t('Equipos:label.estacion')} sortable={true}></Column>
+      <Column field="tipo" header={t('Equipos:label.tipo')} sortable={true}></Column>
+      <Column field="sede" header={t('Equipos:label.id_sede')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Equipos:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('Equipos:rotulo.agregar')} footer={dlgFooter} visible={dlgEquipos} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgEquipos(false)} blockScroll={false}>
       { Equipos  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtIdEquipo">
-                  {t('Equipos:label.idEquipo')}
-                  </label>
-               {{captura} ? ( 
-               <InputText id="txtidEquipo" placeholder={t('Equipos:placeholder.idEquipo')} value={Equipos.equipo_id} className={formik.errors.txtIdEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('idEquipo', e.target.value)}></InputText>    
-               ):(     <label id="txtIdEquipo">equipos.idEquipo</label>)}
-               
-               {formik.errors.txtIdEquipo  &&  <small id="txtIdEquipo-help" className="p-invalid">
-                  {formik.errors.txtIdEquipo}
-                  </small>}                 
-               
-            </div>
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtNombreEquipo">
-                  {t('Equipos:label.nombreEquipo')}
-                  </label>
-               {{captura} ? ( 
-                  <InputText id="txtNombreEquipo" placeholder={t('Equipos:placeholder.nombreEquipo')} value={Equipos.nombre} className={formik.errors.txtNombreEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
-                  ):(     <label id="txtNombreEquipo">equipos.nombreEquipo</label>)}
-                  
-            </div>
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtSerialEquipo">
-                  {t('Equipos:label.serialEquipo')}
-                  </label>
-               {{captura} ? ( 
-                   <InputText id="txtSerialEquipo" placeholder={t('Equipos:placeholder.serialEquipo')} value={Equipos.serial} className={formik.errors.txtSerialEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('serial', e.target.value)}></InputText>    
-                   ):(     <label id="txtSerialEquipo">equipos.serialEquipo</label>)}
-                   
-            </div>   
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtIPEquipo">
-                  {t('Equipos:label.ipEquipo')}
-                  </label>
-               {{captura} ? ( 
-                   <InputText id="txtIPEquipo" placeholder={t('Equipos:placeholder.ipEquipo')} value={Equipos.ip_equipo} className={formik.errors.txtIPEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('ip_equipo', e.target.value)}></InputText>    
-                   ):(     <label id="txtIPEquipo">equipos.ipEquipo</label>)}
-            </div>   
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtLicenciaEquipo">
-                  {t('Equipos:label.licenciaEquipo')}
-                  </label>
-               {{captura} ? ( 
-                   <InputText id="txtLicenciaEquipo" placeholder={t('Equipos:placeholder.licenciaEquipo')} value={Equipos.licencia} className={formik.errors.txtLicenciaEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('licencia', e.target.value)}></InputText>    
-                   ):(     <label id="txtLicenciaEquipo">equipos.licenciaEquipo</label>)}
-            </div>   
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtFechaCompra">
-                  {t('Equipos:label.fechaCompra')}
-                  </label>
-               {{captura} ? ( 
-               <InputText value={Equipos.fecha_compra} placeholder={t('Equipos:placeholder.fechaCompra')} onChange={(e) => updateProperty('fecha_compra', e.target.value)} />
-               ):(    <label id="txtFechaCompra">equipos.fechaCompra</label>)}
-               
-            </div>     
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtMarcaEquipo">
-                  {t('Equipos:label.marcaEquipo')}
-                  </label>
-               {{captura} ? ( 
-                  <InputText id="txtMarcaEquipo" placeholder={t('Equipos:placeholder.marcaEquipo')} value={Equipos.marca_id} className={formik.errors.txtMarcaEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('marca_id', e.target.value)}></InputText>    
-                  ):(    <label id="txtMarcaEquipo">equipos.marca_id</label>)}
-               
-            </div>   
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtCatEquipo">
-                  {t('Equipos:label.categEquipo')}
-                  </label>
-               {{captura} ? ( 
-                 <InputText id="txtCatEquipo" placeholder={t('Equipos:placeholder.categEquipo')} value={Equipos.categoria_id} className={formik.errors.txtCatEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('categoria_id', e.target.value)}></InputText>    
-                 ):(   <label id="txtCatEquipo">equipos.categoria_id</label>)}
-               
-            </div>    
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtRamEquipo">
-                  {t('Equipos:label.ramEquipo')}
-                  </label>
-               {{captura} ? ( 
-                  <InputText id="txtRamEquipo" placeholder={t('Equipos:placeholder.ramEquipo')} value={Equipos.ram_id} className={formik.errors.txtRamEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('ram_id', e.target.value)}></InputText>    
-                  ):(     <label id="txtRamEquipo">equipos.ram_id</label>)}
-               
-            </div>   
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtDiscoEquipo">
-                  {t('Equipos:label.discoEquipo')}
-                  </label>
-               {{captura} ? ( 
-                  <InputText id="txtDiscoEquipo" placeholder={t('Equipos:placeholder.discoEquipo')} value={Equipos.disco_id} className={formik.errors.txtDiscoEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('disco_id', e.target.value)}></InputText>    
-                 ):(      <label id="txtDiscoEquipo">equipos.disco_id</label>)}
-               
-            </div>   
-            <div className="p-field p-col-12 p-md-4"><label htmlFor="txtPantallaEquipo">
-                  {t('Equipos:label.pantallaEquipo')}
-                  </label>
-               {{captura} ? ( 
-                  <InputText id="txtPantallaEquipo" placeholder={t('Equipos:placeholder.pantallaEquipo')} value={Equipos.pantalla_id} className={formik.errors.txtPantallaEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('pantalla_id', e.target.value)}></InputText>    
-                  ):(      <label id="txtPantallaEquipo">equipos.pantalla_id</label>)}
-              
+         <div className="p-field p-col-12 p-md-12"><label htmlFor="txtSerialEquipo">
+                      {t('Equipos:label.num_serie')}
+                      </label>
+                   {{captura} ? ( 
+               <InputText id="txtSerialEquipo" placeholder={t('Equipos:placeholder.num_serie')} value={Equipos.num_serie} className={formik.errors.txtSerialEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('num_serie', e.target.value)}></InputText>    
 
-            </div>  
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEmplEquipo">
-                  {t('Equipos:label.empleadoEquipo')}
-                  </label>
-               {{captura} ? ( 
-            <InputText id="txtEmpleadosEquipo" placeholder={t('Equipos:placeholder.empleadoEquipo')} value={Equipos.empleado_id} className={formik.errors.txtEmpleadoEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('empleado_id', e.target.value)}></InputText>    
-            ):(     <label id="txtEmplEquipo">equipos.empleado_id</label>)}
-               
-            </div>      
+                ):(     <label id="txtSerialEquipo">equipos.num_serie</label>)}
+                   {formik.errors.txtSerialEquipo &&  <small id="txtSerialEquipo-help" className="p-invalid">
+                      {formik.errors.txtSerialEquipo}
+                      </small>}  
+                </div>
+                <div className="p-field p-col-12 p-md-6"><label htmlFor="txtFechaCompra">
+                      {t('Equipos:label.compra')}
+                      </label>
+                   {{captura} ? ( 
+                        <Calendar id="txtFechaCompra" placeholder={t('Equipos:placeholder.compra')} value={Equipos.compra} onChange={(e) => updateProperty('compra', e.target.value)} disabledDates={invalidDates} disabledDays={[0, 6]} readOnlyInput />
+                        ):(     <label id="txtFechaCompra">servicios.compra</label>)}
+                   
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEstacion">
+                      {t('Equipos:label.estacion')}
+                      </label>
+                   {{captura} ? ( 
+               <InputText id="txtEstacion" placeholder={t('Equipos:placeholder.estacion')} value={Equipos.estacion} className={formik.errors.txtEstacion ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('estacion', e.target.value)}></InputText>    
+
+                ):(     <label id="txtEstacion">equipos.estacion</label>)}
+    
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEsp">
+                      {t('Equipos:label.especificaciones')}
+                      </label>
+                   {{captura} ? ( 
+                <InputTextarea placeholder={t('Equipos:placeholder.especificaciones')} className={formik.errors.txtEsp ? 'p-invalid':'p-inputtext'} value={Equipos.especificaciones} onChange={(e) =>  updateProperty('especificaciones', e.target.value)} rows={3} cols={20} autoResize />
+                ):(     <label id="txtEsp">equipos.especificaciones</label>)}
+                    
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtTipo">
+                      {t('Equipos:label.tipo')}
+                      </label>
+                   {{captura} ? ( 
+               <InputText id="txtTipo" placeholder={t('Equipos:placeholder.tipo')} value={Equipos.tipo} className={formik.errors.txtTipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('tipo', e.target.value)}></InputText>    
+
+                ):(     <label id="txtTipo">equipos.tipo</label>)}
+    
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtSede">
+                      {t('Equipos:label.id_sede')}
+                      </label>
+                   {{captura} ? ( 
+           <Dropdown  options={lstSedes} value={Equipos.id_sede}  optionLabel="id_sede" placeholder={t('Servicios:placeholder.id_sede')} onChange={(e) => updateProperty('id_sede', e.target.value)} />
+           ):(    <label id="txtSede">servicios.id_sede</label>)}
+                   
+                </div>
          </div>
       </div>
       

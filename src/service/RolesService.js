@@ -11,7 +11,7 @@ obtenerRol (){
 
 
 seleccionaRol(pRoles) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pRoles.idRol).then(response  =>  response.data);
 }
 
@@ -32,7 +32,7 @@ eliminaRol (pRoles) {
 }
 
 actualizaRol (pRoles) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pRoles.idRol,  pRoles)
 .then(response  =>  response.data);
 }

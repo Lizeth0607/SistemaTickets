@@ -1,18 +1,18 @@
 
 {
-    "entidad": "Aplicaciones Equipos",
+    "entidad": "Aplicaciones generales",
     
   "rotulo":{
-    "buscar":"Buscar Aplicacion de Equipo",
-    "agregar":"Nuevo Aplicacion de Equipo",
+    "buscar":"Buscar Aplicación",
+    "agregar":"Nuevo Aplicación",
     "editar":"Editar",
     "confirmacion":"¿Esta seguro?",
-    "eliminar":"Eliminar Aplicacion de Equipo",    
-    "actualizar":"Actualizar Aplicacion de Equipo",    
+    "eliminar":"Eliminar Aplicación",    
+    "actualizar":"Actualizar Aplicación",    
     "imprimir":"Imprimir"   
   },
   "mensaje":{
-    "cabecero":"Aplicaciones de Equipos",
+    "cabecero":"Aplicaciones",
     "severidad":"info",
     "agregar":"Agregado correctamente",
     "confirmacion":"¿Esta seguro?",
@@ -20,7 +20,7 @@
     "actualizar":"Actualizado correctamente"    
   },
   "error":{
-    "cabecero":"Aplicaciones de Equipos",
+    "cabecero":"Aplicaciones",
     "severidad":"error",
     "agregar":"Error en Agregar",
     "eliminar":"Error en Eliminar",
@@ -36,24 +36,25 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "id_eq":"ID Equipo",
-        "id_app":"ID Aplicación",
-        "fecha_instalacion":"Fecha de instalación"
-        
+        "id":"ID Aplicacion",
+        "nombre":"Nombre",
+        "version":"Versión",
+        "fecha_compra":"Fecha de obtención"
        },
 
 "required":{
-      "id_eq":"ID Equipo es requerido",
-      "id_app":"ID Aplicación es requerido",
-      "fecha_instalacion":"Fecha de instalación es requerida"
-
-      },
+        "id":"El ID Aplicacion es requerido",
+        "nombre":"El Nombre es requerido",
+        "version":"La Versión es requerida",
+        "fecha_compra":"La Fecha de obtención es requerida"
+},
 
 "placeholder":{
-      "id_eq":"Selecciona el Equipo",
-      "id_app":"Selecciona la Aplicación",
-      "fecha_instalacion":"Selecciona la Fecha de instalación"
-      }
+        "id":"Escribe el ID Aplicacion",
+        "nombre":"Escribe el Nombre",
+        "version":"Escribe la Versión",
+        "fecha_compra":"Fecha de obtención"
+    }
     
  }   
 

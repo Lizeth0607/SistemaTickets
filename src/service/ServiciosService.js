@@ -11,7 +11,7 @@ obtenerServicio (pCriterio){
 
 
 seleccionaServicio(pServicios) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pServicios.idServicio).then(response  =>  response.data);
 }
 
@@ -39,7 +39,7 @@ eliminaServicio (pServicios) {
 }
 
 actualizaServicio (pServicios) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pServicios.idServicio,  pServicios)
 .then(response  =>  response.data);
 }

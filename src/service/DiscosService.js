@@ -12,7 +12,7 @@ obtenerDisco (){
 
 
 seleccionaDisco(pDiscos) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pDiscos.idDisco).then(response  =>  response.data);
 }
 
@@ -35,7 +35,7 @@ eliminaDisco (pDiscos) {
 }
 
 actualizaDisco (pDiscos) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pDiscos.idDisco,  pDiscos)
 .then(response  =>  response.data);
 }

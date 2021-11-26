@@ -11,7 +11,7 @@ obtenerRam (pCriterio){
 
 
 seleccionaRam(pRam) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pRam.idRam).then(response  =>  response.data);
 }
 
@@ -34,7 +34,7 @@ eliminaRam (pRam) {
 }
 
 actualizaRam (pRam) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pRam.idRam,  pRam)
 .then(response  =>  response.data);
 }

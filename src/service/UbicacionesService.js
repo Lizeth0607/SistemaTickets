@@ -11,7 +11,7 @@ obtenerUbicacion (){
 
 
 seleccionaUbicacion(pUbicaciones) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pUbicaciones.ubicacion_id).then(response  =>  response.data);
 }
 
@@ -32,7 +32,7 @@ eliminaUbicacion (pUbicaciones) {
 }
 
 actualizaUbicacion (pUbicaciones) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pUbicaciones.ubicacion_id,  pUbicaciones)
 .then(response  =>  response.data);
 }

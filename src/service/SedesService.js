@@ -6,12 +6,12 @@ import axios from 'axios';
 export default class  SedesService {
 
 obtenerSede (){
-    return axios.get("https://backliz1.herokuapp.com/seat").then(res => res.data);
+    return axios.get("https://api-hpp.herokuapp.com/install").then(res => res.data);
 }
 
 
 seleccionaSede(pSedes) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pSedes.sede_id).then(response  =>  response.data);
 }
 
@@ -32,7 +32,7 @@ eliminaSede (pSedes) {
 }
 
 actualizaSede (pSedes) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pSedes.sede_id,  pSedes)
 .then(response  =>  response.data);
 }

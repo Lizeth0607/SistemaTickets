@@ -11,7 +11,7 @@ obtenerRegistro (){
 
 
 seleccionaRegistro(pRegistros) {
-let seleccionaUrl = '/expediente/tblSentidosSentencias/seleccionaTblSentidosSentencias'; //Modificar
+let seleccionaUrl = ''; //Modificar
 return axios.get(seleccionaUrl  + '/' + pRegistros.idRegistros).then(response  =>  response.data);
 }
 
@@ -32,7 +32,7 @@ eliminaRegistro (pRegistros) {
 }
 
 actualizaRegistro (pRegistros) {
-let actualizaUrl = '/expediente/tblSentidosSentencias/actualizaTblSentidosSentencias'; //Modificar
+let actualizaUrl = ''; //Modificar
 return axios.put(actualizaUrl + '/' + pRegistros.idRegistros,  pRegistros)
 .then(response  =>  response.data);
 }
