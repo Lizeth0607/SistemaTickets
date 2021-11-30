@@ -36,6 +36,7 @@
     "actualizar":"Actualizar"    
   },
 "label":{
+        "id":"ID Instalación",
         "id_eq":"ID Equipo",
         "id_app":"ID Aplicación",
         "fecha_instalacion":"Fecha de instalación"
@@ -43,6 +44,7 @@
        },
 
 "required":{
+      
       "id_eq":"ID Equipo es requerido",
       "id_app":"ID Aplicación es requerido",
       "fecha_instalacion":"Fecha de instalación es requerida"
@@ -52,7 +54,7 @@
 "placeholder":{
       "id_eq":"Selecciona el Equipo",
       "id_app":"Selecciona la Aplicación",
-      "fecha_instalacion":"Selecciona la Fecha de instalación"
+      "fecha_instalacion":"Escribe la Fecha de instalación"
       }
     
  }   

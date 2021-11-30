@@ -31,6 +31,7 @@ agregaApp (pApps) {
 eliminaApp (pApps) {
     let eliminaUrl = 'http://127.0.0.1/api-soporte/public/aplicacion/destroy'; //Modificar
     console.log("Eliminado ",pApps.id);
+    console.log(pApps);
     return axios.delete(eliminaUrl + '/' + pApps.id);
 
 }
@@ -38,7 +39,6 @@ eliminaApp (pApps) {
 actualizaApp (pApps) {
 let actualizaUrl = 'http://127.0.0.1/api-soporte/public/aplicacion/update'; //Modificar
 console.log("Actualizado", pApps);
-
 return axios.post(actualizaUrl + '/' + pApps.id,  pApps).then(response  =>  response.data);
 }
 

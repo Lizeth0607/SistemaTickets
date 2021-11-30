@@ -30,6 +30,7 @@ import { useFormik } from 'formik';
 import { Skeleton } from 'primereact/skeleton';
 //import Component from '@fullcalendar/core/component/Component';
 
+ 
 const AplicacionesEquipos = ()   =>   {
     const  [mensaje, setMensaje] = useState({
     title: '',
@@ -40,19 +41,34 @@ const AplicacionesEquipos = ()   =>   {
     });
     
     
-    
-        
     const [lstApps, setLstApps] = useState([]);
     const [lstDevices, setLstDevices] = useState([]);
+    const [selectedApp, setSelectedApp]= useState(null);
+
+   //Dropdown
+    const url="http://127.0.0.1/api-soporte/public/equipo/index";
+    const [equiposIndex, setEquiposIndex]=useState()
+    const fecthApi = async()=>{
+       const response = await fetch(url);
+       console.log(response.status);
+       const responseJson= await response.json();
+       setEquiposIndex(responseJson);
+       console.log(responseJson);
+
+    }
+    useEffect(() =>{
+       fecthApi();
+      }, [] )
 
 
     const [lstAplicacionesEqs, setLstAplicacionesEqs] = useState([]);
     const [errores, setErrores] = useState([]);
     const [dlgAplicacionesEqs, setDlgAplicacionesEqs] = useState(false);
-    const [AplicacionesEqs, setAplicacionesEqs] = useState({ID:null
-    ,id_app:''
-    ,id_eq:''
-   , fec_inst:''
+    const [AplicacionesEqs, setAplicacionesEqs] = useState({id:null
+    ,aplicacion_id:''
+    ,equipo_id :''
+   , instalacion:''
+  
     });
     
     const [txtCriterio, setTxtCriterio] = useState('');
@@ -75,8 +91,6 @@ const AplicacionesEquipos = ()   =>   {
     Swal.fire(mensajeCopy);
     }
     
-    //TextArea
-    const [value1, setValue1] = useState('');
     
     
     const obtenerApp = ()   =>   { //MODIFICAR EN SERVICE
@@ -85,6 +99,12 @@ const AplicacionesEquipos = ()   =>   {
    const obtenerEquipo = ()   =>   { //MODIFICAR EN SERVICE
       devices.obtenerEquipo ().then(data => setLstDevices(data));
    };
+   
+   const onAppChange = (e) => {
+      setSelectedApp(e.value);
+  }
+
+
     const obtenerAplicacionEq = ()   =>   { //MODIFICAR EN SERVICE
       aplicacionesEqsService.obtenerAplicacionEq ().then(data => setLstAplicacionesEqs(data));
    };
@@ -141,12 +161,13 @@ const AplicacionesEquipos = ()   =>   {
     iniciaComponentes();
     setDlgAplicacionesEqs(true);
     };
-    
+                                     
     const iniciaComponentes = ()   =>   {
-    setAplicacionesEqs({ID:null
-      ,id_app:''
-      ,id_eq:''
-      , fec_inst:''
+    setAplicacionesEqs({id:null
+      ,aplicacion_id:''
+      ,equipo_id :''
+     , instalacion:''
+                
     });
     formik.resetForm();
     };
@@ -229,9 +250,10 @@ const AplicacionesEquipos = ()   =>   {
        </div>
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           
-         <Column field="id" header={t('AplicacionesEquipos:label.id_eq')} sortable={true}></Column>
+         <Column field="id" header={t('AplicacionesEquipos:label.id')} sortable={true}></Column>
          <Column field="equipo_id" header={t('AplicacionesEquipos:label.id_app')} sortable={true}></Column>
-         <Column field="fec_inst" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
+         <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.id_eq')} sortable={true}></Column>
+         <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
 
 
           <Column body={actionTemplate} header={t('AplicacionesEquipos:rotulo.editar')}></Column>
@@ -240,32 +262,43 @@ const AplicacionesEquipos = ()   =>   {
           { AplicacionesEqs  &&  
           <div>
              <div className="p-fluid p-formgrid p-grid">   
-             <div className="p-field p-col-12 p-md-12"><label htmlFor="txtfecha_instalacion">
+             
+
+               <div className="p-field p-col-12 p-md-12"><label htmlFor="txtfecha_instalacion">
                       {t('AplicacionesEquipos:label.fecha_instalacion')}
                       </label>
                    {{captura} ? ( 
-                        <Calendar id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.fec_inst} onChange={(e) => updateProperty('fec_inst', e.target.value)} disabledDates={invalidDates} disabledDays={[0, 6]} readOnlyInput />
+                        <InputMask id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.instalacion} onChange={(e) => updateProperty('instalacion', e.target.value)} mask="9999-99-99"  slotChar="yyyy/mm/dd" ></InputMask>
                         ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fec_inst</label>)}
                    
                 </div>
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
-                  {t('AplicacionesEquipos:label.id_app')}
-                  </label>
-               {{captura} ? ( 
-            
-            <Dropdown  options={lstApps} value={AplicacionesEqs.id_app}  optionLabel="nombre" placeholder={t('AplicacionesEquipos:placeholder.id_app')} onChange={(e) => updateProperty('id_app', e.target.value)} />
-            ):(     <label id="txtaplicacion_ides">aplicacionesEqs.aplicacion_id</label>)}
-               
-            </div>
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtaplicacion_id">
-                  {t('AplicacionesEquipos:label.id_eq')}
-                  </label>
-               {{captura} ? ( 
-            
-            <Dropdown  options={lstDevices} value={AplicacionesEqs.id_eq}  optionLabel="estacion" placeholder={t('AplicacionesEquipos:placeholder.id_eq')} onChange={(e) => updateProperty('id_eq', e.target.value)} />
-            ):(     <label id="txtaplicacion_ides">aplicacionesEqs.equipo</label>)}
-               
-            </div> 
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtAplicacion">
+                      {t('AplicacionesEquipos:label.id_app')}
+                      </label>
+                   {{captura} ? ( 
+                <Dropdown onChange={onAppChange} value={selectedApp} optionValue="id" options={lstApps}  optionLabel="nombre"  placeholder={t('AplicacionesEquipos:placeholder.id_app')} />
+
+                ):(     <label id="txtAplicacion">aplicacionesEqs.aplicacion_id</label>)}
+    
+                </div>
+                <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEquipo">
+                      {t('AplicacionesEquipos:label.id_eq')}
+                      </label>
+                   {{captura} ? ( 
+               <InputText id="txtEquipo" placeholder={t('AplicacionesEquipos:placeholder.id_eq')} value={AplicacionesEqs.equipo_id} className={formik.errors.txtEquipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('equipo_id', e.target.value)}></InputText>    
+
+                ):(     <label id="txtEquipo">aplicacionesEqs.equipo_id</label>)}
+    
+                </div>
+                <div>
+                   <ul>
+                   {!equiposIndex ? "Cargando equipos":
+                   equiposIndex.map((equipoIndex, index) =>{
+                      return <li key={index}>{equipoIndex.estacion}</li>
+                   })
+                   }
+                   </ul>
+                </div>
              </div>
           </div>
           

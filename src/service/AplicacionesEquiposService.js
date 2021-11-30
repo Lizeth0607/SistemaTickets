@@ -18,12 +18,14 @@ return axios.get(seleccionaUrl  + '/' + pAplicacionEqs.instalacion_id).then(resp
 }
 
 agregaAplicacionEq (pAplicacionEqs) {
-    let agregaUrl = 'https://api-hpp.herokuapp.com/install';
+    let agregaUrl = 'http://127.0.0.1/api-soporte/public/instalacion/store';
     console.log(pAplicacionEqs);
     const params = new URLSearchParams()
-    //params.append('fecha_instalacion',pAplicacionEqs.fecha_instalacion)
-    params.append('app',pAplicacionEqs.app)
-    params.append('equipo',pAplicacionEqs.equipo)
+    params.append('instalacion',pAplicacionEqs.instalacion)
+    params.append('aplicacion_id',pAplicacionEqs.aplicacion_id)
+    params.append('equipo_id',pAplicacionEqs.equipo_id)
+    params.append('estacion',pAplicacionEqs.estacion)
+    params.append('aplicacion',pAplicacionEqs.aplicacion_id)
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
     }

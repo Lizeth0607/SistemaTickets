@@ -28,7 +28,6 @@ import Sedes from './components/Sedes';
 import Registros from './components/Registros';
 import ReportesMes  from './components/ReportesMes';
 import Aplicaciones  from './components/Aplicaciones';
-import Ejemplo  from './components/Ejemplo';
 
 
 
@@ -73,7 +72,7 @@ const App = () => {
                 items: [
                     //{label: 'Usuarios', icon: '', to: "/Usuarios"},
                     {label:'Empleados', icon:'', to:'/Empleados'}, //3
-                    {label:'Ejemplooooo', icon:'', to:'/Ejemplo'}, //3                  
+                    //{label:'Ejemplooooo', icon:'', to:'/Ejemplo'}, //3                  
                     /*{label: 'Notificaciones', icon: '', to: "/Notificaciones"},
                     {label: 'Acuerdos', icon: '', to: "/Acuerdos"},
                     {label: 'Notificacion Electronica', icon:'', to:"/NotificacionElectronica" },
@@ -163,7 +162,6 @@ const App = () => {
         {path:'/Registros', component: Registros, meta: { breadcrumb: [{ parent: 'Operación', label: 'Registros' }] }},
         {path:'/ReportesMes', component: ReportesMes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Reportes' }] }},
         {path:'/Aplicaciones', component: Aplicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones' }] }},
-        {path:'/Ejemplo', component: Ejemplo, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ejemplo' }] }},
 
     ];
 

@@ -106,9 +106,9 @@ const eliminaApp = (pApps)   =>   {
 
 const actualizaApp = (pApps)   =>   {
 aplicacionesService.actualizaApp (pApps).then(data => { setDlgAplicaciones(data);
-//setDlgAplicaciones(false);
+aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.editar'));
+setDlgAplicaciones(false);
 obtenerApp();});
-//aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.editar'));
 
 };
 
@@ -218,6 +218,7 @@ return (
       <Column body={actionTemplate} header={t('Aplicaciones:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('Aplicaciones:rotulo.agregar')} footer={dlgFooter} visible={dlgAplicaciones} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgAplicaciones(false)} blockScroll={false}>
+      <form>
       { Aplicaciones  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
@@ -253,7 +254,7 @@ return (
       </div>
       
       }
-      
+      </form>
    </Dialog>
 </div>
 );
