@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  DiscosService {
 
 obtenerDisco (){
-    return axios.get("https://backliz1.herokuapp.com/disk").then(res => res.data);
+    return axios.get("").then(res => res.data);
 
 }
 
@@ -17,7 +17,7 @@ return axios.get(seleccionaUrl  + '/' + pDiscos.idDisco).then(response  =>  resp
 }
 
 agregaDisco (pDiscos) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/disk';
+    let agregaUrl = '';
     console.log(pDiscos);
     const params = new URLSearchParams()
     params.append('tipo',pDiscos.tipo)
@@ -28,7 +28,7 @@ agregaDisco (pDiscos) {
     }
 
 eliminaDisco (pDiscos) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/disk'; //Modificar
+    let eliminaUrl = ''; //Modificar
     console.log("asda ",pDiscos.disco_id);
     return axios.delete(eliminaUrl + '/' + pDiscos.disco_id);
 

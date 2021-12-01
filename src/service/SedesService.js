@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  SedesService {
 
 obtenerSede (){
-    return axios.get("https://api-hpp.herokuapp.com/install").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pSedes.sede_id).then(response  =>  respo
 }
 
 agregaSede (pSedes) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/seat';
+    let agregaUrl = '';
     console.log(pSedes);
     const params = new URLSearchParams()
     params.append('nombre',pSedes.nombre)
@@ -25,7 +25,7 @@ agregaSede (pSedes) {
 }
 
 eliminaSede (pSedes) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/seat'; //Modificar
+    let eliminaUrl = ''; //Modificar
     //console.log("asda ",pSedees.rol_id);
     return axios.delete(eliminaUrl + '/' + pSedes.sede_id);
 

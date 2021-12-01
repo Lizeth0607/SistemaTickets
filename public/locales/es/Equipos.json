@@ -36,32 +36,35 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "ID":"ID Equipo",
+        "id":"ID Equipo",
         "num_serie":"Numero de Serie",
         "compra":"Fecha de compra",
         "estacion":"Estación",
         "especificaciones":"Especificaciones" ,
         "tipo":"Tipo",
-        "id_sede":"Sede"  
+        "empresa":"Empresa"  ,
+        "can_install":"Instalación"
       },
 
 "required":{
-        "ID":"ID Equipo es requerido" ,
+        "id":"ID Equipo es requerido" ,
         "num_serie":"Numero de Serie es requerido",
         "compra":"Fecha de compra es requerido",
         "estacion":"Estación es requerida",
         "especificaciones":"Las especificaciones son requeridas" ,
         "tipo":"El tipo es requerida",
-        "id_sede":"La sede es es requerida"  },
+        "empresa":"La empresa es es requerida" ,
+        "can_install":"Instalación es requerida" },
 
 "placeholder":{
-        "ID":"Escribe el ID Equipo",
+        "id":"Escribe el ID Equipo",
         "num_serie":"Escribe el Numero de Serie",
         "compra":"Escribe la Fecha de compra",
         "estacion":"Escribe la Estación",
         "especificaciones":"Escribe las Especificaciones" ,
-        "tipo":"Escribe el Tipo",
-        "id_sede":"Sede"  }
+        "tipo":"Selecciona el Tipo",
+        "empresa":"Selecciona la empresa",
+        "can_install":"Escribe Instalación"  }
     
  }   
 

@@ -6,35 +6,34 @@ import axios from 'axios';
 export default class  EmpleadosService {
 
 obtenerEmpleado (){
-    return axios.get("https://backliz1.herokuapp.com/employee").then(res => res.data);
+    return axios.get("http://localhost/api-soporte/public/empleado/index").then(res => res.data);
 }
 
 
 seleccionaEmpleado(pEmpleados) {
-let seleccionaUrl = 'https://backliz1.herokuapp.com/employee'; //Modificar
+let seleccionaUrl = ''; //Modificar
 console.log("asda ",pEmpleados.empleado_id);
 return axios.get(seleccionaUrl  + '/' + pEmpleados.idEmpleado).then(response  =>  response.data);
 }
 
 agregaEmpleado (pEmpleados) {
-let agregaUrl = 'https://backliz1.herokuapp.com/employee';
+let agregaUrl = 'http://localhost/api-soporte/public/empleado/store';
 console.log(pEmpleados);
 const params = new URLSearchParams()
+params.append('num_empleado',pEmpleados.num_empleado)
 params.append('nombre',pEmpleados.nombre)
-params.append('telefono',pEmpleados.telefono)
-params.append('mail',pEmpleados.mail)
+params.append('apellidos',pEmpleados.apellidos)
 params.append('puesto',pEmpleados.puesto)
-params.append('imagen',pEmpleados.imagen)
-params.append('ubicacion_id',pEmpleados.ubicacion_id)
-params.append('sede_id',pEmpleados.sede_id)
+params.append('area',pEmpleados.area)
+params.append('id_equipo',pEmpleados.id_equipo)
 const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
 return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
 eliminaEmpleado (pEmpleados) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/employee'; //Modificar
-    console.log("asda ",pEmpleados.empleado_id);
-    return axios.delete(eliminaUrl + '/' + pEmpleados.empleado_id);
+    let eliminaUrl = 'http://localhost/api-soporte/public/empleado/destroy'; //Modificar
+    console.log("Eliminado: ",pEmpleados.id);
+    return axios.delete(eliminaUrl + '/' + pEmpleados.id);
 
 }
 

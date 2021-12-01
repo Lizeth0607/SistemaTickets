@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  UbicacionesService {
 
 obtenerUbicacion (){
-    return axios.get("https://backliz1.herokuapp.com/location").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pUbicaciones.ubicacion_id).then(response
 }
 
 agregaUbicacion (pUbicaciones) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/location';
+    let agregaUrl = '';
     console.log(pUbicaciones);
     const params = new URLSearchParams()
     params.append('nombre',pUbicaciones.nombre)
@@ -25,7 +25,7 @@ agregaUbicacion (pUbicaciones) {
 }
 
 eliminaUbicacion (pUbicaciones) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/location'; //Modificar
+    let eliminaUrl = ''; //Modificar
     //console.log("asda ",pUbicaciones.rol_id);
     return axios.delete(eliminaUrl + '/' + pUbicaciones.ubicacion_id);
 

@@ -135,13 +135,13 @@ const AplicacionesEquipos = ()   =>   {
     });
     };
     
-    const eliminaAplicacionEq = ()   =>   {
-    AplicacionesEqs.eliminaAplicacionEq (AplicacionesEqs);
-    aplicacionesEqsSuccess('success',t('DiscosEquipos:cabecero.exito'),t('DiscosEquipos:mensaje.eliminar'));
-    setDlgAplicacionesEqs(false);
-    obtenerAplicacionEq();
-    obtenerAplicacionEq();
-    };
+    const eliminaAplicacionEq = (pApps)   =>   {
+      aplicacionesEqsService.eliminaAplicacionEq(pApps).then(data => setAplicacionesEqs(data));
+      aplicacionesEqsSuccess('success',t('AplicacionesEquipos:cabecero.exito'),t('Aplicaciones:mensaje.eliminar'));
+      setDlgAplicacionesEqs(false);
+      obtenerAplicacionEq();
+      obtenerAplicacionEq();
+   };
     
     const actualizaAplicacionEq = ()   =>   {
     aplicacionesEqsService.actualizaAplicacionEq(AplicacionesEqs).
@@ -208,7 +208,10 @@ const AplicacionesEquipos = ()   =>   {
     
     const actionTemplate = (rowData, column)   =>   {
     return (
-    <div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaAplicacionEq(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaAplicacionEq(rowData); } }></Button></div>);
+    <div>
+        <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaAplicacionEq(rowData);} }></Button>
+      <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaAplicacionEq(rowData); } }></Button>
+    </div>);
     }
     
     

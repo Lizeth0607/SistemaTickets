@@ -44,14 +44,12 @@ timer: '3000'
 const [lstEmpleados, setLstEmpleados] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgEmpleados, setDlgEmpleados] = useState(false);
-const [Empleados, setEmpleados] = useState({empleado_id:null
+const [Empleados, setEmpleados] = useState({num_empleado:''
    ,nombre:''
-   ,telefono:''
-   ,mail:''
+   ,apellidos:''
    ,puesto:''
-   ,imagen:'indefinido'
-   ,ubicacion_id:''
-   ,sede_id:''
+   ,area:''
+   ,id_equipo:''
 
 });
 
@@ -96,12 +94,12 @@ obtenerEmpleado();
 
 
 const agregaEmpleado = ()   =>   {
-empleadosService.agregaEmpleado (Empleados).then(data => {setEmpleados(data);
-empleadosSuccess('success',t('Empleados:cabecero.exito'),t('Empleados:mensaje.agregar'));
-setDlgEmpleados(false);
-obtenerEmpleado ();
-});
-};
+   empleadosService.agregaEmpleado (Empleados).then(data => {setEmpleados(data);
+   empleadosSuccess('success',t('Empleados:cabecero.exito'),t('Empleados:mensaje.agregar'));
+   setDlgEmpleados(false);
+   obtenerEmpleado ();
+   });
+   };
 
 const eliminaEmpleado = (pEmpleados)   =>   {
 empleadosService.eliminaEmpleado (pEmpleados).then(data => setEmpleados(data));
@@ -130,14 +128,12 @@ setDlgEmpleados(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setEmpleados({empleado_id:null
+setEmpleados({num_empleado:''
    ,nombre:''
-   ,telefono:''
-   ,mail:''
+   ,apellidos:''
    ,puesto:''
-   ,imagen:''
-   ,ubicacion_id:''
-   ,sede_id:''
+   ,area:''
+   ,id_equipo:''
 });
 formik.resetForm();
 };
@@ -221,24 +217,30 @@ return (
       </div>
    </div>
    <DataTable value={lstEmpleados} paginator={true} rows={10} responsive={true}>
-   <Column field="imagen" header={t('Empleados:label.imagenPerfil')} sortable={true}></Column>
-      <Column field="empleado_id" header={t('Empleados:label.idEmpleado')} sortable={true}></Column>
-      <Column field="nombre" header={t('Empleados:label.nombreEmpleado')} sortable={true}></Column>
-      
-      <Column field="puesto" header={t('Empleados:label.puestoEmpleado')} sortable={true}></Column>
-      <Column field="ubicacion_id" header={t('Empleados:label.idUbicacion')} sortable={true}></Column>
-      <Column field="sede_id" header={t('Empleados:label.idSede')} sortable={true}></Column>
+   <Column field="id" header={t('Empleados:label.id')} sortable={true}></Column>
+      <Column field="empleado" header={t('Empleados:label.nombre')} sortable={true}></Column>      
+      <Column field="puesto" header={t('Empleados:label.puesto')} sortable={true}></Column>
+      <Column field="area" header={t('Empleados:label.area')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Empleados:rotulo.editar')}></Column>
+
    </DataTable>
    <Dialog header={t('Empleados:rotulo.agregar')} footer={dlgFooter} visible={dlgEmpleados} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgEmpleados(false)} blockScroll={false}>
       { Empleados  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreEmpleado">
-                  {t('Empleados:label.nombreEmpleado')}
+         <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNumEmpleado">
+                  {t('Empleados:label.id')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombreEmpleado')} value={Empleados.nombre} className={formik.errors.txtNombreEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
+                  <InputText id="txtNumEmpleado" placeholder={t('Empleados:placeholder.id')} value={Empleados.num_empleado} className={formik.errors.num_empleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('num_empleado', e.target.value)}></InputText>    
+                  ):(     <label id="txtNumEmpleado">empleados.num_empleado</label>)}
+                  
+            </div>
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreEmpleado">
+                  {t('Empleados:label.nombre')}
+                  </label>
+               {{captura} ? ( 
+               <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombre')} value={Empleados.nombre} className={formik.errors.txtNombreEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
                ):(     <label id="txtNombreEmpleado">empleados.nombreEmpleado</label>)}
                
                {formik.errors.txtNombreEmpleado  &&  <small id="txtNombreEmpleado-help" className="p-invalid">
@@ -246,48 +248,41 @@ return (
                   </small>}                 
                
             </div>
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtTelefonoEmpleado">
-                  {t('Empleados:label.telefonoEmpleado')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtApellido">
+                  {t('Empleados:label.apellido')}
                   </label>
                {{captura} ? ( 
-                  <InputText id="txtTelefonoEmpleado" placeholder={t('Empleados:placeholder.telefonoEmpleado')} value={Empleados.telefono} className={formik.errors.telefono ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('telefono', e.target.value)}></InputText>    
-                  ):(     <label id="txtTelefonoEmpleado">empleados.telefonoEmpleado</label>)}
+                  <InputText id="txtApellido" placeholder={t('Empleados:placeholder.apellido')} value={Empleados.apellidos} className={formik.errors.apellidos ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('apellidos', e.target.value)}></InputText>    
+                  ):(     <label id="txtApellido">empleados.apellidos</label>)}
                   
-            </div>
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtCorreoEmpleado">
-                  {t('Empleados:label.correoEmpleado')}
-                  </label>
-               {{captura} ? ( 
-                   <InputText id="txtCorreoEmpleado" placeholder={t('Empleados:placeholder.correoEmpleado')} value={Empleados.mail} className={formik.errors.txtCorreoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('mail', e.target.value)}></InputText>    
-                   ):(     <label id="txtCorreoEmpleado">empleados.correoEmpleado</label>)}
-                   
-            </div>   
+            </div>            
            
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtPuestoEmpleado">
-                  {t('Empleados:label.puestoEmpleado')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtPuestoEmpleado">
+                  {t('Empleados:label.puesto')}
                   </label>
                {{captura} ? ( 
-                   <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.puesto} className={formik.errors.txtPuestoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('puesto', e.target.value)}></InputText>    
-                   ):(     <label id="txtLicenciaEquipo">equipos.licenciaEquipo</label>)}
+                   <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puesto')} value={Empleados.puesto} className={formik.errors.txtPuestoEmpleado ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('puesto', e.target.value)}></InputText>    
+                   ):(     <label id="txtPuestoEmpleado">equipos.puesto</label>)}
             </div>   
             
 
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtIdUbicacion">
-                  {t('Empleados:label.idUbicacion')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtArea">
+                  {t('Empleados:label.area')}
                   </label>
                {{captura} ? ( 
-            <InputText id="txtUbicacion_Id" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.ubicacion_id}  maxLength={45} onChange={(e) =>   updateProperty('ubicacion_id', e.target.value)}></InputText>
-            ):(     <label id="txtIdUbicacion">empleados.idUbicacion</label>)}
+            <InputText id="txtArea" placeholder={t('Empleados:placeholder.area')} value={Empleados.area}  maxLength={45} onChange={(e) =>   updateProperty('area', e.target.value)}></InputText>
+            ):(     <label id="txtArea">empleados.area</label>)}
                
             </div>    
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtIdSede">
-                  {t('Empleados:label.idSede')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEquipo">
+                  {t('Empleados:label.equipo')}
                   </label>
                {{captura} ? ( 
-            <InputText id="txtSede_Id" placeholder={t('Empleados:placeholder.puestoEmpleado')} value={Empleados.sede_id}  maxLength={45} onChange={(e) =>   updateProperty('sede_id', e.target.value)}></InputText>
-            ):(     <label id="txtIdSede">empleados.idUbicacion</label>)}
-               
-            </div> 
+                  <InputText id="txtEquipo" placeholder={t('Empleados:placeholder.equipo')} value={Empleados.id_equipo} className={formik.errors.id_equipo ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('id_equipo', e.target.value)}></InputText>    
+                  ):(     <label id="txtEquipo">empleados.id_equipo</label>)}
+                  
+            </div>
+            
             
 
          </div>

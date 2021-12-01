@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  ServiciosService {
 
 obtenerServicio (pCriterio){
-    return axios.get("https://backliz1.herokuapp.com/service").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pServicios.idServicio).then(response  =>
 }
 
 agregaServicio (pServicios) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/service';
+    let agregaUrl = '';
     console.log(pServicios);
     const params = new URLSearchParams()
     params.append('servicio', pServicios.servicio)
@@ -32,7 +32,7 @@ agregaServicio (pServicios) {
 }
 
 eliminaServicio (pServicios) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/service'; //Modificar
+    let eliminaUrl = ''; //Modificar
     //console.log("asda ",pServicios.servicio_id);
     return axios.delete(eliminaUrl + '/' + pServicios.servicio_id);
 

@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  RolesService {
 
 obtenerRol (){
-    return axios.get("https://backliz1.herokuapp.com/role").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pRoles.idRol).then(response  =>  respons
 }
 
 agregaRol (pRoles) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/role';
+    let agregaUrl = '';
     console.log(pRoles);
     const params = new URLSearchParams()
     params.append('nombre',pRoles.nombre)
@@ -25,7 +25,7 @@ agregaRol (pRoles) {
 }
 
 eliminaRol (pRoles) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/role'; //Modificar
+    let eliminaUrl = ''; //Modificar
     console.log("asda ",pRoles.rol_id);
     return axios.delete(eliminaUrl + '/' + pRoles.rol_id);
 

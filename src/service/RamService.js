@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  RamService {
 
 obtenerRam (pCriterio){
-    return axios.get("https://backliz1.herokuapp.com/ram").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pRam.idRam).then(response  =>  response.
 }
 
 agregaRam (pRam) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/ram';
+    let agregaUrl = '';
     console.log(pRam);
     const params = new URLSearchParams()
     params.append('tipo',pRam.tipo)
@@ -27,7 +27,7 @@ agregaRam (pRam) {
     }
 
 eliminaRam (pRam) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/ram'; //Modificar
+    let eliminaUrl = ''; //Modificar
     console.log("asda ",pRam.ram_id);
     return axios.delete(eliminaUrl + '/' + pRam.ram_id);
 

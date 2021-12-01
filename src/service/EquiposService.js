@@ -7,7 +7,6 @@ export default class  EquiposService {
 
 obtenerEquipo (pCriterio){
     return axios.get("http://127.0.0.1/api-soporte/public/equipo/index").then(res => res.data);
-
 }
 
 
@@ -17,29 +16,25 @@ return axios.get(seleccionaUrl  + '/' + pEquipos.idEquipo).then(response  =>  re
 }
 
 agregaEquipo (pEquipos) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/device';
-    console.log("sasa", pEquipos);
+    let agregaUrl = 'http://127.0.0.1/api-soporte/public/equipo/store';
+    console.log("Registro: ", pEquipos);
     const params = new URLSearchParams()
-    //params.append('equipo_id',pEquipos.equipo_id)
-    params.append('nombre',pEquipos.nombre)
-    params.append('serial',pEquipos.serial)
-    params.append('ip_equipo',pEquipos.ip_equipo)
-    params.append('licencia',pEquipos.licencia)
-    params.append('fecha_compra',pEquipos.fecha_compra)
-    params.append('marca_id',pEquipos.marca_id)
-    params.append('categoria_id',pEquipos.categoria_id)
-    params.append('ram_id',pEquipos.ram_id)
-    params.append('disco_id',pEquipos.disco_id)
-    params.append('pantalla_id',pEquipos.pantalla_id)
-    params.append('empleado_id',pEquipos.empleado_id)
+    params.append('num_serie',pEquipos.num_serie)
+    params.append('estacion',pEquipos.estacion)
+    params.append('detalle',pEquipos.detalle)
+    params.append('compra',pEquipos.compra)
+    params.append('install',pEquipos.install)
+    params.append('tipo_id',pEquipos.tipo_id)
+    params.append('empresa_id',pEquipos.empresa_id)
+    
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
     }
 
 eliminaEquipo (pEquipos) {
-    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/aplicacion/equipos'; //Modificar
-    console.log("asda ",pEquipos.equipo_id);
-    return axios.delete(eliminaUrl + '/' + pEquipos.equipo_id);
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/equipos/destroy'; //Modificar
+    console.log("Eliminado: ",pEquipos.num_serie);
+    return axios.delete(eliminaUrl + '/' + pEquipos.num_serie);
 
 }
 

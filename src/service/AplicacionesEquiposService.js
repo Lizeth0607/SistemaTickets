@@ -30,14 +30,13 @@ agregaAplicacionEq (pAplicacionEqs) {
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
     }
 
-eliminaAplicacionEq (pAplicacionEqs) {
-let eliminaUrl = ''; //Modificar
-axios.delete(eliminaUrl  + '/' + pAplicacionEqs.instalacion_id, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pAplicacionEqs
-});
-
-}
+    eliminaAplicacionEq (pApps) {
+        let eliminaUrl = 'http://127.0.0.1/api-soporte/public/instalacion/destroy'; //Modificar
+        console.log("Eliminado: ",pApps.id);
+        console.log(pApps);
+        return axios.delete(eliminaUrl + '/' + pApps.id);
+    
+    }
 
 actualizaAplicacionEq (pAplicacionEqs) {
 let actualizaUrl = ''; //Modificar

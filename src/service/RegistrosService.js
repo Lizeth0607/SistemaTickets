@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  RegistrosService {
 
 obtenerRegistro (){
-    return axios.get("https://backliz1.herokuapp.com/Registrose").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -16,7 +16,7 @@ return axios.get(seleccionaUrl  + '/' + pRegistros.idRegistros).then(response  =
 }
 
 agregaRegistro (pRegistros) {
-    let agregaUrl = 'https://backliz1.herokuapp.com/Registrose';
+    let agregaUrl = '';
     console.log(pRegistros);
     const params = new URLSearchParams()
     params.append('nombre',pRegistros.nombre)
@@ -25,7 +25,7 @@ agregaRegistro (pRegistros) {
 }
 
 eliminaRegistro (pRegistros) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/Registrose'; //Modificar
+    let eliminaUrl = ''; //Modificar
     console.log("asda ",pRegistros.Registros_id);
     return axios.delete(eliminaUrl + '/' + pRegistros.Registros_id);
 

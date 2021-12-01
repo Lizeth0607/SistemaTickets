@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  MarcasService {
 
 obtenerMarca (){
-    return axios.get("https://backliz1.herokuapp.com/mark").then(res => res.data);
+    return axios.get("").then(res => res.data);
 }
 
 
@@ -25,7 +25,7 @@ return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
 eliminaMarca (pMarcas) {
-    let eliminaUrl = 'https://backliz1.herokuapp.com/mark'; //Modificar
+    let eliminaUrl = ''; //Modificar
     console.log("asda ",pMarcas.marca_id);
     return axios.delete(eliminaUrl + '/' + pMarcas.marca_id);
 

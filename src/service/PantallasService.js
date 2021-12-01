@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  PantallasService {
 
     obtenerPantalla (pCriterio){
-        return axios.get("https://backliz1.herokuapp.com/screen").then(res => res.data);
+        return axios.get("").then(res => res.data);
     }
 
 
@@ -16,7 +16,7 @@ export default class  PantallasService {
     }
 
     agregaPantalla (pPantallas) {
-        let agregaUrl = 'https://backliz1.herokuapp.com/screen';
+        let agregaUrl = '';
         console.log(pPantallas);
         const params = new URLSearchParams()
         params.append('tipo',pPantallas.tipo)
@@ -26,7 +26,7 @@ export default class  PantallasService {
         }
 
     eliminaPantalla (pPantallas) {
-        let eliminaUrl = 'https://backliz1.herokuapp.com/screen'; //Modificar
+        let eliminaUrl = ''; //Modificar
         console.log("asda ",pPantallas.pantalla_id);
         return axios.delete(eliminaUrl + '/' + pPantallas.pantalla_id);
     

@@ -6,18 +6,18 @@ export default class HistorialService {
 
 
     obtenerHistorial() {
-        return axios.get("https://backliz1.herokuapp.com/record").then(res => res.data);
+        return axios.get("").then(res => res.data);
     }
 
 
     seleccionaHistorial(pHistorial) {
-        let seleccionaUrl = 'https://backliz1.herokuapp.com/record'; //Modificar
+        let seleccionaUrl = ''; //Modificar
         console.log(pHistorial.historial_id);
         return axios.get(seleccionaUrl + '/' + pHistorial.historial_id).then(response => response.data);
     }
 
     agregaHistorial(pHistorial) {
-        let agregaUrl = 'https://backliz1.herokuapp.com/record';
+        let agregaUrl = '';
         const params = new URLSearchParams()
         params.append('mov_id', pHistorial.mov_id)
         params.append('equipo_id', pHistorial.equipo_id)
@@ -26,7 +26,7 @@ export default class HistorialService {
     }
 
     actualizaHistorial(pHistorial) {
-        let actualizaUrl = 'https://backliz1.herokuapp.com/record'; //Modificar
+        let actualizaUrl = ''; //Modificar
         const params = new URLSearchParams()
         params.append('mov_id', pHistorial.mov_id)
         params.append('equipo_id', pHistorial.equipo_id)
@@ -35,7 +35,7 @@ export default class HistorialService {
     }
 
     eliminaHistorial(pHistorial) {
-        let eliminaUrl = 'https://backliz1.herokuapp.com/record'; //Modificar
+        let eliminaUrl = ''; //Modificar
         console.log("asda ",pHistorial.historial_id);
         return axios.delete(eliminaUrl + '/' + pHistorial.historial_id);
     }
