@@ -11,8 +11,9 @@ obtenerEmpleado (){
 
 
 seleccionaEmpleado(pEmpleados) {
-let seleccionaUrl = ''; //Modificar
-console.log("asda ",pEmpleados.empleado_id);
+let seleccionaUrl = 'http://localhost/api-soporte/public/empleado/show/'; //Modificar
+console.log("Id Seleccionado ",pEmpleados.id);
+console.log(pEmpleados);
 return axios.get(seleccionaUrl  + '/' + pEmpleados.idEmpleado).then(response  =>  response.data);
 }
 
@@ -26,8 +27,7 @@ params.append('apellidos',pEmpleados.apellidos)
 params.append('puesto',pEmpleados.puesto)
 params.append('area',pEmpleados.area)
 params.append('id_equipo',pEmpleados.id_equipo)
-const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
-return axios.post(agregaUrl, params,config).then(response  =>  response.data);
+return axios.post(agregaUrl, params).then(response  =>  response.data);
 }
 
 eliminaEmpleado (pEmpleados) {
@@ -38,9 +38,16 @@ eliminaEmpleado (pEmpleados) {
 }
 
 actualizaEmpleado (pEmpleados) {
-let actualizaUrl = ''; //Modificar
-return axios.put(actualizaUrl + '/' + pEmpleados.idEmpleado,  pEmpleados)
-.then(response  =>  response.data);
+let actualizaUrl = 'http://localhost/api-soporte/public/empleado/update'; //Modificar
+console.log(pEmpleados)
+console.log(pEmpleados.num_empleado);
+const params = new URLSearchParams()
+params.append('num_empleado',pEmpleados.num_empleado)
+params.append('nombre',pEmpleados.nombre)
+params.append('apellidos',pEmpleados.apellidos)
+params.append('puesto',pEmpleados.puesto)
+params.append('area',pEmpleados.area)
+return axios.post(actualizaUrl + '/' + pEmpleados.num_empleado,  params).then(response  =>  response.data);
 }
 
 
