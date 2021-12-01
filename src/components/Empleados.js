@@ -214,7 +214,8 @@ const Empleados = () => {
          </div>
          <DataTable value={lstEmpleados} paginator={true} rows={10} responsive={true}>
             <Column field="id" header={t('Empleados:label.id')} sortable={true}></Column>
-            <Column field="empleado" header={t('Empleados:label.nombre')} sortable={true}></Column>
+            <Column field="nombre" header={t('Empleados:label.nombre')} sortable={true}></Column>
+            <Column field="apellidos" header={t('Empleados:label.apellido')} sortable={true}></Column>
             <Column field="puesto" header={t('Empleados:label.puesto')} sortable={true}></Column>
             <Column field="area" header={t('Empleados:label.area')} sortable={true}></Column>
             <Column body={actionTemplate} header={t('Empleados:rotulo.editar')}></Column>

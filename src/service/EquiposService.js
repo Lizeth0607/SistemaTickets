@@ -32,8 +32,9 @@ agregaEquipo (pEquipos) {
     }
 
 eliminaEquipo (pEquipos) {
-    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/equipos/destroy'; //Modificar
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/equipo/destroy'; //Modificar
     console.log("Eliminado: ",pEquipos.num_serie);
+    console.log(eliminaUrl + '/' + pEquipos.num_serie);
     return axios.delete(eliminaUrl + '/' + pEquipos.num_serie);
 
 }

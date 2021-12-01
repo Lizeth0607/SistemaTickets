@@ -271,7 +271,7 @@ const AplicacionesEquipos = ()   =>   {
                       {t('AplicacionesEquipos:label.fecha_instalacion')}
                       </label>
                    {{captura} ? ( 
-                        <InputMask id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.instalacion} onChange={(e) => updateProperty('instalacion', e.target.value)} mask="9999-99-99"  slotChar="yyyy/mm/dd" ></InputMask>
+                        <InputMask id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.instalacion} onChange={(e) => updateProperty('instalacion', e.target.value)} mask="9999-99-99"  slotChar="yyyy-mm-dd" ></InputMask>
                         ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fec_inst</label>)}
                    
                 </div>

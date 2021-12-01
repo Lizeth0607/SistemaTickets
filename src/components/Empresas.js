@@ -16,7 +16,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
-import UbicacionesService from '../service/UbicacionesService';
+import UbicacionesService from '../service/EmpresasService';
 
 import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';

@@ -246,7 +246,7 @@ return (
                       {t('Aplicaciones:label.fecha_compra')}
                       </label>
                    {{captura} ? ( 
-                        <InputMask id="date" mask="9999-99-99"  slotChar="yyyy/mm/dd" placeholder={t('Aplicaciones:placeholder.fecha_compra')} value={Aplicaciones.compra} onChange={(e) =>   updateProperty('compra', e.target.value)}></InputMask>
+                        <InputMask id="date" mask="9999-99-99"  slotChar="yyyy-mm-dd" placeholder={t('Aplicaciones:placeholder.fecha_compra')} value={Aplicaciones.compra} onChange={(e) =>   updateProperty('compra', e.target.value)}></InputMask>
                         ):(     <label id="txtFecha">aplicaciones.compra</label>)}
             </div>
                        

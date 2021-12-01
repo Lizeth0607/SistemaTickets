@@ -3,6 +3,8 @@ import React, {  useEffect, useState, useRef } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { InputMask } from "primereact/inputmask";
+import { InputTextarea } from 'primereact/inputtextarea';
+
 import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { DataTable } from 'primereact/datatable';
@@ -36,30 +38,17 @@ timer: '3000'
 const [lstIndicadores, setLstIndicadores] = useState([]);
 const [errores, setErrores] = useState([]);
 const [dlgIndicadores, setDlgIndicadores] = useState(false);
-const [Indicadores, setIndicadores] = useState({idInd:null
-,nombreInd:''
-,unidad_medida:''
-,categoria:''
+const [Indicadores, setIndicadores] = useState({id:null
+,nombre:''
+,descripcion:''
+
 });
 
 const [txtCriterio, setTxtCriterio] = useState('');
 const { t } = useTranslation(['translation','Indicadores']);
 const [captura, setCaptura] = useState(false);
 const indicadoresService = new IndicadoresService(); //MODIFICAR SERVICES
-const [selectedUM, setSelectedUM] = useState(null);
-const [selectedCategoria, setSelectedCategoria] = useState(null);
-const unidad_med = [
-   { name: 'UnidadMedida1', code: '1' }
-];
-const categorias = [
-   { name: 'Categoria1', code: '1' }
-];
-const onUnidadMedChange = (e) => {
-   setSelectedUM(e.value);
-}
-const onCategoriaChange = (e) => {
-   setSelectedCategoria(e.value);
-}
+
 
 
 
@@ -92,20 +81,19 @@ obtenerIndicador();
 
 
 const agregaIndicador = ()   =>   {
-indicadoresService.agregaIndicador (Indicadores).
-then(data => {setIndicadores(data);
-indicadoresSuccess('success',t('Indicadores:cabecero.exito'),t('Indicadores:mensaje.agregar'));
-setDlgIndicadores(false);
-obtenerIndicador ();
-});
+   indicadoresService.agregaIndicador (Indicadores).then(data => {setIndicadores(data);
+   indicadoresSuccess('success',t('Indicadores:cabecero.exito'),t('Indicadores:mensaje.agregar'));
+   setDlgIndicadores(false);
+   obtenerIndicador ();
+   });
 };
 
-const eliminaIndicador = ()   =>   {
-Indicadores.eliminaIndicador (Indicadores);
-indicadoresSuccess('success',t('Inidcadores:cabecero.exito'),t('Indicadores:mensaje.eliminar'));
-setDlgIndicadores(false);
-obtenerIndicador();
-obtenerIndicador();
+const eliminaIndicador = (pIndicadores)   =>   {
+   indicadoresService.eliminaIndicador (pIndicadores).then(data => setIndicadores(data));
+   indicadoresSuccess('success',t('Indicadores:cabecero.exito'),t('Indicadores:mensaje.eliminar'));
+   setDlgIndicadores(false);
+   obtenerIndicador();
+   obtenerIndicador();
 };
 
 const actualizaIndicador = ()   =>   {
@@ -126,10 +114,10 @@ setDlgIndicadores(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setIndicadores({idInd:null
-   ,nombreInd:''
-   ,unidad_medida:''
-   ,categoria:''
+setIndicadores({id:null
+   ,nombre:''
+   ,descripcion:''
+   
 });
 formik.resetForm();
 };
@@ -140,8 +128,8 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Indicadores.nombreInd) {
-errors.txtNombreInd= t('Indicadores:required.nombreInd');
+ if (!Indicadores.nombre) {
+errors.txtNombreInd= t('Indicadores:required.nombre');
 }
 return errors;
 };
@@ -171,7 +159,11 @@ return (
 
 const actionTemplate = (rowData, column)   =>   {
 return (
-<div><Button type="button" icon="pi pi-search" className="p-button-rounded" onClick={()  =>  {seleccionaIndicador(rowData);} }></Button><Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaIndicador(rowData); } }></Button></div>);
+<div>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaIndicador(rowData); } }></Button>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaIndicador(rowData);} }></Button>
+
+</div>);
 }
 
 
@@ -210,10 +202,9 @@ return (
       </div>
    </div>
    <DataTable value={lstIndicadores} paginator={true} rows={10} responsive={true}>
-      <Column field="idInd" header={t('Indicadores:label.idInd')} sortable={true}></Column>
-      <Column field="nombreInd" header={t('Indicadores:label.nombreInd')} sortable={true}></Column>
-      <Column field="unidadMedida" header={t('Indicadores:label.unidadMedida')} sortable={true}></Column>
-      <Column field="Categoria" header={t('Indicadores:label.categoria')} sortable={true}></Column>
+      <Column field="id" header={t('Indicadores:label.id')} sortable={true}></Column>
+      <Column field="nombre" header={t('Indicadores:label.nombre')} sortable={true}></Column>
+      <Column field="descripcion" header={t('Indicadores:label.descripcion')} sortable={true}></Column>
       <Column body={actionTemplate} header={t('Indicadores:rotulo.editar')}></Column>
    </DataTable>
    <Dialog header={t('Indicadores:rotulo.agregar')} footer={dlgFooter} visible={dlgIndicadores} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgIndicadores(false)} blockScroll={false}>
@@ -221,33 +212,26 @@ return (
       <div>
          <div className="p-fluid p-formgrid p-grid">
             <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNombreInd">
-                  {t('Indicadores:label.nombreInd')}
+                  {t('Indicadores:label.nombre')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreInd" placeholder={t('Indicadores:placeholder.nombreInd')} value={Indicadores.nombreInd} className={formik.errors.txtNombreInd ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombreInd', e.target.value)}></InputText>    
-               ):(     <label id="txtNombreInd">indicadores.nombreInd</label>)}
+               <InputText id="txtNombreInd" placeholder={t('Indicadores:placeholder.nombre')} value={Indicadores.nombre} className={formik.errors.txtNombreInd ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
+               ):(     <label id="txtNombreInd">indicadores.nombre</label>)}
                
                {formik.errors.txtNombreInd  &&  <small id="txtNombreInd-help" className="p-invalid">
                   {formik.errors.txtNombreInd}
                   </small>}                 
                
             </div>
-            <div className="p-field p-col-12 p-md-6"><label htmlFor="txtUniMed">
-                  {t('Indicadores:label.unidadMedida')}
-                  </label>
-               {{captura} ? ( 
-                  <Dropdown value={selectedUM} options={unidad_med} onChange={onUnidadMedChange} optionLabel="name" placeholder={t('Indicadores:placeholder.unidadMedida')} onChange={(e) =>   updateProperty('unidadMedida', e.target.value)}/>
-               ):(     <label id="txtUniMed">indicadores.unidad_med</label>)}
-               
-            </div>
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtIndCateg">
-                  {t('Indicadores:label.categoria')}
-                  </label>
-               {{captura} ? ( 
-                  <Dropdown value={selectedCategoria} options={categorias} onChange={onCategoriaChange} optionLabel="name" placeholder={t('Indicadores:placeholder.categoria')} onChange={(e) =>   updateProperty('categoria', e.target.value)} />               
-                  ):(     <label id="txtIndCateg">indicadores.categoria</label>)}
-               
-            </div>            
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtDescripcion">
+                      {t('Indicadores:label.descripcion')}
+                      </label>
+                   {{captura} ? ( 
+                <InputTextarea placeholder={t('Indicadores:placeholder.descripcion')} className={formik.errors.txtDescripcion ? 'p-invalid':'p-inputtext'} value={Indicadores.descripcion} onChange={(e) =>  updateProperty('descripcion', e.target.value)} rows={2} cols={20} autoResize />
+                ):(     <label id="txtDescripcion">indicadores.descripcion</label>)}
+                    
+                </div>
+                     
          </div>
       </div>
       

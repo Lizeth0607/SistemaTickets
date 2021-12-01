@@ -23,7 +23,7 @@ import Empleados from './components/Empleados';
 import Roles from './components/Roles';
 import AplicacionesEquipos from './components/AplicacionesEquipos';
 import Historial from './components/Historial';
-import Ubicaciones from './components/Ubicaciones';
+import Ubicaciones from './components/Empresas';
 import Sedes from './components/Sedes';
 import Registros from './components/Registros';
 import ReportesMes  from './components/ReportesMes';
@@ -113,9 +113,9 @@ const App = () => {
                 label: "Reportes", icon: "pi pi-fw pi-align-left",
                 items: [
                     {label:'Generar reportes', icon:'', to:'/ReportesMes'}, //1
-                    {label:'Categorías', icon:'', to:'/Categorias'}, //2
+                    //{label:'Categorías', icon:'', to:'/Categorias'}, //2
                     {label:'Indicadores', icon:'', to:'/Indicadores'}, //LISTO
-                    {label:'Unidades de Medida', icon:'', to:'/UnidadMEdida'}, //5
+                    //{label:'Unidades de Medida', icon:'', to:'/UnidadMEdida'}, //5
              ]
             }
         ]
@@ -127,10 +127,10 @@ const App = () => {
             {
                 label: "Otros", icon: "pi pi-fw pi-align-left",
                 items: [
-                    {label:'Archivos', icon:'', to:'/Archivos'}, //1
+                    //{label:'Archivos', icon:'', to:'/Archivos'}, //1
                     {label:'Aplicaciones', icon:'', to:'/Aplicaciones'}, //2
                     //{label:'Sedes', icon:'', to:'/Sedes'}, //3
-                    {label:'Ubicaciones', icon:'', to:'/Ubicaciones'}, //3
+                    {label:'Ubicaciones', icon:'', to:'/Empresas'}, //3
 
              ]
             }

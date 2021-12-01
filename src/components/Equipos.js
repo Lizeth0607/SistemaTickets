@@ -118,8 +118,9 @@ obtenerEquipo ();
 
 const eliminaEquipo = (pEquipos)   =>   {
    equiposService.eliminaEquipo (pEquipos).then(data => setEquipos(data));
-   equiposSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.eliminar'));
+   equiposSuccess('success',t('Equipos:cabecero.exito'),t('Equipos:mensaje.eliminar'));
    setDlgEquipos(false);
+   obtenerEquipo();
    obtenerEquipo();
    obtenerEquipo();
 };
