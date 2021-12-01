@@ -13,8 +13,8 @@ obtenerEmpleado (){
 seleccionaEmpleado(pEmpleados) {
 let seleccionaUrl = 'http://localhost/api-soporte/public/empleado/show/'; //Modificar
 console.log("Id Seleccionado ",pEmpleados.id);
-console.log(pEmpleados);
-return axios.get(seleccionaUrl  + '/' + pEmpleados.idEmpleado).then(response  =>  response.data);
+console.log(seleccionaUrl+'/'+pEmpleados.id);
+return axios.get(seleccionaUrl  + '/' + pEmpleados.id).then(response  =>  response.data);
 }
 
 agregaEmpleado (pEmpleados) {
@@ -40,14 +40,14 @@ eliminaEmpleado (pEmpleados) {
 actualizaEmpleado (pEmpleados) {
 let actualizaUrl = 'http://localhost/api-soporte/public/empleado/update'; //Modificar
 console.log(pEmpleados)
-console.log(pEmpleados.num_empleado);
+console.log(pEmpleados.id);
 const params = new URLSearchParams()
-params.append('num_empleado',pEmpleados.num_empleado)
+params.append('num_empleado',pEmpleados.id)
 params.append('nombre',pEmpleados.nombre)
 params.append('apellidos',pEmpleados.apellidos)
 params.append('puesto',pEmpleados.puesto)
 params.append('area',pEmpleados.area)
-return axios.post(actualizaUrl + '/' + pEmpleados.num_empleado,  params).then(response  =>  response.data);
+return axios.post(actualizaUrl + '/' + pEmpleados.id,  params).then(response  =>  response.data);
 }
 
 

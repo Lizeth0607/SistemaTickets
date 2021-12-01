@@ -1,6 +1,6 @@
-
+import { classNames } from "primereact/utils";
 import React, { useEffect, useState, useRef } from 'react';
-
+import { useForm, Controller } from 'react-hook-form';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
@@ -83,9 +83,11 @@ const Empleados = () => {
    };
 
    const seleccionaEmpleado = (pEmpleados) => {
+      console.log(pEmpleados);
       setCaptura(false);
-      formik.resetForm();
-      empleadosService.seleccionaEmpleado(pEmpleados).then(data => setEmpleados(data));
+      setEmpleados(pEmpleados);
+      empleadosService.seleccionaEmpleado(pEmpleados).then(data=>{
+      })
       setDlgEmpleados(true);
    };
 
@@ -130,9 +132,18 @@ const Empleados = () => {
    };
 
    const iniciaComponentes = () => {
-      
+      setEmpleados({
+         num_empleado: ''
+         , nombre: ''
+         , apellidos: ''
+         , puesto: ''
+         , area: ''
+         , id_equipo: ''
+      });
       formik.resetForm();
    };
+
+   const { control, formState: { errors }, handleSubmit, reset, clearErrors, setValue, } = useForm();
 
    /**
    * Validación de las propiedades 
@@ -146,28 +157,30 @@ const Empleados = () => {
       return errors;
    };
 
+
+   const onSubmit = (data) => {
+      let discapacidadCopy = Object.assign({}, data);
+
+      if (captura) {
+         agregaEmpleado(discapacidadCopy);
+      } else {
+         actualizaEmpleado(discapacidadCopy);
+      }
+      reset();
+   };
+
    const formik = useFormik({
       initialValues: {},
       validate,
-      onSubmit: () => {
-         if (captura) {
-            agregaEmpleado();
-         } else {
-            actualizaEmpleado();
-         }
-      },
+      onSubmit: (Empleados) => {
+          let empleadoCopy = Object.assign({}, Empleados);
+          if (captura) {
+             agregaEmpleado();
+          } else {
+             actualizaEmpleado(empleadoCopy);
+          }
+       },
    });
-
-   const fechaTemplate = (rowData, column) => {
-      return (
-         <div>
-            <Moment format={t('formato.fechaHora')}>
-               {rowData.fechaAlta ? rowData.fechaAlta : null}
-
-            </Moment>
-         </div>);
-   }
-
 
    const actionTemplate = (rowData, column) => {
       return (
@@ -176,8 +189,6 @@ const Empleados = () => {
             <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={() => { seleccionaEmpleado(rowData); }}></Button>
          </div>);
    }
-
-
 
    const rightFooter = (
 
@@ -195,13 +206,11 @@ const Empleados = () => {
 
    const dlgFooter =
       <Toolbar right={rightFooter}></Toolbar>;
-
-
-
-
+   const getFormErrorMessage = (name) => {
+      return errors[name] && <small className="p-error">{errors[name].message}</small>
+   };
 
    return (
-
       <div>
          <h1>
             <Trans i18nKey="Empleados:entidad"></Trans>
@@ -224,69 +233,94 @@ const Empleados = () => {
          <Dialog header={t('Empleados:rotulo.agregar')} visible={dlgEmpleados} modal={true} style={{ width: '50vw' }} onHide={(e) => setDlgEmpleados(false)} blockScroll={false}>
             {Empleados &&
                <div>
-                  <div className="p-fluid p-formgrid p-grid">
-                     <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNumEmpleado">
-                        {t('Empleados:label.id')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtNumEmpleado" placeholder={t('Empleados:placeholder.id')} value={Empleados.num_empleado} className={formik.errors.num_empleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('num_empleado', e.target.value)}></InputText>
-                        ) : (<label id="txtNumEmpleado">empleados.num_empleado</label>)}
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                     <div className="p-fluid p-formgrid p-grid">
+                        <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNumEmpleado">
+                           {t('Empleados:label.id')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText name="num_empleado" id="txtNumEmpleado" placeholder={t('Empleados:placeholder.id')} value={Empleados.num_empleado} className={formik.errors.num_empleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('num_empleado', e.target.value)}></InputText>
+                           ) : (<label id="txtNumEmpleado">empleados.num_empleado</label>)}
 
+                        </div>
+                        <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreEmpleado">
+                           {t('Empleados:label.nombre')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombre')} value={Empleados.nombre} className={formik.errors.txtNombreEmpleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('nombre', e.target.value)}></InputText>
+                           ) : (<label id="txtNombreEmpleado">empleados.nombreEmpleado</label>)}
+
+                           {formik.errors.txtNombreEmpleado && <small id="txtNombreEmpleado-help" className="p-invalid">
+                              {formik.errors.txtNombreEmpleado}
+                           </small>}
+
+                        </div>
+                        <div className="p-field p-col-12 p-md-12"><label htmlFor="txtApellido">
+                           {t('Empleados:label.apellido')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText id="txtApellido" placeholder={t('Empleados:placeholder.apellido')} value={Empleados.apellidos} className={formik.errors.apellidos ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('apellidos', e.target.value)}></InputText>
+                           ) : (<label id="txtApellido">empleados.apellidos</label>)}
+
+                        </div>
+
+                        <div className="p-field p-col-12 p-md-12"><label htmlFor="txtPuestoEmpleado">
+                           {t('Empleados:label.puesto')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puesto')} value={Empleados.puesto} className={formik.errors.txtPuestoEmpleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('puesto', e.target.value)}></InputText>
+                           ) : (<label id="txtPuestoEmpleado">equipos.puesto</label>)}
+                        </div>
+
+
+                        <div className="p-field p-col-12 p-md-12"><label htmlFor="txtArea">
+                           {t('Empleados:label.area')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText id="txtArea" placeholder={t('Empleados:placeholder.area')} value={Empleados.area} maxLength={45} onChange={(e) => updateProperty('area', e.target.value)}></InputText>
+                           ) : (<label id="txtArea">empleados.area</label>)}
+
+                        </div>
+                        <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEquipo">
+                           {t('Empleados:label.equipo')}
+                        </label>
+                           {{ captura } ? (
+                              <InputText id="txtEquipo" placeholder={t('Empleados:placeholder.equipo')} value={Empleados.id_equipo} className={formik.errors.id_equipo ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('id_equipo', e.target.value)}></InputText>
+                           ) : (<label id="txtEquipo">empleados.id_equipo</label>)}
+
+                        </div>
+                        <div className="p-field  p-col-12 p-md-12">
+                           {dlgFooter}
+                        </div>
                      </div>
-                     <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreEmpleado">
-                        {t('Empleados:label.nombre')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtNombreEmpleado" placeholder={t('Empleados:placeholder.nombre')} value={Empleados.nombre} className={formik.errors.txtNombreEmpleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('nombre', e.target.value)}></InputText>
-                        ) : (<label id="txtNombreEmpleado">empleados.nombreEmpleado</label>)}
-
-                        {formik.errors.txtNombreEmpleado && <small id="txtNombreEmpleado-help" className="p-invalid">
-                           {formik.errors.txtNombreEmpleado}
-                        </small>}
-
-                     </div>
-                     <div className="p-field p-col-12 p-md-12"><label htmlFor="txtApellido">
-                        {t('Empleados:label.apellido')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtApellido" placeholder={t('Empleados:placeholder.apellido')} value={Empleados.apellidos} className={formik.errors.apellidos ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('apellidos', e.target.value)}></InputText>
-                        ) : (<label id="txtApellido">empleados.apellidos</label>)}
-
-                     </div>
-
-                     <div className="p-field p-col-12 p-md-12"><label htmlFor="txtPuestoEmpleado">
-                        {t('Empleados:label.puesto')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtPuestoEmpleado" placeholder={t('Empleados:placeholder.puesto')} value={Empleados.puesto} className={formik.errors.txtPuestoEmpleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('puesto', e.target.value)}></InputText>
-                        ) : (<label id="txtPuestoEmpleado">equipos.puesto</label>)}
-                     </div>
-
-
-                     <div className="p-field p-col-12 p-md-12"><label htmlFor="txtArea">
-                        {t('Empleados:label.area')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtArea" placeholder={t('Empleados:placeholder.area')} value={Empleados.area} maxLength={45} onChange={(e) => updateProperty('area', e.target.value)}></InputText>
-                        ) : (<label id="txtArea">empleados.area</label>)}
-
-                     </div>
-                     <div className="p-field p-col-12 p-md-12"><label htmlFor="txtEquipo">
-                        {t('Empleados:label.equipo')}
-                     </label>
-                        {{ captura } ? (
-                           <InputText id="txtEquipo" placeholder={t('Empleados:placeholder.equipo')} value={Empleados.id_equipo} className={formik.errors.id_equipo ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('id_equipo', e.target.value)}></InputText>
-                        ) : (<label id="txtEquipo">empleados.id_equipo</label>)}
-
-                     </div>
-                     <div className="p-field  p-col-12 p-md-12">
-                        {dlgFooter}
-                     </div>
+                  </form>
+               </div>
+            }
+         </Dialog>
+         {/*
+         <Dialog header={t('Empleados:rotulo.agregar')} visible={false} modal={true} onHide={(e) => { clearErrors(); setDlgEmpleados(false); }} blockScroll={false}>
+            {Empleados &&
+               <div className="p-d-flex">
+                  <div className="card">
+                     <form onSubmit={handleSubmit(onSubmit)} className="p-fluid p-formgrid p-grid">
+                        <div className="p-field p-col-12 p-md-6"><span className="p-float-label">
+                           <Controller name="empleado" control={control} rules={{ required: t('discapacidad:required.idDiscapacidad') }} render={({ field, fieldState }) => (
+                              <InputText id={field.empleado} {...field} onChange={(e) => field.onChange(e.value)}
+                                 className={classNames({ 'p-invalid': fieldState.invalid })} maxLength={10} />
+                           )}></Controller><label htmlFor="empleado" className={classNames({ 'p-error': errors.empleado })}>
+                              {t('Empleados:label.empleado')}
+                           </label></span>
+                           {getFormErrorMessage('idDiscapacidad')}
+                        </div>
+                        <div className="p-field  p-col-12 p-md-12">
+                           {dlgFooter}
+                        </div>
+                     </form>
                   </div>
                </div>
             }
-
          </Dialog>
+         */}
       </div>
    );
 
