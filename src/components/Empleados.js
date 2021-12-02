@@ -60,15 +60,6 @@ const Empleados = () => {
    const [captura, setCaptura] = useState(false);
    const empleadosService = new EmpleadosService(); //MODIFICAR SERVICES
 
-   //imagen
-   const toast = useRef(null);
-   const onUpload = () => {
-      toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
-   }
-
-
-
-
    const empleadosSuccess = (severidad, cabecero, detalle) => {
       let mensajeCopy = Object.assign({}, mensaje);
       mensajeCopy['title'] = cabecero;
@@ -87,8 +78,7 @@ const Empleados = () => {
       console.log(pEmpleados);
       setCaptura(false);
       setEmpleados(pEmpleados);
-      empleadosService.seleccionaEmpleado(pEmpleados).then(data=>{
-      })
+      empleadosService.seleccionaEmpleado(pEmpleados).then(data=>{})
       setDlgEmpleados(true);
    };
 
@@ -162,7 +152,6 @@ const Empleados = () => {
 
    const onSubmit = (data) => {
       let discapacidadCopy = Object.assign({}, data);
-
       if (captura) {
          agregaEmpleado(discapacidadCopy);
       } else {
@@ -208,9 +197,6 @@ const Empleados = () => {
 
    const dlgFooter =
       <Toolbar right={rightFooter}></Toolbar>;
-   const getFormErrorMessage = (name) => {
-      return errors[name] && <small className="p-error">{errors[name].message}</small>
-   };
 
    return (
       <div>
@@ -299,30 +285,6 @@ const Empleados = () => {
                </div>
             }
          </Dialog>
-         {/*
-         <Dialog header={t('Empleados:rotulo.agregar')} visible={false} modal={true} onHide={(e) => { clearErrors(); setDlgEmpleados(false); }} blockScroll={false}>
-            {Empleados &&
-               <div className="p-d-flex">
-                  <div className="card">
-                     <form onSubmit={handleSubmit(onSubmit)} className="p-fluid p-formgrid p-grid">
-                        <div className="p-field p-col-12 p-md-6"><span className="p-float-label">
-                           <Controller name="empleado" control={control} rules={{ required: t('discapacidad:required.idDiscapacidad') }} render={({ field, fieldState }) => (
-                              <InputText id={field.empleado} {...field} onChange={(e) => field.onChange(e.value)}
-                                 className={classNames({ 'p-invalid': fieldState.invalid })} maxLength={10} />
-                           )}></Controller><label htmlFor="empleado" className={classNames({ 'p-error': errors.empleado })}>
-                              {t('Empleados:label.empleado')}
-                           </label></span>
-                           {getFormErrorMessage('idDiscapacidad')}
-                        </div>
-                        <div className="p-field  p-col-12 p-md-12">
-                           {dlgFooter}
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            }
-         </Dialog>
-         */}
       </div>
    );
 
