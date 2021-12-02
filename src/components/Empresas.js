@@ -99,8 +99,8 @@ obtenerEmpresa();
 };
 
 const actualizaEmpresa = ()   =>   {
-   empresasService.actualizaEmpresas(Empresas).then(data => { setDlgEmpresas(false); 
-   obtenerEmpresa();});
+   empresasService.actualizaEmpresa(Empresas).then(data => { setDlgEmpresas(false); obtenerEmpresa();});
+   obtenerEmpresa();
 };
 
 const updateProperty = (propiedad, valor)   =>  {
