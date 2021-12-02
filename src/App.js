@@ -23,7 +23,7 @@ import Empleados from './components/Empleados';
 import Roles from './components/Roles';
 import AplicacionesEquipos from './components/AplicacionesEquipos';
 import Historial from './components/Historial';
-import Ubicaciones from './components/Empresas';
+import Empresas from './components/Empresas';
 import Sedes from './components/Sedes';
 import Registros from './components/Registros';
 import ReportesMes  from './components/ReportesMes';
@@ -130,7 +130,7 @@ const App = () => {
                     //{label:'Archivos', icon:'', to:'/Archivos'}, //1
                     {label:'Aplicaciones', icon:'', to:'/Aplicaciones'}, //2
                     //{label:'Sedes', icon:'', to:'/Sedes'}, //3
-                    {label:'Ubicaciones', icon:'', to:'/Empresas'}, //3
+                    {label:'Empresas', icon:'', to:'/Empresas'}, //3
 
              ]
             }
@@ -157,7 +157,7 @@ const App = () => {
         {path:'/Roles', component: Roles, meta: { breadcrumb: [{ parent: 'Operación', label: 'Roles' }] }},
         {path:'/AplicacionesEquipos', component: AplicacionesEquipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones Equipos' }] }},
         {path:'/Historial', component: Historial, meta: { breadcrumb: [{ parent: 'Operación', label: 'Historial' }] }},
-        {path:'/Ubicaciones', component: Ubicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Ubicaciones' }] }},
+        {path:'/Empresas', component: Empresas, meta: { breadcrumb: [{ parent: 'Operación', label: 'Empresas' }] }},
         {path:'/Sedes', component: Sedes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Sedes' }] }},
         {path:'/Registros', component: Registros, meta: { breadcrumb: [{ parent: 'Operación', label: 'Registros' }] }},
         {path:'/ReportesMes', component: ReportesMes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Reportes' }] }},

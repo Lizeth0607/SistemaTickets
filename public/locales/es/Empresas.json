@@ -1,18 +1,18 @@
 
 {
-    "entidad": "Ubicaciones",
+    "entidad": "Empresas",
     
   "rotulo":{
-    "buscar":"Buscar ubicación",
-    "agregar":"Nuevo ubicación",
+    "buscar":"Buscar empresa",
+    "agregar":"Nuevo empresa",
     "editar":"Editar",
     "confirmacion":"¿Esta seguro?",
-    "eliminar":"Eliminar ubicación",    
-    "actualizar":"Actualizar ubicación",    
+    "eliminar":"Eliminar empresa",    
+    "actualizar":"Actualizar empresa",    
     "imprimir":"Imprimir"   
   },
   "mensaje":{
-    "cabecero":"Ubicaciones",
+    "cabecero":"Empresas",
     "severidad":"info",
     "agregar":"Agregado correctamente",
     "confirmacion":"¿Esta seguro?",
@@ -20,7 +20,7 @@
     "actualizar":"Actualizado correctamente"    
   },
   "error":{
-    "cabecero":"Ubicaciones",
+    "cabecero":"Empresas",
     "severidad":"error",
     "agregar":"Error en Agregar",
     "eliminar":"Error en Eliminar",
@@ -36,18 +36,18 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "idUbicacion":"ID Ubicacion",
-        "nombreUbicacion":"Nombre de Ubicacion"
+        "id":"ID Empresa",
+        "nombre":"Nombre"
        },
 
 "required":{
-        "idUbicacion":"El ID Ubicacion es requerido",
-        "nombreUbicacion":"El Nombre de la Ubicacion es requerida"
+        "id":"El ID Empresa es requerido",
+        "nombre":"El Nombre de la empresa es requerido"
         },
 
 "placeholder":{
-        "idUbicacion":"Escribe el ID Ubicacion",
-        "nombreUbicacion":"Escribe el Nombre de la Ubicacion"
+        "id":"Escribe el ID Empresa",
+        "nombre":"Escribe el Nombre de la empresa"
         }
     
  }   

@@ -5,35 +5,34 @@ import axios from 'axios';
 
 export default class  UbicacionesService {
 
-obtenerUbicacion (){
-    return axios.get("").then(res => res.data);
+obtenerEmpresa (){
+    return axios.get("http://127.0.0.1/api-soporte/public/empresa/index").then(res => res.data);
 }
 
-
-seleccionaUbicacion(pUbicaciones) {
+seleccionaEmpresa(pEmpresas) {
 let seleccionaUrl = ''; //Modificar
-return axios.get(seleccionaUrl  + '/' + pUbicaciones.ubicacion_id).then(response  =>  response.data);
+return axios.get(seleccionaUrl  + '/' + pEmpresas.ubicacion_id).then(response  =>  response.data);
 }
 
-agregaUbicacion (pUbicaciones) {
-    let agregaUrl = '';
-    console.log(pUbicaciones);
+agregaEmpresa (pEmpresas) {
+    let agregaUrl = 'http://127.0.0.1/api-soporte/public/empresa/store';
+    console.log(pEmpresas);
     const params = new URLSearchParams()
-    params.append('nombre',pUbicaciones.nombre)
+    params.append('nombre',pEmpresas.nombre)
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
-eliminaUbicacion (pUbicaciones) {
-    let eliminaUrl = ''; //Modificar
-    //console.log("asda ",pUbicaciones.rol_id);
-    return axios.delete(eliminaUrl + '/' + pUbicaciones.ubicacion_id);
+eliminaEmpresa (pEmpresas) {
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/empresa/destroy'; //Modificar
+    console.log("Eliminado: ",pEmpresas.id);
+    return axios.delete(eliminaUrl + '/' + pEmpresas.id);
 
 }
 
-actualizaUbicacion (pUbicaciones) {
+actualizaEmpresa (pEmpresas) {
 let actualizaUrl = ''; //Modificar
-return axios.put(actualizaUrl + '/' + pUbicaciones.ubicacion_id,  pUbicaciones)
+return axios.put(actualizaUrl + '/' + pEmpresas.ubicacion_id,  pEmpresas)
 .then(response  =>  response.data);
 }
 

@@ -16,7 +16,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
-import UbicacionesService from '../service/EmpresasService';
+import EmpresasService from '../service/EmpresasService';
 
 import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
@@ -25,7 +25,7 @@ import { Skeleton } from 'primereact/skeleton';
 
 
 
-const Ubicaciones = ()   =>   {
+const Empresas = ()   =>   {
 const  [mensaje, setMensaje] = useState({
 title: '',
 text: '',
@@ -35,25 +35,25 @@ timer: '3000'
 });
 
 
-const [lstUbicaciones, setLstUbicaciones] = useState([]);
+const [lstEmpresas, setLstEmpresas] = useState([]);
 const [errores, setErrores] = useState([]);
-const [dlgUbicaciones, setDlgUbicaciones] = useState(false);
-const [Ubicaciones, setUbicaciones] = useState({ubicacion_id:null
+const [dlgEmpresas, setDlgEmpresas] = useState(false);
+const [Empresas, setEmpresas] = useState({id:null
 ,nombre:''
 
 });
 
 const [txtCriterio, setTxtCriterio] = useState('');
-const { t } = useTranslation(['translation','Ubicaciones']);
+const { t } = useTranslation(['translation','Empresas']);
 const [captura, setCaptura] = useState(false);
-const ubicacionesService = new UbicacionesService(); //MODIFICAR SERVICES
+const empresasService = new EmpresasService(); //MODIFICAR SERVICES
 
 
 
 
 
 
-const ubicacionesSuccess = (severidad,cabecero,detalle)   =>   {
+const empresasSuccess = (severidad,cabecero,detalle)   =>   {
 let mensajeCopy = Object.assign({}, mensaje);
 mensajeCopy['title'] = cabecero;
 mensajeCopy['text'] = detalle;
@@ -65,58 +65,58 @@ Swal.fire(mensajeCopy);
 
 
 
-const obtenerUbicacion= ()   =>   { //MODIFICAR EN SERVICE
-   ubicacionesService.obtenerUbicacion ().then(data => setLstUbicaciones(data));
+const obtenerEmpresa= ()   =>   { //MODIFICAR EN SERVICE
+   empresasService.obtenerEmpresa ().then(data => setLstEmpresas(data));
 
 };
 
-const seleccionaUbicacion = (pUbicaciones)   =>   {
+const seleccionaEmpresa = (pEmpresas)   =>   {
     setCaptura(false);
     formik.resetForm();
-    ubicacionesService.seleccionaUbicacion (pUbicaciones).then(data => setUbicaciones(data));
-    setDlgUbicaciones(true);
+    empresasService.seleccionaEmpresa (pEmpresas).then(data => setEmpresas(data));
+    setDlgEmpresas(true);
 };
 
 useEffect(()   =>   {
-obtenerUbicacion();
+obtenerEmpresa();
 },  [txtCriterio]);
 
 
-const agregaUbicacion = ()   =>   {
-   ubicacionesService.agregaUbicacion (Ubicaciones).then(data => {setUbicaciones(data);
-      ubicacionesSuccess('success',t('Ubicaciones:cabecero.exito'),t('Ubicaciones:mensaje.agregar'));
-setDlgUbicaciones(false);
-obtenerUbicacion ();
+const agregaEmpresa = ()   =>   {
+   empresasService.agregaEmpresa (Empresas).then(data => {setEmpresas(data);
+      empresasSuccess('success',t('Empresas:cabecero.exito'),t('Empresas:mensaje.agregar'));
+setDlgEmpresas(false);
+obtenerEmpresa ();
 });
 };
 
-const eliminaUbicacion = (pUbicaciones)   =>   {
-   ubicacionesService.eliminaUbicacion (pUbicaciones).then(data => setUbicaciones(data));
-   ubicacionesSuccess('success',t('Ubicaciones:cabecero.exito'),t('Ubicaciones:mensaje.eliminar'));
-setDlgUbicaciones(false);
-obtenerUbicacion();
-obtenerUbicacion();
+const eliminaEmpresa = (pEmpresas)   =>   {
+   empresasService.eliminaEmpresa (pEmpresas).then(data => setEmpresas(data));
+   empresasSuccess('success',t('Empresas:cabecero.exito'),t('Empresas:mensaje.eliminar'));
+setDlgEmpresas(false);
+obtenerEmpresa();
+obtenerEmpresa();
 };
 
-const actualizaUbicacion = ()   =>   {
-   ubicacionesService.actualizaUbicacion(Ubicaciones).
-then(data => { setDlgUbicaciones(false); obtenerUbicacion();});
+const actualizaEmpresa = ()   =>   {
+   empresasService.actualizaEmpresas(Empresas).then(data => { setDlgEmpresas(false); 
+   obtenerEmpresa();});
 };
 
 const updateProperty = (propiedad, valor)   =>  {
-let ubicacionCopy = Object.assign({}, Ubicaciones);
-ubicacionCopy[propiedad] = valor;
-setUbicaciones(ubicacionCopy);
+let empresaCopy = Object.assign({}, Empresas);
+empresaCopy[propiedad] = valor;
+setEmpresas(empresaCopy);
 };
 
-const iniciaUbicaciones = ()   =>   {
+const iniciaEmpresas = ()   =>   {
 setCaptura(true);
 iniciaComponentes();
-setDlgUbicaciones(true);
+setDlgEmpresas(true);
 };
 
 const iniciaComponentes = ()   =>   {
-setUbicaciones({ubicacion_id:null
+setEmpresas({id:null
    ,nombre:''
 });
 formik.resetForm();
@@ -128,8 +128,8 @@ formik.resetForm();
 */
 const validate = () => {
 const errors = {};
- if (!Ubicaciones.nombre) {
-errors.txtNombreUbicacion= t('Ubicaciones:required.nombreUbicacion');
+ if (!Empresas.nombre) {
+errors.txtNombre= t('Empresas:required.nombreUbicacion');
 }
 return errors;
 };
@@ -139,9 +139,9 @@ initialValues: {} ,
 validate,
 onSubmit: () => {
 if(captura){
-agregaUbicacion();
+agregaEmpresa();
 } else{
-actualizaUbicacion();
+actualizaEmpresa();
 }
 },
 });
@@ -160,8 +160,8 @@ return (
 const actionTemplate = (rowData, column)   =>   {
 return (
 <div>
-   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaUbicacion(rowData);} }></Button>
-   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaUbicacion(rowData); } }></Button>
+   <Button type="button" icon="pi pi-trash" className="p-button-rounded" onClick={()  =>  {eliminaEmpresa(rowData);} }></Button>
+   <Button type="button" icon="pi pi-pencil" className="p-button-rounded" onClick={()   =>   {seleccionaEmpresa(rowData); } }></Button>
 </div>);
 }
 
@@ -171,10 +171,10 @@ const rightFooter = (
 
 <div className="p-grid p-fluid">
    <div className="p-col-12">
-      <div className="p-inputgroup"><Button tooltip={t('Ubicaciones:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgUbicaciones(false) }></Button>                 
-         { !captura   &&  <Button tooltip={t('Ubicaciones:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaUbicacion }></Button>}                 
-         { !captura   &&  <Button tooltip={t('Ubicaciones:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
-         { captura   &&  <Button tooltip={t('Ubicaciones:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+      <div className="p-inputgroup"><Button tooltip={t('Empresas:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgEmpresas(false) }></Button>                 
+         { !captura   &&  <Button tooltip={t('Empresas:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaEmpresa }></Button>}                 
+         { !captura   &&  <Button tooltip={t('Empresas:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+         { captura   &&  <Button tooltip={t('Empresas:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          
       </div>
    </div>
@@ -192,32 +192,32 @@ return (
 
 <div>
    <h1>
-      <Trans i18nKey="Ubicaciones:entidad"></Trans>
+      <Trans i18nKey="Empresas:entidad"></Trans>
    </h1>
    <div className="p-grid p-fluid">
       <div className="p-col-12 p-md-12">
          <div className="p-inputgroup">
-            <InputText placeholder={t('Ubicaciones:placeholder.nombreUbicacion')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Ubicaciones:boton.agregar')} icon="pi pi-plus" onClick={iniciaUbicaciones}></Button></div>
+            <InputText placeholder={t('Empresas:placeholder.nombre')} value={txtCriterio} onChange={(e)   =>   setTxtCriterio(e.target.value)}></InputText><Button tooltip={t('Empresas:boton.agregar')} icon="pi pi-plus" onClick={iniciaEmpresas}></Button></div>
       </div>
    </div>
-   <DataTable value={lstUbicaciones} paginator={true} rows={10} responsive={true}>
-      <Column field="ubicacion_id" header={t('Ubicaciones:label.idUbicacion')} sortable={true}></Column>
-      <Column field="nombre" header={t('Ubicaciones:label.nombreUbicacion')} sortable={true}></Column>
-      <Column body={actionTemplate} header={t('Ubicaciones:rotulo.editar')}></Column>
+   <DataTable value={lstEmpresas} paginator={true} rows={10} responsive={true}>
+      <Column field="id" header={t('Empresas:label.id')} sortable={true}></Column>
+      <Column field="nombre" header={t('Empresas:label.nombre')} sortable={true}></Column>
+      <Column body={actionTemplate} header={t('Empresas:rotulo.editar')}></Column>
    </DataTable>
-   <Dialog header={t('Ubicaciones:rotulo.agregar')} footer={dlgFooter} visible={dlgUbicaciones} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgUbicaciones(false)} blockScroll={false}>
-      { Ubicaciones  &&  
+   <Dialog header={t('Empresas:rotulo.agregar')} footer={dlgFooter} visible={dlgEmpresas} modal={true} style={{ width: '50vw' }} onHide={(e)   =>   setDlgEmpresas(false)} blockScroll={false}>
+      { Empresas  &&  
       <div>
          <div className="p-fluid p-formgrid p-grid">
-            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreUbicacion">
-                  {t('Ubicaciones:label.nombreUbicacion')}
+            <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombre">
+                  {t('Empresas:label.nombre')}
                   </label>
                {{captura} ? ( 
-               <InputText id="txtNombreUbicacion" placeholder={t('Ubicaciones:placeholder.nombreUbicacion')} value={Ubicaciones.nombre} className={formik.errors.txtNombreUbicacion ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
-               ):(     <label id="txtNombreUbicacion">ubicaciones.nombre</label>)}
+               <InputText id="txtNombre" placeholder={t('Empresas:placeholder.nombre')} value={Empresas.nombre} className={formik.errors.txtNombre ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('nombre', e.target.value)}></InputText>    
+               ):(     <label id="txtNombre">Empresas.nombre</label>)}
                
-               {formik.errors.txtNombreUbicacion  &&  <small id="ttxtNombreUbicacion-help" className="p-invalid">
-                  {formik.errors.txtNombreUbicacion}
+               {formik.errors.txtNombre  &&  <small id="ttxtNombre-help" className="p-invalid">
+                  {formik.errors.txtNombre}
                   </small>}                 
                
             </div>
@@ -235,6 +235,6 @@ return (
 
 
 }                
-export default Ubicaciones;                                        	
+export default Empresas;                                        	
 
 
