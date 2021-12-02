@@ -25,10 +25,6 @@ import EquiposService from '../service/EquiposService';
 import { useTranslation , Trans} from 'react-i18next';
 import { useFormik } from 'formik';
 
-import { Skeleton } from 'primereact/skeleton';
-//import { arrayToHash } from '@fullcalendar/core/util/object';
-
-
 const Servicios = ()   =>   {
     const  [mensaje, setMensaje] = useState({
     title: '',
@@ -37,9 +33,6 @@ const Servicios = ()   =>   {
     confirmButtonText: 'Aceptar',
     timer: '3000'
     });
-    
-    //TextArea
-    const [value1, setValue1] = useState('');
    
     const [lstDevices, setLstDevices] = useState([]);
     const [lstServicios, setLstServicios] = useState([]);
@@ -51,8 +44,8 @@ const Servicios = ()   =>   {
         ,problema: ''
         ,acciones: ''
         ,estado:''
-        ,inicio: ''
-        ,termino: ''
+        ,fecha_inicio: ''
+        ,fecha_termino: ''
 
     
     });
@@ -62,23 +55,6 @@ const Servicios = ()   =>   {
     const [captura, setCaptura] = useState(false);
     const serviciosService = new ServiciosService(); //MODIFICAR SERVICES
     const devices = new EquiposService();
- 
-    
-    let today = new Date();
-
-    let invalidDates = [today];
-
-    addLocale('es', {
-        firstDayOfWeek: 1,
-        dayNames: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
-        dayNamesShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
-        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-        monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-        monthNamesShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
-        today: 'Hoy',
-        clear: 'Claro'
-    });
-    
     
     const serviciosSuccess = (severidad,cabecero,detalle)   =>   {
     let mensajeCopy = Object.assign({}, mensaje);
@@ -153,8 +129,8 @@ const Servicios = ()   =>   {
       ,problema: ''
       ,acciones: ''
       ,estado:''
-      ,inicio: ''
-      ,termino: ''
+      ,fecha_inicio: ''
+      ,fecha_termino: ''
     });
     formik.resetForm();
     };
@@ -306,7 +282,7 @@ const Servicios = ()   =>   {
                       </label>
                    {{captura} ? ( 
         
-               <InputMask id="date" mask="9999-99-99"  slotChar="yyyy-mm-dd" placeholder={t('Servicios:placeholder.fecha_inicio')} value={Servicios.inicio} onChange={(e) =>   updateProperty('inicio', e.target.value)}></InputMask>
+               <InputMask id="date" mask="9999-99-99"  slotChar="yyyy-mm-dd" placeholder={t('Servicios:placeholder.fecha_inicio')} value={Servicios.fecha_inicio} onChange={(e) =>   updateProperty('fecha_inicio', e.target.value)}></InputMask>
                ):(     <label id="txtFechaSolicitud">servicios.fecha_solicitud</label>)}
                            
                 </div>
@@ -314,7 +290,7 @@ const Servicios = ()   =>   {
                       {t('Servicios:label.fecha_termino')}
                       </label>
                    {{captura} ? ( 
-               <InputMask id="date" mask="9999-99-99"  slotChar="yyyy/mm/dd" placeholder={t('Servicios:placeholder.fecha_termino')} value={Servicios.termino} onChange={(e) =>   updateProperty('termino', e.target.value)}></InputMask>
+               <InputMask id="date" mask="9999-99-99"  slotChar="yyyy/mm/dd" placeholder={t('Servicios:placeholder.fecha_termino')} value={Servicios.fecha_termino} onChange={(e) =>   updateProperty('fecha_termino', e.target.value)}></InputMask>
                ):(     <label id="txtFechaTermino">servicios.fecha_termino</label>)}
                    
                 </div>
