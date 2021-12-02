@@ -45,7 +45,8 @@ const Empleados = () => {
    const [errores, setErrores] = useState([]);
    const [dlgEmpleados, setDlgEmpleados] = useState(false);
    const [Empleados, setEmpleados] = useState({
-      num_empleado: ''
+      id:''
+      , num_empleado: ''
       , nombre: ''
       , apellidos: ''
       , puesto: ''
@@ -133,7 +134,8 @@ const Empleados = () => {
 
    const iniciaComponentes = () => {
       setEmpleados({
-         num_empleado: ''
+         id:''
+         , num_empleado: ''
          , nombre: ''
          , apellidos: ''
          , puesto: ''
@@ -223,7 +225,8 @@ const Empleados = () => {
          </div>
          <DataTable value={lstEmpleados} paginator={true} rows={10} responsive={true}>
             <Column field="id" header={t('Empleados:label.id')} sortable={true}></Column>
-            <Column field="empleado" header={t('Empleados:label.nombre')} sortable={true}></Column>
+            <Column field="nombre" header={t('Empleados:label.nombre')} sortable={true}></Column>
+            <Column field="apellidos" header={t('Empleados:label.apellidos')} sortable={true}></Column>
             <Column field="puesto" header={t('Empleados:label.puesto')} sortable={true}></Column>
             <Column field="area" header={t('Empleados:label.area')} sortable={true}></Column>
             <Column body={actionTemplate} header={t('Empleados:rotulo.editar')}></Column>
@@ -234,14 +237,14 @@ const Empleados = () => {
                <div>
                   <form onSubmit={handleSubmit(onSubmit)}>
                      <div className="p-fluid p-formgrid p-grid">
-                        <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNumEmpleado">
+                        {captura ? <div className="p-field p-col-12 p-md-6"><label htmlFor="txtNumEmpleado">
                            {t('Empleados:label.id')}
                         </label>
                            {{ captura } ? (
-                              <InputText name="num_empleado" id="txtNumEmpleado" placeholder={t('Empleados:placeholder.id')} value={Empleados.num_empleado} className={formik.errors.num_empleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('num_empleado', e.target.value)}></InputText>
+                              <InputText name="num_empleado" id="txtNumEmpleado" placeholder={t('Empleados:placeholder.id')} value={Empleados.id} className={formik.errors.num_empleado ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('id', e.target.value)}></InputText>
                            ) : (<label id="txtNumEmpleado">empleados.num_empleado</label>)}
 
-                        </div>
+                        </div>:<div></div>}
                         <div className="p-field p-col-12 p-md-12"><label htmlFor="txtNombreEmpleado">
                            {t('Empleados:label.nombre')}
                         </label>
