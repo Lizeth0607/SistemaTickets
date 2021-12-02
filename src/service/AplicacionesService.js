@@ -7,7 +7,6 @@ export default class  AplicacionesService {
 
 obtenerApp (){
     return axios.get("http://localhost/api-soporte/public/aplicacion/index").then(res => res.data);
-
 }
 
 

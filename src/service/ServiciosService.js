@@ -6,7 +6,7 @@ import axios from 'axios';
 export default class  ServiciosService {
 
 obtenerServicio (pCriterio){
-    return axios.get("").then(res => res.data);
+    return axios.get("http://localhost/api-soporte/public/ticket/index").then(res => res.data);
 }
 
 
@@ -16,25 +16,25 @@ return axios.get(seleccionaUrl  + '/' + pServicios.idServicio).then(response  =>
 }
 
 agregaServicio (pServicios) {
-    let agregaUrl = '';
+    let agregaUrl = 'http://127.0.0.1/api-soporte/public/ticket/store';
     console.log(pServicios);
     const params = new URLSearchParams()
-    params.append('servicio', pServicios.servicio)
-    params.append('descripcion', pServicios.descripcion)
-    params.append('prioridad', pServicios.prioridad)
-    params.append('estado', pServicios.estado)
-    params.append('fecha_solicitud', pServicios.fecha_solicitud)
-    params.append('fecha_termino', pServicios.fecha_termino)
     params.append('equipo_id', pServicios.equipo_id)
-    params.append('usuario_id', pServicios.usuario_id)
+    params.append('indicador_id', pServicios.indicador_id)
+    params.append('problema', pServicios.problema)
+    params.append('acciones', pServicios.acciones)
+    params.append('estado', pServicios.estado)
+    params.append('inicio', pServicios.inicio)
+    params.append('termino', pServicios.termino)
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params, config).then(response => response.data);
 }
 
 eliminaServicio (pServicios) {
-    let eliminaUrl = ''; //Modificar
-    //console.log("asda ",pServicios.servicio_id);
-    return axios.delete(eliminaUrl + '/' + pServicios.servicio_id);
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/ticket/destroy'; //Modificar
+    console.log("Eliminado ",pServicios.id);
+    console.log(pServicios);
+    return axios.delete(eliminaUrl + '/' + pServicios.id);
 
 }
 

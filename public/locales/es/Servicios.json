@@ -36,44 +36,37 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "idServicio":"ID Servicio",
-        "nombreServicio":"Nombre del Servicio",
-        "descServicio":"Descripción del Servicio",
-        "prioridadServicio":"Prioridad del Servicio",
-        "estadoServicio":"Estado del Servicio",
-        "fechaSolicitud":"Fecha de solicitud",
-        "fechaTermino":"Fecha de término",
-        "idEquipo":"Id Equipo",
-        "idEmpleado":"Empleado Equipo",
-        "idUsuario":"Usuario Asignado"
-    
+        "id":"ID Ticket",
+        "equipo":"NumSerie Equipo",
+        "indicador":"Indicador",
+        "problema":"Problema presentado",
+        "acciones":"Acciones realizadas",
+        "estado":"Estado",
+        "fecha_inicio":"Fecha de inicio",
+        "fecha_termino":"Fecha de término"
     },
 
 "required":{
-        "idServicio":"El ID Servicio es requerido",
-        "nombreServicio":"El Nombre del Servicio es requerido",
-        "descServicio":"La Descripción del Servicio es requerida",
-        "prioridadServicio":"La Prioridad del Servicio es requerida",
-        "estadoServicio":"El Estado del Servicio es requerido",
-        "fechaSolicitud":"La Fecha de solicitud es requerida",
-        "fechaTermino":"La Fecha de término es requerida",
-        "idEquipo":"El Id Equipo es requerido",
-        "idEmpleado":"El Empleado Equipo es requerido",
-        "idUsuario":"El Usuario Asignado es requerido"
+        "id":"ID Ticket es requerido",
+        "equipo":"NumSerie Equipo es requerido",
+        "indicador":"Indicador es requerido",
+        "problema":"Problema presentado es requerido",
+        "acciones":"Acciones realizadas son requeridas",
+        "estado":"Estado es requerido",
+        "fecha_inicio":"Fecha de inicio es requerida",
+        "fecha_termino":"Fecha de término es requerida"
 
     },
 
 "placeholder":{
-        "idServicio":"Escribe el ID Servicio",
-        "nombreServicio":"Escribe el Nombre del Servicio",
-        "descServicio":"Escribe la Descripción del Servicio",
-        "prioridadServicio":"Escribe la Prioridad del Servicio",
-        "estadoServicio":"Escribe el Estado del Servicio",
-        "fechaSolicitud":"Escribe la Fecha de solicitud",
-        "fechaTermino":"Escribe la Fecha de término",
-        "idEquipo":"Selecciona el Id Equipo",
-        "idEmpleado":"Selecciona el Empleado Equipo",
-        "idUsuario":"Selecciona el Usuario Asignado"    
+        "id":"ID Ticket",
+        "equipo":"Selecciona el NumSerie Equipo",
+        "indicador":"Selecciona el Indicador",
+        "problema":"Escribe el Problema presentado",
+        "acciones":"Escribe las Acciones realizadas",
+        "estado":"Escribe el Estado del ticket",
+        "fecha_inicio":"Fecha de inicio",
+        "fecha_termino":"Fecha de término"  
     }
     
  }   

@@ -5,10 +5,8 @@ import axios from 'axios';
 
 export default class  IndicadoresService {
 
-obtenerIndicador (pCriterio){
-let buscaUrl = '';//Modificar
-let oValor = pCriterio.trim() === '' ? '%20' : pCriterio.trim(); 
-return axios.get(buscaUrl + oValor).then(response  =>  response.data);
+obtenerIndicador (){
+    return axios.get("http://localhost/api-soporte/public/indicador/index").then(res => res.data);
 }
 
 
@@ -18,16 +16,21 @@ return axios.get(seleccionaUrl  + '/' + pIndicadores.idInd).then(response  =>  r
 }
 
 agregaIndicador (pIndicadores) {
-let agregaUrl = '';
-return axios.post(agregaUrl, pIndicadores).then(response  =>  response.data);
+let agregaUrl = 'http://127.0.0.1/api-soporte/public/indicador/store';
+    console.log(pIndicadores);
+    const params = new URLSearchParams()
+    params.append('nombre',pIndicadores.nombre)
+    params.append('descripcion',pIndicadores.descripcion)
+   
+    const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    return axios.post(agregaUrl, params,config).then(response  =>  response.data);
 }
 
 eliminaIndicador (pIndicadores) {
-let eliminaUrl = ''; //Modificar
-axios.delete(eliminaUrl  + '/' + pIndicadores.idInd, {
-headers: {'Content-Type': 'application/json;charset=UTF-8'},
-data: pIndicadores
-});
+    let eliminaUrl = 'http://127.0.0.1/api-soporte/public/indicador/destroy'; //Modificar
+    console.log("Eliminado: ",pIndicadores.id);
+    console.log(pIndicadores);
+    return axios.delete(eliminaUrl + '/' + pIndicadores.id);
 
 }
 

@@ -36,22 +36,22 @@
     "actualizar":"Actualizar"    
   },
 "label":{
-        "idInd":"ID Indicador",
-        "nombreInd":"Nombre del Indicador",
-        "unidadMedida":"Unidad de Medida",
-        "categoria":"Categorías"},
+        "id":"ID Indicador",
+        "nombre":"Nombre",
+        "descripcion":"Descripción"
+      },
 
 "required":{
-        "idInd":"IDIndicador es requerido",
-        "nombreInd":"El nombre del indicador es requerido",
-        "unidadMedidad":"La unidad de medida es requerida",
-        "categoria":"La categoría es requerida"},
+        "id":"ID Indicador es requerido",
+        "nombre":"Nombre es requerido",
+        "descripcion":"Descripción es requerida"
+      },
 
 "placeholder":{
-        "idInd":"ID Indicador",
-        "nombreInd":"Escribe el nombre del indicador",
-        "unidadMedida":"Selecciona la unidad de medida",
-        "categoria":"Selecciona la categoría"}
+        "id":"Escribe ID Indicador",
+        "nombre":"Escribe el Nombre",
+        "descripcion":"Escribe la Descripción"
+      }
     
  }   
 
