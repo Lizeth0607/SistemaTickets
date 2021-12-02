@@ -28,6 +28,7 @@ import Sedes from './components/Sedes';
 import Registros from './components/Registros';
 import ReportesMes  from './components/ReportesMes';
 import Aplicaciones  from './components/Aplicaciones';
+import Tipos  from './components/Tipos';
 
 
 
@@ -131,7 +132,7 @@ const App = () => {
                     {label:'Aplicaciones', icon:'', to:'/Aplicaciones'}, //2
                     //{label:'Sedes', icon:'', to:'/Sedes'}, //3
                     {label:'Empresas', icon:'', to:'/Empresas'}, //3
-
+                    {label:'Tipos', icon:'', to:'/Tipos'},
              ]
             }
         ]
@@ -162,6 +163,7 @@ const App = () => {
         {path:'/Registros', component: Registros, meta: { breadcrumb: [{ parent: 'Operación', label: 'Registros' }] }},
         {path:'/ReportesMes', component: ReportesMes, meta: { breadcrumb: [{ parent: 'Operación', label: 'Reportes' }] }},
         {path:'/Aplicaciones', component: Aplicaciones, meta: { breadcrumb: [{ parent: 'Operación', label: 'Aplicaciones' }] }},
+        {path:'/Tipos', component: Tipos, meta: { breadcrumb: [{ parent: 'Operación', label: 'Tipos' }] }},
 
     ];
 

@@ -1,0 +1,54 @@
+
+{
+    "entidad": "Tipos de Dispositivos",
+    
+  "rotulo":{
+    "buscar":"Buscar tipo de dispositivo",
+    "agregar":"Nuevo tipo de dispositivo",
+    "editar":"Editar",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminar tipo de dispositivo",    
+    "actualizar":"Actualizar tipo de dispositivo",    
+    "imprimir":"Imprimir"   
+  },
+  "mensaje":{
+    "cabecero":"Tipos de Dispositivos",
+    "severidad":"info",
+    "agregar":"Agregado correctamente",
+    "confirmacion":"¿Esta seguro?",
+    "eliminar":"Eliminado correctamente",
+    "actualizar":"Actualizado correctamente"    
+  },
+  "error":{
+    "cabecero":"Tipos de Dispositivos",
+    "severidad":"error",
+    "agregar":"Error en Agregar",
+    "eliminar":"Error en Eliminar",
+    "seleccionar":"Error en Seleccionar",
+    "buscar":"Error en Buscar",
+    "actualizar":"Error en Actualizar"    
+  },
+  "boton":{
+    "agregar":"Agregar",
+    "cancelar":"Cancelar",
+    "eliminar":"Eliminar",
+    "editar":"Editar",
+    "actualizar":"Actualizar"    
+  },
+"label":{
+        "id":"ID TipoDisp",
+        "nombre":"Nombre"
+       },
+
+"required":{
+        "id":"El ID TipoDisp es requerido",
+        "nombre":"El Nombre del tipo de dispositivo es requerido"
+        },
+
+"placeholder":{
+        "id":"Escribe el ID TipoDisp",
+        "nombre":"Escribe el Nombre del tipo de dispositivo"
+        }
+    
+ }   
+
