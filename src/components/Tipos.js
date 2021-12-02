@@ -84,7 +84,7 @@ obtenerTipo();
 
 const agregaTipo = ()   =>   {
    tiposService.agregaTipo (Tipos).then(data => {setTipos(data);
-      tiposSuccess('success',t('Tipos:cabecero.exito'),t('Tipos:mensaje.agregar'));
+      tiposSuccess('success',t('Tipos:mensaje.cabecero'),t('Tipos:mensaje.agregar'));
 setDlgTipos(false);
 obtenerTipo ();
 });
@@ -92,7 +92,7 @@ obtenerTipo ();
 
 const eliminaTipo= (pTipos)   =>   {
     tiposService.eliminaTipo (pTipos).then(data => setTipos(data));
-   tiposSuccess('success',t('Tipos:cabecero.exito'),t('Tipos:mensaje.eliminar'));
+   tiposSuccess('success',t('Tipos:mensaje.cabecero'),t('Tipos:mensaje.eliminar'));
 setDlgTipos(false);
 obtenerTipo();
 obtenerTipo();
@@ -100,6 +100,8 @@ obtenerTipo();
 
 const actualizaTipo = ()   =>   {
    tiposService.actualizaTipo(Tipos).then(data => { setDlgTipos(false); 
+   tiposSuccess('success',t('Tipos:mensaje.cabecero'),t('Tipos:mensaje.actualizar'));
+   setDlgTipos(false);
    obtenerTipo();});
 };
 
@@ -172,8 +174,7 @@ const rightFooter = (
 <div className="p-grid p-fluid">
    <div className="p-col-12">
       <div className="p-inputgroup"><Button tooltip={t('Tipos:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgTipos(false) }></Button>                 
-         { !captura   &&  <Button tooltip={t('Tipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaTipo }></Button>}                 
-         { !captura   &&  <Button tooltip={t('Tipos:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+         { !captura   &&  <Button tooltip={t('Tipos:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          { captura   &&  <Button tooltip={t('Tipos:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          
       </div>

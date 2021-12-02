@@ -91,7 +91,7 @@ const Servicios = ()   =>   {
          
     const agregaServicio = ()   =>   {
     serviciosService.agregaServicio (Servicios).then(data => {setServicios(data);
-    serviciosSuccess('success',t('Servicios:cabecero.exito'),t('Servicios:mensaje.agregar'));
+    serviciosSuccess('success',t('Servicios:mensaje.cabecero'),t('Servicios:mensaje.agregar'));
     setDlgServicios(false);
     obtenerServicio ();
     });
@@ -99,15 +99,17 @@ const Servicios = ()   =>   {
     
     const eliminaServicio = (pServicios)   =>   {
         serviciosService.eliminaServicio (pServicios);
-    serviciosSuccess('success',t('Servicios:cabecero.exito'),t('Servicios:mensaje.eliminar'));
+    serviciosSuccess('success',t('Servicios:mensaje.cabecero'),t('Servicios:mensaje.eliminar'));
     setDlgServicios(false);
     obtenerServicio();
     obtenerServicio();
     };
     
     const actualizaServicio = ()   =>   {
-    serviciosService.actualizaServicio(Servicios).
-    then(data => { setDlgServicios(false); obtenerServicio();});
+      serviciosService.actualizaServicio(Servicios).then(data => { setDlgServicios(false); 
+      serviciosSuccess('success',t('Servicios:mensaje.cabecero'),t('Servicios:mensaje.actualizar'));
+      setDlgServicios(false);
+      obtenerServicio();});
     };
     
     const updateProperty = (propiedad, valor)   =>  {
@@ -185,8 +187,7 @@ const Servicios = ()   =>   {
     <div className="p-grid p-fluid">
        <div className="p-col-12">
           <div className="p-inputgroup"><Button tooltip={t('Servicios:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgServicios(false) }></Button>                 
-             { !captura   &&  <Button tooltip={t('Servicios:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaServicio }></Button>}                 
-             { !captura   &&  <Button tooltip={t('Servicios:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+             { !captura   &&  <Button tooltip={t('Servicios:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              { captura   &&  <Button tooltip={t('Servicios:boton.agregar')} type="submit" icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              
           </div>
@@ -218,6 +219,7 @@ const Servicios = ()   =>   {
           <Column field="id" header={t('Servicios:label.id')} sortable={true}></Column>
           <Column field="equipo_id" header={t('Servicios:label.equipo')} sortable={true}></Column>
           <Column field="problema" header={t('Servicios:label.problema')} sortable={true}></Column>
+
           <Column field="estado" header={t('Servicios:label.estado')} sortable={true}></Column>
           <Column field="fecha_inicio" header={t('Servicios:label.fecha_inicio')} sortable={true}></Column>
           <Column field="fecha_termino" header={t('Servicios:label.fecha_termino')} sortable={true}></Column>

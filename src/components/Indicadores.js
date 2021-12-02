@@ -82,7 +82,7 @@ obtenerIndicador();
 
 const agregaIndicador = ()   =>   {
    indicadoresService.agregaIndicador (Indicadores).then(data => {setIndicadores(data);
-   indicadoresSuccess('success',t('Indicadores:cabecero.exito'),t('Indicadores:mensaje.agregar'));
+   indicadoresSuccess('success',t('Indicadores:mensaje.cabecero'),t('Indicadores:mensaje.agregar'));
    setDlgIndicadores(false);
    obtenerIndicador ();
    });
@@ -90,15 +90,17 @@ const agregaIndicador = ()   =>   {
 
 const eliminaIndicador = (pIndicadores)   =>   {
    indicadoresService.eliminaIndicador (pIndicadores).then(data => setIndicadores(data));
-   indicadoresSuccess('success',t('Indicadores:cabecero.exito'),t('Indicadores:mensaje.eliminar'));
+   indicadoresSuccess('success',t('Indicadores:mensaje.cabecero'),t('Indicadores:mensaje.eliminar'));
    setDlgIndicadores(false);
    obtenerIndicador();
    obtenerIndicador();
 };
 
 const actualizaIndicador = ()   =>   {
-indicadoresService.actualizaIndicador (Indicadores).
-then(data => { setDlgIndicadores(false); obtenerIndicador();});
+   indicadoresService.actualizaIndicador (Indicadores).then(data => { setDlgIndicadores(false); 
+   indicadoresSuccess('success',t('Indicadores:mensaje.cabecero'),t('Indicadores:mensaje.actualizar'));
+   setDlgIndicadores(false);
+   obtenerIndicador();});
 };
 
 const updateProperty = (propiedad, valor)   =>  {
@@ -173,8 +175,7 @@ const rightFooter = (
 <div className="p-grid p-fluid">
    <div className="p-col-12">
       <div className="p-inputgroup"><Button tooltip={t('Indicadores:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgIndicadores(false) }></Button>                 
-         { !captura   &&  <Button tooltip={t('Indicadores:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaIndicador }></Button>}                 
-         { !captura   &&  <Button tooltip={t('Indicadores:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+         { !captura   &&  <Button tooltip={t('Indicadores:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          { captura   &&  <Button tooltip={t('Indicadores:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          
       </div>

@@ -90,7 +90,7 @@ obtenerApp();
 
 const agregaApp = ()   =>   {
 aplicacionesService.agregaApp (Aplicaciones).then(data => {setAplicaciones(data);
-aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.agregar'));
+aplicacionesSuccess('success',t('Aplicaciones:mensaje.cabecero'),t('Aplicaciones:mensaje.agregar'));
 setDlgAplicaciones(false);
 obtenerApp ();
 });
@@ -98,7 +98,7 @@ obtenerApp ();
 
 const eliminaApp = (pApps)   =>   {
    aplicacionesService.eliminaApp (pApps).then(data => setAplicaciones(data));
-   aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.eliminar'));
+   aplicacionesSuccess('success',t('Aplicaciones:mensaje.cabecero'),t('Aplicaciones:mensaje.eliminar'));
    setDlgAplicaciones(false);
    obtenerApp();
    obtenerApp();
@@ -107,7 +107,7 @@ const eliminaApp = (pApps)   =>   {
 
 const actualizaApp = ()   =>   {
 aplicacionesService.actualizaApp (Aplicaciones).then(data => { setDlgAplicaciones(false);
-aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.editar'));
+aplicacionesSuccess('success',t('Aplicaciones:mensaje.cabecero'),t('Aplicaciones:mensaje.actualizar'));
 setDlgAplicaciones(false);
 obtenerApp();});
 
@@ -183,7 +183,8 @@ const rightFooter = (
 
 <div className="p-grid p-fluid">
    <div className="p-col-12">
-      <div className="p-inputgroup"><Button tooltip={t('Aplicaciones:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgAplicaciones(false) }></Button>                 
+      <div className="p-inputgroup">
+         <Button tooltip={t('Aplicaciones:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgAplicaciones(false) }></Button>                 
          { !captura   &&  <Button tooltip={t('Aplicaciones:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          { captura   &&  <Button tooltip={t('Aplicaciones:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          

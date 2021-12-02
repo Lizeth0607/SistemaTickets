@@ -89,7 +89,7 @@ const Empleados = () => {
    const agregaEmpleado = () => {
       empleadosService.agregaEmpleado(Empleados).then(data => {
          setEmpleados(data);
-         empleadosSuccess('success', t('Empleados:cabecero.exito'), t('Empleados:mensaje.agregar'));
+         empleadosSuccess('success', t('Empleados:mensaje.cabecero'), t('Empleados:mensaje.agregar'));
          setDlgEmpleados(false);
          obtenerEmpleado();
       });
@@ -97,7 +97,7 @@ const Empleados = () => {
 
    const eliminaEmpleado = (pEmpleados) => {
       empleadosService.eliminaEmpleado(pEmpleados).then(data => setEmpleados(data));
-      empleadosSuccess('success', t('Empleados:cabecero.exito'), t('Empleados:mensaje.eliminar'));
+      empleadosSuccess('success', t('Empleados:mensaje.cabecero'), t('Empleados:mensaje.eliminar'));
       setDlgEmpleados(false);
       obtenerEmpleado();
       obtenerEmpleado();
@@ -106,6 +106,8 @@ const Empleados = () => {
 
    const actualizaEmpleado = () => {
       empleadosService.actualizaEmpleado(Empleados).then(data => { setDlgEmpleados(false); obtenerEmpleado(); });
+      empleadosSuccess('success',t('Empleados:mensaje.cabecero'),t('Empleados:mensaje.actualizar'));
+      setDlgEmpleados(false);
       obtenerEmpleado();
    };
 
@@ -184,8 +186,7 @@ const Empleados = () => {
       <div className="p-grid p-fluid">
          <div className="p-col-12">
             <div className="p-inputgroup"><Button tooltip={t('Empleados:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={() => setDlgEmpleados(false)}></Button>
-               {!captura && <Button tooltip={t('Empleados:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaEmpleado}></Button>}
-               {!captura && <Button tooltip={t('Empleados:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
+               {!captura && <Button tooltip={t('Empleados:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
                {captura && <Button tooltip={t('Empleados:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
 
             </div>
@@ -213,7 +214,7 @@ const Empleados = () => {
             <Column field="apellidos" header={t('Empleados:label.apellidos')} sortable={true}></Column>
             <Column field="puesto" header={t('Empleados:label.puesto')} sortable={true}></Column>
             <Column field="area" header={t('Empleados:label.area')} sortable={true}></Column>
-            <Column field="S/N" header={t('Empleados:label.equipo')} sortable={true}></Column>
+            <Column field="equipo_id" header={t('Empleados:label.equipo')} sortable={true}></Column>
 
             <Column body={actionTemplate} header={t('Empleados:rotulo.editar')}></Column>
 

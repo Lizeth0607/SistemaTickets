@@ -45,21 +45,7 @@ const AplicacionesEquipos = ()   =>   {
     const [lstDevices, setLstDevices] = useState([]);
     const [selectedApp, setSelectedApp]= useState(null);
 
-   //Dropdown
-    const url="http://127.0.0.1/api-soporte/public/equipo/index";
-    const [equiposIndex, setEquiposIndex]=useState()
-    const fecthApi = async()=>{
-       const response = await fetch(url);
-       console.log(response.status);
-       const responseJson= await response.json();
-       setEquiposIndex(responseJson);
-       console.log(responseJson);
-
-    }
-    useEffect(() =>{
-       fecthApi();
-      }, [] )
-
+   
 
     const [lstAplicacionesEqs, setLstAplicacionesEqs] = useState([]);
     const [errores, setErrores] = useState([]);
@@ -67,7 +53,7 @@ const AplicacionesEquipos = ()   =>   {
     const [AplicacionesEqs, setAplicacionesEqs] = useState({id:null
     ,aplicacion_id:''
     ,equipo_id :''
-   , instalacion:''
+   , fecha_instalacion:''
   
     });
     
@@ -93,7 +79,7 @@ const AplicacionesEquipos = ()   =>   {
     
     
     
-    const obtenerApp = ()   =>   { //MODIFICAR EN SERVICE
+    /*const obtenerApp = ()   =>   { //MODIFICAR EN SERVICE
       apps.obtenerApp ().then(data => setLstApps(data));
    };
    const obtenerEquipo = ()   =>   { //MODIFICAR EN SERVICE
@@ -102,7 +88,7 @@ const AplicacionesEquipos = ()   =>   {
    
    const onAppChange = (e) => {
       setSelectedApp(e.value);
-  }
+  }*/
 
 
     const obtenerAplicacionEq = ()   =>   { //MODIFICAR EN SERVICE
@@ -120,16 +106,16 @@ const AplicacionesEquipos = ()   =>   {
     obtenerAplicacionEq();
     },  [txtCriterio]);
    
-    useEffect(()   =>   {
+    /*useEffect(()   =>   {
       obtenerApp();
       },);
       useEffect(()   =>   {
          obtenerEquipo();
-         },);
+         },);*/
     
     const agregaAplicacionEq = ()   =>   {
     aplicacionesEqsService.agregaAplicacionEq (AplicacionesEqs).then(data => {setAplicacionesEqs(data);
-    aplicacionesEqsSuccess('success',t('AplicacionesEquipos:cabecero.exito'),t('AplicacionesEquipos:mensaje.agregar'));
+    aplicacionesEqsSuccess('success',t('AplicacionesEquipos:mensaje.cabecero'),t('AplicacionesEquipos:mensaje.agregar'));
     setDlgAplicacionesEqs(false);
     obtenerAplicacionEq ();
     });
@@ -137,15 +123,17 @@ const AplicacionesEquipos = ()   =>   {
     
     const eliminaAplicacionEq = (pApps)   =>   {
       aplicacionesEqsService.eliminaAplicacionEq(pApps).then(data => setAplicacionesEqs(data));
-      aplicacionesEqsSuccess('success',t('AplicacionesEquipos:cabecero.exito'),t('Aplicaciones:mensaje.eliminar'));
+      aplicacionesEqsSuccess('success',t('AplicacionesEquipos:mensaje.cabecero'),t('AplicacionesEquipos:mensaje.eliminar'));
       setDlgAplicacionesEqs(false);
       obtenerAplicacionEq();
       obtenerAplicacionEq();
    };
     
     const actualizaAplicacionEq = ()   =>   {
-    aplicacionesEqsService.actualizaAplicacionEq(AplicacionesEqs).
-    then(data => { setDlgAplicacionesEqs(false); obtenerAplicacionEq();});
+      aplicacionesEqsService.actualizaAplicacionEq (AplicacionesEqs).then(data => { setDlgAplicacionesEqs(false);
+         aplicacionesEqsSuccess('success',t('AplicacionesEquipos:mensaje.cabecero'),t('AplicacionesEquipos:mensaje.actualizar'));
+         setDlgAplicacionesEqs(false);
+         obtenerAplicacionEq();});
     };
     
     
@@ -166,7 +154,7 @@ const AplicacionesEquipos = ()   =>   {
     setAplicacionesEqs({id:null
       ,aplicacion_id:''
       ,equipo_id :''
-     , instalacion:''
+     , fecha_instalacion:''
                 
     });
     formik.resetForm();
@@ -221,8 +209,7 @@ const AplicacionesEquipos = ()   =>   {
     <div className="p-grid p-fluid">
        <div className="p-col-12">
           <div className="p-inputgroup"><Button tooltip={t('AplicacionesEquipos:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgAplicacionesEqs(false) }></Button>                 
-             { !captura   &&  <Button tooltip={t('AplicacionesEquipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaAplicacionEq }></Button>}                 
-             { !captura   &&  <Button tooltip={t('AplicacionesEquipos:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+             { !captura   &&  <Button tooltip={t('AplicacionesEquipos:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              { captura   &&  <Button tooltip={t('AplicacionesEquipos:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
              
           </div>
@@ -254,8 +241,8 @@ const AplicacionesEquipos = ()   =>   {
        <DataTable value={lstAplicacionesEqs} paginator={true} rows={10} responsive={true}>
           
          <Column field="id" header={t('AplicacionesEquipos:label.id')} sortable={true}></Column>
-         <Column field="equipo_id" header={t('AplicacionesEquipos:label.id_app')} sortable={true}></Column>
-         <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.id_eq')} sortable={true}></Column>
+         <Column field="equipo_id" header={t('AplicacionesEquipos:label.id_eq')} sortable={true}></Column>
+         <Column field="aplicacion_id" header={t('AplicacionesEquipos:label.id_app')} sortable={true}></Column>
          <Column field="fecha_instalacion" header={t('AplicacionesEquipos:label.fecha_instalacion')} sortable={true}></Column>
 
 
@@ -271,15 +258,15 @@ const AplicacionesEquipos = ()   =>   {
                       {t('AplicacionesEquipos:label.fecha_instalacion')}
                       </label>
                    {{captura} ? ( 
-                        <InputMask id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.instalacion} onChange={(e) => updateProperty('instalacion', e.target.value)} mask="9999-99-99"  slotChar="yyyy-mm-dd" ></InputMask>
-                        ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fec_inst</label>)}
+                        <InputMask id="txtfecha_instalacion" placeholder={t('AplicacionesEquipos:placeholder.fecha_instalacion')} value={AplicacionesEqs.fecha_instalacion} onChange={(e) => updateProperty('fecha_instalacion', e.target.value)} mask="9999-99-99"  slotChar="yyyy-mm-dd" ></InputMask>
+                        ):(     <label id="txtfecha_instalacion">aplicacionesEqs.fecha_instalacion</label>)}
                    
                 </div>
                 <div className="p-field p-col-12 p-md-12"><label htmlFor="txtAplicacion">
                       {t('AplicacionesEquipos:label.id_app')}
                       </label>
                    {{captura} ? ( 
-                <Dropdown onChange={onAppChange} value={selectedApp} optionValue="id" options={lstApps}  optionLabel="nombre"  placeholder={t('AplicacionesEquipos:placeholder.id_app')} />
+               <InputText id="txApp" placeholder={t('AplicacionesEquipos:placeholder.id_app')} value={AplicacionesEqs.aplicacion_id} className={formik.errors.txtApp ? 'p-invalid':'p-inputtext'} maxLength={45} onChange={(e) =>   updateProperty('aplicacion_id', e.target.value)}></InputText>    
 
                 ):(     <label id="txtAplicacion">aplicacionesEqs.aplicacion_id</label>)}
     
@@ -293,15 +280,7 @@ const AplicacionesEquipos = ()   =>   {
                 ):(     <label id="txtEquipo">aplicacionesEqs.equipo_id</label>)}
     
                 </div>
-                <div>
-                   <ul>
-                   {!equiposIndex ? "Cargando equipos":
-                   equiposIndex.map((equipoIndex, index) =>{
-                      return <li key={index}>{equipoIndex.estacion}</li>
-                   })
-                   }
-                   </ul>
-                </div>
+                
              </div>
           </div>
           

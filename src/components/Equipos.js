@@ -98,7 +98,7 @@ const Equipos = () => {
    const agregaEquipo = () => {
       equiposService.agregaEquipo(Equipos).then(data => {
          setEquipos(data);
-         equiposSuccess('success', t('Equipos:cabecero.exito'), t('Equipos:mensaje.agregar'));
+         equiposSuccess('success', t('Equipos:mensaje.cabecero'), t('Equipos:mensaje.agregar'));
          setDlgEquipos(false);
          obtenerEquipo();
       });
@@ -106,7 +106,7 @@ const Equipos = () => {
 
    const eliminaEquipo = (pEquipos) => {
       equiposService.eliminaEquipo(pEquipos).then(data => setEquipos(data));
-      equiposSuccess('success', t('Equipos:cabecero.exito'), t('Equipos:mensaje.eliminar'));
+      equiposSuccess('success', t('Equipos:mensaje.cabecero'), t('Equipos:mensaje.eliminar'));
       setDlgEquipos(false);
       obtenerEquipo();
       obtenerEquipo();
@@ -115,6 +115,8 @@ const Equipos = () => {
 
    const actualizaEquipo = () => {
       equiposService.actualizaEquipo(Equipos).then(data => { setDlgEquipos(false); obtenerEquipo(); });
+      equiposSuccess('success',t('Equipos:mensaje.cabecero'),t('Equipos:mensaje.actualizar'));
+      setDlgEquipos(false);
       obtenerEquipo();
    };
 
@@ -193,8 +195,7 @@ const Equipos = () => {
       <div className="p-grid p-fluid">
          <div className="p-col-12">
             <div className="p-inputgroup"><Button tooltip={t('Equipos:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={() => setDlgEquipos(false)}></Button>
-               {!captura && <Button tooltip={t('Equipos:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaEquipo}></Button>}
-               {!captura && <Button tooltip={t('Equipos:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
+               {!captura && <Button tooltip={t('Equipos:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
                {captura && <Button tooltip={t('Equipos:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}
 
             </div>

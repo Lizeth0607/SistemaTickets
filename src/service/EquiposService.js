@@ -44,7 +44,7 @@ actualizaEquipo (pEquipos) {
 let actualizaUrl = 'http://localhost/api-soporte/public/equipo/update'; //Modificar
 console.log("Actualizar: ",pEquipos.estacion);
 const params = new URLSearchParams()
-    //params.append('num_serie',pEquipos.num_serie)
+    params.append('num_serie',pEquipos.num_serie)
     params.append('estacion',pEquipos.estacion)
     params.append('detalle',pEquipos.detalles)
     params.append('compra',pEquipos.compra)
@@ -52,6 +52,8 @@ const params = new URLSearchParams()
     params.append('tipo_id',pEquipos.tipo_id)
     params.append('empresa_id',pEquipos.empresa_id)
     console.log(actualizaUrl,'/',pEquipos.num_serie);
+    console.log("Act: ", pEquipos);
+
 return axios.post(actualizaUrl + '/' + pEquipos.num_serie,  params).then(response  =>  response.data);
 }
 

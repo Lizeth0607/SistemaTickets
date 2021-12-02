@@ -84,7 +84,7 @@ obtenerEmpresa();
 
 const agregaEmpresa = ()   =>   {
    empresasService.agregaEmpresa (Empresas).then(data => {setEmpresas(data);
-      empresasSuccess('success',t('Empresas:cabecero.exito'),t('Empresas:mensaje.agregar'));
+      empresasSuccess('success',t('Empresas:mensaje.cabecero'),t('Empresas:mensaje.agregar'));
 setDlgEmpresas(false);
 obtenerEmpresa ();
 });
@@ -92,7 +92,7 @@ obtenerEmpresa ();
 
 const eliminaEmpresa = (pEmpresas)   =>   {
    empresasService.eliminaEmpresa (pEmpresas).then(data => setEmpresas(data));
-   empresasSuccess('success',t('Empresas:cabecero.exito'),t('Empresas:mensaje.eliminar'));
+   empresasSuccess('success',t('Empresas:mensaje.cabecero'),t('Empresas:mensaje.eliminar'));
 setDlgEmpresas(false);
 obtenerEmpresa();
 obtenerEmpresa();
@@ -100,6 +100,8 @@ obtenerEmpresa();
 
 const actualizaEmpresa = ()   =>   {
    empresasService.actualizaEmpresa(Empresas).then(data => { setDlgEmpresas(false); obtenerEmpresa();});
+   empresasSuccess('success',t('Empresas:mensaje.cabecero'),t('Empresas:mensaje.actualizar'));
+   setDlgEmpresas(false);
    obtenerEmpresa();
 };
 
@@ -172,8 +174,7 @@ const rightFooter = (
 <div className="p-grid p-fluid">
    <div className="p-col-12">
       <div className="p-inputgroup"><Button tooltip={t('Empresas:boton.cancelar')} icon="pi pi-ban" className="p-button-rounded" onClick={()   =>   setDlgEmpresas(false) }></Button>                 
-         { !captura   &&  <Button tooltip={t('Empresas:boton.eliminar')} icon="pi pi-times" className="p-button-rounded" onClick={eliminaEmpresa }></Button>}                 
-         { !captura   &&  <Button tooltip={t('Empresas:boton.actualizar')} icon="pi pi-undo" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
+         { !captura   &&  <Button tooltip={t('Empresas:boton.actualizar')} icon="pi pi-check-circle" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          { captura   &&  <Button tooltip={t('Empresas:boton.agregar')} icon="pi pi-check" className="p-button-rounded" onClick={formik.handleSubmit}></Button>}                 
          
       </div>

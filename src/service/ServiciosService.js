@@ -13,6 +13,7 @@ export default class ServiciosService {
     seleccionaServicio(pServicios) {
         let seleccionaUrl = 'http://localhost/api-soporte/public/ticket/show'; //Modificar
         console.log("Seleccionado: ", pServicios.id);
+        console.log("acciones: ", pServicios.acciones);
         return axios.get(seleccionaUrl + '/' + pServicios.id).then(response => response.data);
     }
 

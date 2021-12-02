@@ -13,19 +13,21 @@ obtenerAplicacionEq (){
 
 
 seleccionaAplicacionEq(pAplicacionEqs) {
-let seleccionaUrl = ''; //Modificar
-return axios.get(seleccionaUrl  + '/' + pAplicacionEqs.instalacion_id).then(response  =>  response.data);
+    let seleccionaUrl = 'http://localhost/api-soporte/public/instalacion/show'; //Modificar
+    console.log("Seleccionado: ", pAplicacionEqs.id);
+    console.log("Fecha: ", pAplicacionEqs.fecha_instalacion);
+    return axios.get(seleccionaUrl + '/' + pAplicacionEqs.id).then(response => response.data);
 }
+
 
 agregaAplicacionEq (pAplicacionEqs) {
     let agregaUrl = 'http://127.0.0.1/api-soporte/public/instalacion/store';
     console.log(pAplicacionEqs);
     const params = new URLSearchParams()
-    params.append('instalacion',pAplicacionEqs.instalacion)
+    params.append('fecha_instalacion',pAplicacionEqs.fecha_instalacion)
     params.append('aplicacion_id',pAplicacionEqs.aplicacion_id)
     params.append('equipo_id',pAplicacionEqs.equipo_id)
-    params.append('estacion',pAplicacionEqs.estacion)
-    params.append('aplicacion',pAplicacionEqs.aplicacion_id)
+   
     const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
     return axios.post(agregaUrl, params,config).then(response  =>  response.data);
     }
@@ -39,9 +41,15 @@ agregaAplicacionEq (pAplicacionEqs) {
     }
 
 actualizaAplicacionEq (pAplicacionEqs) {
-let actualizaUrl = ''; //Modificar
-return axios.put(actualizaUrl + '/' + pAplicacionEqs.instalacion_id,  pAplicacionEqs)
-.then(response  =>  response.data);
+    let actualizaUrl = 'http://localhost/api-soporte/public/instalacion/update'; //Modificar
+    console.log("Actualizado", pAplicacionEqs.id);
+    const params = new URLSearchParams()
+    params.append('fecha_instalacion',pAplicacionEqs.fecha_instalacion)
+    params.append('aplicacion_id',pAplicacionEqs.aplicacion_id)
+    params.append('equipo_id',pAplicacionEqs.equipo_id)
+    console.log("Act: ", pAplicacionEqs);
+
+    return axios.post(actualizaUrl + '/' + pAplicacionEqs.id, params).then(response => response.data);
 }
 
 
