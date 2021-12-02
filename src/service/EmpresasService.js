@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export default class  UbicacionesService {
+export default class  EmpresasService {
 
 obtenerEmpresa (){
     return axios.get("http://127.0.0.1/api-soporte/public/empresa/index").then(res => res.data);
