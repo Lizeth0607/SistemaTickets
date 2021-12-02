@@ -26,7 +26,7 @@ params.append('nombre',pEmpleados.nombre)
 params.append('apellidos',pEmpleados.apellidos)
 params.append('puesto',pEmpleados.puesto)
 params.append('area',pEmpleados.area)
-params.append('id_equipo',pEmpleados.id_equipo)
+params.append('equipo',pEmpleados.id_equipo)
 return axios.post(agregaUrl, params).then(response  =>  response.data);
 }
 
@@ -47,6 +47,7 @@ params.append('nombre',pEmpleados.nombre)
 params.append('apellidos',pEmpleados.apellidos)
 params.append('puesto',pEmpleados.puesto)
 params.append('area',pEmpleados.area)
+params.append('id_equipo',pEmpleados.id_equipo)
 return axios.post(actualizaUrl + '/' + pEmpleados.id,  params).then(response  =>  response.data);
 }
 

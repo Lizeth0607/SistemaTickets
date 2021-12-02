@@ -35,53 +35,25 @@ const ReportesMes = ()   =>   {
    const [importedCols, setImportedCols] = useState([{ field: '', header: 'Header' }]);
    const dt = useRef(null);
    const toast = useRef(null);
-   const reporteService = new ReportesService();
+   const reportesService = new ReportesService();
 
    const cols = [
-       { field: 'Mes', header: 'Mes' },
-       { field: 'Objetivo', header: 'Objetivo' },
-       { field: 'Indicador', header: 'Indicador' },
+    { field: 'MONTH', header: 'Mes' },
+    { field: 'KPI', header: 'Indicador(KPI)' },
+    { field: 'TOTAL', header: 'Total' },
+  
    ];
 
    const exportColumns = cols.map(col => ({ title: col.header, dataKey: col.field }));
 
    useEffect(() => {
-       reporteService.getProductsSmall().then(data => setProducts(data));
+       reportesService.getProductsSmall().then(data => setProducts(data));
    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-   const importCSV = (e) => {
-       const file = e.files[0];
-       const reader = new FileReader();
-       reader.onload = (e) => {
-           const csv = e.target.result;
-           const data = csv.split('\n');
-
-           // Prepare DataTable
-           const cols = data[0].replace(/['"]+/g, '').split(',');
-           data.shift();
-
-           let _importedCols = cols.map(col => ({ field: col, header: toCapitalize(col.replace(/['"]+/g, '')) }));
-           let _importedData = data.map(d => {
-               d = d.split(',');
-               return cols.reduce((obj, c, i) => {
-                   obj[c] = d[i].replace(/['"]+/g, '');
-                   return obj;
-               }, {});
-           });
-
-           setImportedCols(_importedCols);
-           setImportedData(_importedData);
-       };
-
-       reader.readAsText(file, 'UTF-8');
-   }
-
-
 
    const exportCSV = (selectionOnly) => {
        dt.current.exportCSV({ selectionOnly });
    }
-
+   
    const exportPdf = () => {
        import('jspdf').then(jsPDF => {
            import('jspdf-autotable').then(() => {
@@ -112,21 +84,7 @@ const ReportesMes = ()   =>   {
        });
    }
 
-   const toCapitalize = (s) => {
-       return s.charAt(0).toUpperCase() + s.slice(1);
-   }
-
-   const clear = () => {
-       setImportedData([]);
-       setSelectedImportedData([]);
-       setImportedCols([{ field: '', header: 'Header' }]);
-   }
-
-   const onImportSelectionChange = (e) => {
-       setSelectedImportedData(e.value);
-       const detail = e.value.map(d => Object.values(d)[0]).join(', ');
-       toast.current.show({ severity: 'info', summary: 'Data Selected', detail, life: 3000 });
-   }
+  
 
    const onSelectionChange = (e) => {
        setSelectedProducts(e.value);
@@ -137,7 +95,6 @@ const ReportesMes = ()   =>   {
            <Button type="button" icon="pi pi-file" onClick={() => exportCSV(false)} className="p-mr-2" data-pr-tooltip="CSV" />
            <Button type="button" icon="pi pi-file-excel" onClick={exportExcel} className="p-button-success p-mr-2" data-pr-tooltip="XLS" />
            <Button type="button" icon="pi pi-file-pdf" onClick={exportPdf} className="p-button-warning p-mr-2" data-pr-tooltip="PDF" />
-           <Button type="button" icon="pi pi-filter" onClick={() => exportCSV(true)} className="p-button-info p-ml-auto" data-pr-tooltip="Selection Only" />
        </div>
    );
 
@@ -155,9 +112,10 @@ const ReportesMes = ()   =>   {
                 <Tooltip target=".export-buttons>button" position="bottom" />
 
                 <DataTable ref={dt} value={products} header={header} dataKey="id" responsiveLayout="scroll"
-                    selectionMode="multiple" selection={selectedProducts} onSelectionChange={onSelectionChange}>
+                    selectionMode="multiple" selection={selectedProducts} >
                     {
-                        cols.map((col, index) => <Column key={index} field={col.field} header={col.header} />)
+                        cols.map((col, index) => 
+                        <Column key={index} field={col.field} header={col.header} />)
                     }
                 </DataTable>
             </div>

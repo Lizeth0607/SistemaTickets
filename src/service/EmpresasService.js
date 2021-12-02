@@ -10,9 +10,11 @@ obtenerEmpresa (){
 }
 
 seleccionaEmpresa(pEmpresas) {
-let seleccionaUrl = ''; //Modificar
-return axios.get(seleccionaUrl  + '/' + pEmpresas.ubicacion_id).then(response  =>  response.data);
-}
+    let seleccionaUrl = 'http://localhost/api-soporte/public/empleado/show'; //Modificar
+    console.log("Id Seleccionado ",pEmpresas.id);
+    console.log(seleccionaUrl+'/'+pEmpresas.id);
+    return axios.get(seleccionaUrl  + '/' + pEmpresas.id).then(response  =>  response.data);
+    }
 
 agregaEmpresa (pEmpresas) {
     let agregaUrl = 'http://127.0.0.1/api-soporte/public/empresa/store';
@@ -31,14 +33,18 @@ eliminaEmpresa (pEmpresas) {
 }
 
 actualizaEmpresa (pEmpresas) {
-let actualizaUrl = ''; //Modificar
-return axios.put(actualizaUrl + '/' + pEmpresas.ubicacion_id,  pEmpresas)
-.then(response  =>  response.data);
+    let actualizaUrl = 'http://localhost/api-soporte/public/empresa/update'; //Modificar
+    console.log(pEmpresas)
+    console.log(pEmpresas.id);
+    const params = new URLSearchParams()
+    params.append('nombre',pEmpresas.nombre)
+    return axios.post(actualizaUrl + '/' + pEmpresas.id,  params).then(response  =>  response.data);
+    }
 }
 
 
 
 
-}                
+               
 
 

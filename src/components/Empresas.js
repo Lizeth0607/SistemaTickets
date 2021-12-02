@@ -70,11 +70,11 @@ const obtenerEmpresa= ()   =>   { //MODIFICAR EN SERVICE
 
 };
 
-const seleccionaEmpresa = (pEmpresas)   =>   {
-    setCaptura(false);
-    formik.resetForm();
-    empresasService.seleccionaEmpresa (pEmpresas).then(data => setEmpresas(data));
-    setDlgEmpresas(true);
+const seleccionaEmpresa = (pEmpresas) => {
+   setCaptura(false);
+   formik.resetForm();
+   empresasService.seleccionaEmpresa(pEmpresas).then(data => setEmpresas(data));
+   setDlgEmpresas(true);
 };
 
 useEffect(()   =>   {
@@ -98,9 +98,10 @@ obtenerEmpresa();
 obtenerEmpresa();
 };
 
-const actualizaEmpresa = ()   =>   {
-   empresasService.actualizaEmpresas(Empresas).then(data => { setDlgEmpresas(false); 
-   obtenerEmpresa();});
+
+const actualizaEmpresa = () => {
+   empresasService.actualizaEmpresa(Empresas).then(data => { setDlgEmpresas(false); obtenerEmpresa(); });
+   obtenerEmpresa();
 };
 
 const updateProperty = (propiedad, valor)   =>  {
