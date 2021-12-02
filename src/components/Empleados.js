@@ -50,7 +50,7 @@ const Empleados = () => {
       , apellidos: ''
       , puesto: ''
       , area: ''
-      , id_equipo: ''
+      , equipo_id: ''
 
    });
 
@@ -128,7 +128,7 @@ const Empleados = () => {
          , apellidos: ''
          , puesto: ''
          , area: ''
-         , id_equipo: ''
+         , equipo_id: ''
       });
       formik.resetForm();
    };
@@ -273,7 +273,7 @@ const Empleados = () => {
                            {t('Empleados:label.equipo')}
                         </label>
                            {{ captura } ? (
-                              <InputText id="txtEquipo" placeholder={t('Empleados:placeholder.equipo')} value={Empleados.id_equipo} className={formik.errors.id_equipo ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('id_equipo', e.target.value)}></InputText>
+                              <InputText id="txtEquipo" placeholder={t('Empleados:placeholder.equipo')} value={Empleados.equipo_id} className={formik.errors.id_equipo ? 'p-invalid' : 'p-inputtext'} maxLength={45} onChange={(e) => updateProperty('equipo_id', e.target.value)}></InputText>
                            ) : (<label id="txtEquipo">empleados.id_equipo</label>)}
 
                         </div>

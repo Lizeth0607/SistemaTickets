@@ -73,7 +73,7 @@ const obtenerTipo= ()   =>   { //MODIFICAR EN SERVICE
 const seleccionaTipo= (pTipos)   =>   {
     setCaptura(false);
     formik.resetForm();
-    tiposService.seleccionaETipo (pTipos).then(data => setTipos(data));
+    tiposService.seleccionaTipo (pTipos).then(data => setTipos(data));
     setDlgTipos(true);
 };
 
