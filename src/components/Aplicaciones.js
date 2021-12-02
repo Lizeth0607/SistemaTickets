@@ -40,7 +40,7 @@ const [dlgAplicaciones, setDlgAplicaciones] = useState(false);
 const [Aplicaciones, setAplicaciones] = useState({id:null
 ,nombre:''
 ,version:''
-,compra:''
+,fecha_compra:''
 });
 
 const [txtCriterio, setTxtCriterio] = useState('');
@@ -102,10 +102,11 @@ const eliminaApp = (pApps)   =>   {
    setDlgAplicaciones(false);
    obtenerApp();
    obtenerApp();
+   obtenerApp();
 };
 
-const actualizaApp = (pApps)   =>   {
-aplicacionesService.actualizaApp (pApps).then(data => { setDlgAplicaciones(data);
+const actualizaApp = ()   =>   {
+aplicacionesService.actualizaApp (Aplicaciones).then(data => { setDlgAplicaciones(false);
 aplicacionesSuccess('success',t('Aplicaciones:cabecero.exito'),t('Aplicaciones:mensaje.editar'));
 setDlgAplicaciones(false);
 obtenerApp();});
@@ -128,7 +129,7 @@ const iniciaComponentes = ()   =>   {
 setAplicaciones({id:null
     ,nombre:''
     ,version:''
-    ,compra:''
+    ,fecha_compra:''
 });
 formik.resetForm();
 };
@@ -246,7 +247,7 @@ return (
                       {t('Aplicaciones:label.fecha_compra')}
                       </label>
                    {{captura} ? ( 
-                        <InputMask id="date" mask="9999-99-99"  slotChar="yyyy-mm-dd" placeholder={t('Aplicaciones:placeholder.fecha_compra')} value={Aplicaciones.compra} onChange={(e) =>   updateProperty('compra', e.target.value)}></InputMask>
+                        <InputMask id="date" mask="9999-99-99"  slotChar="yyyy-mm-dd" placeholder={t('Aplicaciones:placeholder.fecha_compra')} value={Aplicaciones.fecha_compra} onChange={(e) =>   updateProperty('fecha_compra', e.target.value)}></InputMask>
                         ):(     <label id="txtFecha">aplicaciones.compra</label>)}
             </div>
                        
