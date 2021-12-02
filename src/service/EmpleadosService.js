@@ -38,19 +38,18 @@ eliminaEmpleado (pEmpleados) {
 }
 
 actualizaEmpleado (pEmpleados) {
-let actualizaUrl = 'http://localhost/api-soporte/public/empleado/update'; //Modificar
-console.log(pEmpleados)
-console.log(pEmpleados.id);
-const params = new URLSearchParams()
-params.append('num_empleado',pEmpleados.id)
-params.append('nombre',pEmpleados.nombre)
-params.append('apellidos',pEmpleados.apellidos)
-params.append('puesto',pEmpleados.puesto)
-params.append('area',pEmpleados.area)
-params.append('id_equipo',pEmpleados.id_equipo)
-return axios.post(actualizaUrl + '/' + pEmpleados.id,  params).then(response  =>  response.data);
-}
-
+    let actualizaUrl = 'http://localhost/api-soporte/public/empleado/update'; //Modificar
+    console.log(pEmpleados)
+    console.log(pEmpleados.id);
+    const params = new URLSearchParams()
+    params.append('num_empleado',pEmpleados.id)
+    params.append('nombre',pEmpleados.nombre)
+    params.append('apellidos',pEmpleados.apellidos)
+    params.append('puesto',pEmpleados.puesto)
+    params.append('area',pEmpleados.area)
+    params.append('id_equipo',pEmpleados.id_equipo)
+    return axios.post(actualizaUrl + '/' + pEmpleados.id,  params).then(response  =>  response.data);
+    }
 
 
 
