@@ -11,8 +11,9 @@ obtenerIndicador (){
 
 
 seleccionaIndicador(pIndicadores) {
-let seleccionaUrl = ''; //Modificar
-return axios.get(seleccionaUrl  + '/' + pIndicadores.idInd).then(response  =>  response.data);
+let seleccionaUrl = 'http://localhost/api-soporte/public/indicador/show'; //Modificar
+console.log("Seleccionado: ", pIndicadores.id);
+return axios.get(seleccionaUrl  + '/' + pIndicadores.id).then(response  =>  response.data);
 }
 
 agregaIndicador (pIndicadores) {
@@ -35,9 +36,13 @@ eliminaIndicador (pIndicadores) {
 }
 
 actualizaIndicador (pIndicadores) {
-let actualizaUrl = ''; //Modificar
-return axios.put(actualizaUrl + '/' + pIndicadores.idInd,  pIndicadores)
-.then(response  =>  response.data);
+let actualizaUrl = 'http://localhost/api-soporte/public/indicador/update'; //Modificar
+console.log("Actualizar: ",pIndicadores.id);
+const params = new URLSearchParams()
+    params.append('nombre',pIndicadores.nombre)
+    params.append('descripcion',pIndicadores.descripcion)
+    const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+return axios.post(actualizaUrl + '/' + pIndicadores.id,  params, config).then(response  =>  response.data);
 }
 
 
